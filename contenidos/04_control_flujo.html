@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.557">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>🐍 Python Intro - 🔄 Control de Flujo</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../contenidos/05_estructura_datos.html" rel="next">
+<link href="../contenidos/03_nomenclatura.html" rel="prev">
+<link href="../images/icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+<style type="text/css">
+.monaco-editor pre {
+  background-color: unset !important;
+}
+
+.qpyodide-editor-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
+  display: flex;
+}
+
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+  justify-content: center;
+  display: flex;
+  background-color: rgba(250, 250, 250, 0.65);
+  border: 1px solid rgba(233, 236, 239, 0.65);
+  border-radius: 0.5rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.qpyodide-r-project-logo {
+  color: #2767B0; /* R Project's blue color */
+}
+
+.qpyodide-icon-status-spinner {
+  color: #7894c4;
+}
+
+.qpyodide-icon-run-code {
+  color: #0d9c29
+}
+
+.qpyodide-output-code-stdout {
+  color: #111;
+}
+
+.qpyodide-output-code-stderr {
+  color: #db4133;
+}
+
+.qpyodide-editor {
+  border: 1px solid #EEEEEE;
+}
+
+.qpyodide-editor-toolbar {
+  background-color: #EEEEEE;
+  padding: 0.2rem 0.5rem;
+}
+
+.qpyodide-button {
+  background-color: #EEEEEE;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  border-color: #dee2e6;
+  border: 1px solid rgba(0,0,0,0);
+  padding: 0.375rem 0.75rem;
+  font-size: .9rem;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.qpyodide-button:hover {
+  color: #000;
+  background-color: #d9dce0;
+  border-color: #c8ccd0;
+}
+
+.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+  pointer-events: none;
+  opacity: .65
+}
+
+.qpyodide-button-reset {
+  color: #696969; /*#4682b4;*/
+}
+
+.qpyodide-button-copy {
+  color: #696969;
+}
+
+
+/* Custom styling for RevealJS Presentations*/
+
+/* Reset the style of the interactive area */
+.reveal div.qpyodide-interactive-area {
+  display: block;
+  box-shadow: none;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+} 
+
+/* Provide space to entries */
+.reveal div.qpyodide-output-code-area pre div {
+  margin: 1px 2px 1px 10px;
+}
+
+/* Collapse the inside code tags to avoid extra space between line outputs */
+.reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
+  padding: 0;
+  display: contents;
+}
+
+.reveal pre div code.qpyodide-output-code-stdout {
+  color: #111;
+}
+
+.reveal pre div code.qpyodide-output-code-stderr {
+  color: #db4133;
+}
+
+
+/* Create a border around console and output (does not effect graphs) */
+.reveal div.qpyodide-console-area {
+  border: 1px solid #EEEEEE;
+  box-shadow: 2px 2px 10px #EEEEEE;
+}
+
+/* Cap output height and allow text to scroll */
+/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
+.reveal div.qpyodide-output-code-area pre {
+  max-height: 400px;
+  overflow: scroll;
+}
+</style>
+<script type="module">
+// Document level settings ----
+
+// Determine if we need to install python packages
+globalThis.qpyodideInstallPythonPackagesList = [''];
+
+// Check to see if we have an empty array, if we do set to skip the installation.
+globalThis.qpyodideSetupPythonPackages = !(qpyodideInstallPythonPackagesList.indexOf("") !== -1);
+
+// Display a startup message?
+globalThis.qpyodideShowStartupMessage = true;
+
+// Describe the webR settings that should be used
+globalThis.qpyodideCustomizedPyodideOptions = {
+  "indexURL": "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
+  "env": {
+    "HOME": "/home/pyodide",
+  }, 
+  stdout: (text) => {qpyodideAddToOutputArray(text, "out");},
+  stderr: (text) => {qpyodideAddToOutputArray(text, "error");}
+}
+
+// Store cell data
+globalThis.qpyodideCellDetails = [{"id":1,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# definir variables\nn = 5\nm = 10\n\n# inicializar flujo\nif m < n:\n    t = m\n    m = n\n    n = t\n\n# sentencia despues del flujo\nprint(m, n)"},{"id":2,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 60\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 55:\n    print(\"Felicitaciones!!!\")"},{"id":3,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 40\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota < 55:\n    print(\"Lamentablemente Ud. ha reprobado.\")"},{"id":4,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"edad = 20\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")"},{"id":5,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"edad = 10\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")"},{"id":6,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"n = 15\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")"},{"id":7,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"n = 20\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")"},{"id":8,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 90\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 80:\n    print(\"Usted es un alumno destacado.\")\nelif nota >= 65:\n    print(\"Usted ha aprobado.\")\nelif nota >= 55:\n    print(\"Usted aprobó con algunas dificultades.\")\nelif nota >= 45:\n    print(\"Con un poco mas de empeño hubiese aprobado.\")\nelse:\n    print(\"Nos vemos el próximo semestre.\")"},{"id":9,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"sueldo = 2000\nprint(f\"Ingrese su sueldo: {sueldo}\")\n\nif sueldo < 1000:\n    print(\"caso 1\")\n    tasa = 0.00\nelif sueldo < 2000: # 1000 <= sueldo < 2000?\n    print(\"caso 2\")\n    tasa = 0.05\nelif sueldo < 4000: # 2000 <= sueldo < 4000\n    print(\"caso 3\")\n    tasa = 0.10\nelse:\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")"},{"id":10,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"sueldo = 2000\nif sueldo < 1000: #1000 > sueldo:\n    print(\"caso 1\")\n    tasa = 0.00\nif sueldo >= 1000 and sueldo < 2000: #if 1000 <= sueldo < 2000:\n    print(\"caso 2\")\n    tasa = 0.05\nif 2000 <= sueldo < 4000:\n    print(\"caso 3\")\n    tasa = 0.10\nif 4000 <= sueldo: #sueldo>= 4000\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")"},{"id":11,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"m = 4\nn = 7\np = 0\n\nwhile m > 0:\n    m = m - 1\n    p = p + n\n    \nprint(f\"El producto de 'm' y 'n' es {p}\")"},{"id":12,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nnumero = 10\n\n# Inicializa la variable para la suma\nsuma = 0\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular la suma de los cuadrados\nwhile i <= numero:\n    suma += i ** 2\n    i += 1\n\n# Muestra el resultado\nprint(f\"La suma de los cuadrados desde 1 hasta {numero} es {suma}\")"},{"id":13,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nn = 10\n\n# Inicializa el valor del factorial a 1\nfactorial = 1\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular el factorial\nwhile i <= n:\n    factorial *= i\n    i += 1\n\n# Muestra el resultado\nprint(f\"{n}! = {factorial}\")"},{"id":14,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nnumero = 35\n\n# Inicializa un contador de números divisibles por 3 o 5\ncontador = 0\n\n# Inicializa un valor para contar\ni = 1\n\n# Utiliza un ciclo while para contar números divisibles por 3 o 5\nwhile i <= numero:\n    if i % 3 == 0 or i % 5 == 0:\n        contador += 1\n    i += 1\n\n# Muestra la cantidad de números divisibles por 3 o 5\nprint(f\"En el rango de 1 a {numero}, hay {contador} números divisibles por 3 o 5.\")"},{"id":15,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Imprimir los números del 0 al 20 y sus cubos\nfor i in range(21):\n    print(f\"Número: {i}, Cubo: {i**3}\")"},{"id":16,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Imprimir los valores de los objetos range\n\nprint(list(range(9)))            \nprint(list(range(3, 13)))        \nprint(list(range(3, 13, 2)))     \nprint(list(range(11, 4)))        \nprint(list(range(11, 4, -1)))  "},{"id":17,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Cuenta regresiva para el Año Nuevo\nfor i in range(10, 0, -1):\n    print(i)\n\nprint('¡Feliz Año Nuevo!')"},{"id":18,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        break  # Se rompe el ciclo en esta iteración\n    print(n)\n\nprint(\"--Fin--\")"},{"id":19,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        continue # continua el ciclo ignorando esta iteracion\n    print(n)\n\nprint(\"--Fin--\")"},{"id":20,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":21,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"Dividendo: 100\nDivisor: 10\n\nLa división es exacta.\nCociente: 10\nResto: 0"},{"id":22,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":23,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":24,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":25,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":26,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":27,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":28,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":29,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":30,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":31,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":32,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":33,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":34,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":35,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":36,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":37,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":38,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":39,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":40,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":41,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"import random\n\n# Generar un número aleatorio entre 1 y 100\nnumero_secreto = random.randint(1, 100)\n\n# Número máximo de intentos permitidos\nintentos_maximos = 10\n\n# ...."},{"id":42,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"}];
+
+
+</script>
+<script type="module">
+// Declare startupMessageqpyodide globally
+globalThis.qpyodideStartupMessage = document.createElement("p");
+
+// Function to set the button text
+globalThis.qpyodideSetInteractiveButtonState = function(buttonText, enableCodeButton = true) {
+  document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+    btn.innerHTML = buttonText;
+    btn.disabled = !enableCodeButton;
+  });
+}
+
+// Function to update the status message in non-interactive cells
+globalThis.qpyodideUpdateStatusMessage = function(message) {
+  document.querySelectorAll(".qpyodide-status-text.qpyodide-cell-needs-evaluation").forEach((elem) => {
+    elem.innerText = message;
+  });
+}
+
+// Function to update the status message
+globalThis.qpyodideUpdateStatusHeader = function(message) {
+
+  if (!qpyodideShowStartupMessage) return;
+
+  qpyodideStartupMessage.innerHTML = message;
+}
+
+// Status header update with customized spinner message
+globalThis.qpyodideUpdateStatusHeaderSpinner = function(message) {
+
+  qpyodideUpdateStatusHeader(`
+    <i class="fa-solid fa-spinner fa-spin qpyodide-icon-status-spinner"></i>
+    <span>${message}</span>
+  `);
+}
+
+
+// Function that attaches the document status message
+function qpyodideDisplayStartupMessage(showStartupMessage) {
+  if (!showStartupMessage) {
+    return;
+  }
+
+  // Get references to header elements
+  const headerHTML = document.getElementById("title-block-header");
+  const headerRevealJS = document.getElementById("title-slide");
+
+  // Create the outermost div element for metadata
+  const quartoTitleMeta = document.createElement("div");
+  quartoTitleMeta.classList.add("quarto-title-meta");
+
+  // Create the first inner div element
+  const firstInnerDiv = document.createElement("div");
+  firstInnerDiv.setAttribute("id", "qpyodide-status-message-area");
+
+  // Create the second inner div element for "Pyodide Status" heading and contents
+  const secondInnerDiv = document.createElement("div");
+  secondInnerDiv.setAttribute("id", "qpyodide-status-message-title");
+  secondInnerDiv.classList.add("quarto-title-meta-heading");
+  secondInnerDiv.innerText = "Pyodide Status";
+
+  // Create another inner div for contents
+  const secondInnerDivContents = document.createElement("div");
+  secondInnerDivContents.setAttribute("id", "qpyodide-status-message-body");
+  secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+  // Describe the Pyodide state
+  qpyodideStartupMessage.innerText = "🟡 Loading...";
+  qpyodideStartupMessage.setAttribute("id", "qpyodide-status-message-text");
+  // Add `aria-live` to auto-announce the startup status to screen readers
+  qpyodideStartupMessage.setAttribute("aria-live", "assertive");
+
+  // Append the startup message to the contents
+  secondInnerDivContents.appendChild(qpyodideStartupMessage);
+
+  // Combine the inner divs and contents
+  firstInnerDiv.appendChild(secondInnerDiv);
+  firstInnerDiv.appendChild(secondInnerDivContents);
+  quartoTitleMeta.appendChild(firstInnerDiv);
+
+  // Determine where to insert the quartoTitleMeta element
+  if (headerHTML || headerRevealJS) {
+    // Append to the existing "title-block-header" element or "title-slide" div
+    (headerHTML || headerRevealJS).appendChild(quartoTitleMeta);
+  } else {
+    // If neither headerHTML nor headerRevealJS is found, insert after "Pyodide-monaco-editor-init" script
+    const monacoScript = document.getElementById("qpyodide-monaco-editor-init");
+    const header = document.createElement("header");
+    header.setAttribute("id", "title-block-header");
+    header.appendChild(quartoTitleMeta);
+    monacoScript.after(header);
+  }
+}
+
+qpyodideDisplayStartupMessage(qpyodideShowStartupMessage);
+</script>
+<script type="module">
+// Create a logging setup
+globalThis.qpyodideMessageArray = []
+
+// Add messages to array
+globalThis.qpyodideAddToOutputArray = function(message, type) {
+  qpyodideMessageArray.push({ message, type });
+}
+
+// Function to reset the output array
+globalThis.qpyodideResetOutputArray = function() {
+  qpyodideMessageArray = [];
+}
+
+globalThis.qpyodideRetrieveOutput = function() {
+  return qpyodideMessageArray.map(entry => entry.message).join('\n');
+}
+
+// Start a timer
+const initializePyodideTimerStart = performance.now();
+
+// Encase with a dynamic import statement
+globalThis.qpyodideInstance = await import(
+  qpyodideCustomizedPyodideOptions.indexURL + "pyodide.mjs").then(
+   async({ loadPyodide }) => {
+
+    console.log("Start loading Pyodide");
+    
+    // Populate Pyodide options with defaults or new values based on `pyodide`` meta
+    let mainPyodide = await loadPyodide(
+      qpyodideCustomizedPyodideOptions
+    );
+    
+    // Setup a namespace for global scoping
+    // await loadedPyodide.runPythonAsync("globalScope = {}"); 
+    
+    // Update status to reflect the next stage of the procedure
+    qpyodideUpdateStatusHeaderSpinner("Initializing Python Packages");
+
+    // Load the `micropip` package to allow installation of packages.
+    await mainPyodide.loadPackage("micropip");
+    await mainPyodide.runPythonAsync(`import micropip`);
+
+    // Load the `pyodide_http` package to shim uses of `requests` and `urllib3`.
+    // This allows for `pd.read_csv(url)` to work flawlessly.
+    // Details: https://github.com/coatless-quarto/pyodide/issues/9
+    await mainPyodide.loadPackage("pyodide_http");
+    await mainPyodide.runPythonAsync(`
+    import pyodide_http
+    pyodide_http.patch_all()  # Patch all libraries
+    `);
+
+    // Load the `matplotlib` package with necessary environment hook
+    await mainPyodide.loadPackage("matplotlib");
+
+    // Set the backend for matplotlib to be interactive.
+    await mainPyodide.runPythonAsync(`
+    import matplotlib
+    matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
+    from matplotlib import pyplot as plt
+    `);
+
+    // Unlock interactive buttons
+    qpyodideSetInteractiveButtonState(
+      `<i class="fa-solid fa-play qpyodide-icon-run-code"></i> <span>Run Code</span>`, 
+      true
+    );
+
+    // Set document status to viable
+    qpyodideUpdateStatusHeader(
+      "🟢 Ready!"
+    );
+
+    // Assign Pyodide into the global environment
+    globalThis.mainPyodide = mainPyodide;
+
+    console.log("Completed loading Pyodide");
+    return mainPyodide;
+  }
+);
+
+// Stop timer
+const initializePyodideTimerEnd = performance.now();
+
+// Create a function to retrieve the promise object.
+globalThis._qpyodideGetInstance = function() {
+    return qpyodideInstance;
+}
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">🐍 Python Intro</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../prefacio/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contenidos/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contenidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📚 Nomenclatura</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#condicional-if-elif-else" id="toc-condicional-if-elif-else" class="nav-link active" data-scroll-target="#condicional-if-elif-else">Condicional if-elif-else</a>
+  <ul class="collapse">
+  <li><a href="#condicional-if" id="toc-condicional-if" class="nav-link" data-scroll-target="#condicional-if">Condicional if</a></li>
+  <li><a href="#condicional-if-else" id="toc-condicional-if-else" class="nav-link" data-scroll-target="#condicional-if-else">Condicional if-else</a></li>
+  <li><a href="#condicional-if-elif-else-1" id="toc-condicional-if-elif-else-1" class="nav-link" data-scroll-target="#condicional-if-elif-else-1">Condicional if-elif-else</a></li>
+  </ul></li>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop">While Loop</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-acumulación-con-suma" id="toc-ejemplo-acumulación-con-suma" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-suma">Ejemplo: acumulación con suma</a></li>
+  <li><a href="#ejemplo-acumulación-con-multiplicación" id="toc-ejemplo-acumulación-con-multiplicación" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-multiplicación">Ejemplo: acumulación con multiplicación</a></li>
+  <li><a href="#ejemplo-conteo" id="toc-ejemplo-conteo" class="nav-link" data-scroll-target="#ejemplo-conteo">Ejemplo: conteo</a></li>
+  </ul></li>
+  <li><a href="#ciclo-for-con-rango" id="toc-ciclo-for-con-rango" class="nav-link" data-scroll-target="#ciclo-for-con-rango">Ciclo for con rango</a></li>
+  <li><a href="#salir-o-continuar-un-ciclo" id="toc-salir-o-continuar-un-ciclo" class="nav-link" data-scroll-target="#salir-o-continuar-un-ciclo">Salir o continuar un ciclo</a>
+  <ul class="collapse">
+  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break">Break</a></li>
+  <li><a href="#continue" id="toc-continue" class="nav-link" data-scroll-target="#continue">Continue</a></li>
+  </ul></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#if-elif-else" id="toc-if-elif-else" class="nav-link" data-scroll-target="#if-elif-else">if-elif-else</a></li>
+  <li><a href="#while" id="toc-while" class="nav-link" data-scroll-target="#while">While</a></li>
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
+  <li><a href="#break-continue" id="toc-break-continue" class="nav-link" data-scroll-target="#break-continue">Break &amp; Continue</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/loader.js"></script>
+<script type="module" id="qpyodide-monaco-editor-init">
+
+  // Configure the Monaco Editor's loader
+  require.config({
+    paths: {
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs'
+    }
+  });
+</script>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">🔄 Control de Flujo</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<img src="../images/control.svg" width="550">
+</center>
+<p><br></p>
+<p>EL control de flujo o sentencias de control permiten modificar el flujo del programa introduciendo <strong>ciclos</strong> y <strong>condicionales</strong>.</p>
+<ul>
+<li><p>Un <strong>condicional</strong> es un conjunto de sentencias que pueden o no ejecutarse, dependiendo del resultado de una condición.</p></li>
+<li><p>Un <strong>ciclo</strong> es un conjunto de sentencias que son ejecutadas varias veces, hasta que una condición de término es satisfecha.</p></li>
+</ul>
+<p>Tanto los condicionales como los ciclos contienen a otras sentencias. Para indicar esta relación se utiliza la <strong>indentación</strong>: las sentencias contenidas no se escriben en la misma columna que la sentencia de control, sino un poco más a la derecha.</p>
+<div id="qpyodide-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="condicional-if-elif-else" class="level2">
+<h2 class="anchored" data-anchor-id="condicional-if-elif-else">Condicional if-elif-else</h2>
+<section id="condicional-if" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-if">Condicional if</h3>
+<p>La sentencia <code>if</code> («si») ejecuta las instrucciones sólo si se cumple una condición. Si la condición es falsa, no se hace nada:</p>
+<p>La sintaxis es la siguiente:</p>
+<p><img src="https://progra-utfsm.github.io/material/images/if.png" align="center" width="300"></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condición:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    sentencias</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Ejemplos</strong></p>
+<div id="qpyodide-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="condicional-if-else" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-if-else">Condicional if-else</h3>
+<p>La sentencia <code>if-else</code> («si-o-si-no») decide qué instrucciones ejecutar dependiendo si una condición es verdadera o falsa:</p>
+<p><img src="https://progra-utfsm.github.io/material/images/if-else.png" align="center" width="300"></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condición:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    qué hacer cuando la condición es verdadera</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    qué hacer cuando la condición es falsa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>ejemplo 01</strong></p>
+<div id="qpyodide-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>ejemplo 02</strong></p>
+<div id="qpyodide-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="condicional-if-elif-else-1" class="level3">
+<h3 class="anchored" data-anchor-id="condicional-if-elif-else-1">Condicional if-elif-else</h3>
+<p>La sentencia <code>if-elif-else</code> depende de dos o más condiciones, que son evaluadas en orden. La primera que es verdadera determina qué instrucciones serán ejecutadas:</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/if_else.png" align="center" width="300"></p>
+<p>La sintaxis es la siguiente:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condición1:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    qué hacer si condición1 es verdadera</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> condición2:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    qué hacer si condición2 es verdadera</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    qué hacer cuando ninguna de las</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    condiciones anteriores es verdadera</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Existen tres formas de ocupar esta condicional.</p>
+<ul>
+<li><p><strong>Estructura if</strong>: La estructura if se utiliza para tomar decisiones en función de una condición. Si la condición es verdadera, el bloque de código dentro del if se ejecutará.</p></li>
+<li><p><strong>Estructura if-else</strong>: La estructura if-else se utiliza para tomar decisiones y ejecutar un bloque de código si la condición es verdadera y otro bloque de código si la condición es falsa.</p></li>
+<li><p><strong>Estructura if-elif-else</strong>: La estructura if-elif-else se utiliza para tomar decisiones y ejecutar diferentes bloques de código según diferentes condiciones. Se evalúan las condiciones en orden, y si alguna es verdadera, se ejecutará el bloque de código correspondiente. Si ninguna de las condiciones es verdadera, se ejecutará el bloque de código en la cláusula else.</p></li>
+</ul>
+<p>Es decir, puede no existir o pueden existir varios <code>elif</code>. Por otro lado, el <code>else</code> es opcional dependiendo del caso.</p>
+<p><strong>ejemplo 01</strong></p>
+<p>Escriba un programa que califique el rendimiento del alumno en una asignatura según la nota obtenida.</p>
+<div id="qpyodide-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>ejemplo 02</strong></p>
+<p>Considerar la siguiente tabla que muestra la tasa de impuesto a pagar por una persona según su sueldo.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sueldo</th>
+<th>Tasa de impuesto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>menos de 1000</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td>1000 ≤ sueldo &lt; 2000</td>
+<td>5%</td>
+</tr>
+<tr class="odd">
+<td>2000 ≤ sueldo &lt; 4000</td>
+<td>10%</td>
+</tr>
+<tr class="even">
+<td>4000 o más</td>
+<td>12%</td>
+</tr>
+</tbody>
+</table>
+<p>Un ejemplo de como se calcula el impuesto sería el siguiente:</p>
+<div id="qpyodide-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Otra forma de calcular el impuesto es la siguiente:</p>
+<div id="qpyodide-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>¿En qué se diferencian los dos programas anteriores?</p>
+<p><strong>Solución</strong>:</p>
+<ol type="1">
+<li><p><strong>Diferencia en la forma de expresar las condiciones</strong>: En el primer programa, se utilizan operadores de desigualdad (<code>&lt;</code>) para expresar las condiciones, mientras que en el segundo programa, se utilizan operadores de igualdad (<code>&gt;=</code>) y (<code>&lt;=</code>) para expresar las mismas condiciones.</p></li>
+<li><p><strong>Diferencia en el resultado impreso</strong>: En el primer programa, se imprime el caso correspondiente (por ejemplo, “caso 1”, “caso 2”, etc.) antes de calcular la tasa de impuesto, mientras que en el segundo programa, se calcula la tasa de impuesto sin imprimir el caso correspondiente.</p></li>
+</ol>
+</section>
+</section>
+<section id="while-loop" class="level2">
+<h2 class="anchored" data-anchor-id="while-loop">While Loop</h2>
+<p>El ciclo while («mientras») ejecuta una secuencia de instrucciones mientras una condición sea verdadera:</p>
+<p>Cada una de las veces que el cuerpo del ciclo es ejecutado se llama iteración.</p>
+<p>La condición es evaluada antes de cada iteración. Si la condición es inicialmente falsa, el ciclo no se ejecutará ninguna vez.</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/while.png" align="center" width="300"></p>
+<p>La sintaxis es la siguiente:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> condición:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    sentencias</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Notas adicionales</strong>:</p>
+<ul>
+<li>A una ejecución de las instrucciones que componen el ciclo se le llama <strong>iteración</strong>.</li>
+<li>La condición de un while es evaluada antes de cada iteración.</li>
+<li>Por lo anterior, es posible que un <code>while</code> <strong>no ejecute</strong> ninguna iteración, si la condición es False al inicio.</li>
+</ul>
+<p>Por ejemplo, el siguiente programa multiplica dos números enteros sin usar el operador <code>*</code>:</p>
+<div id="qpyodide-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Para ver cómo funciona este programa, hagamos un ruteo con la entrada <span class="math inline">\(m = 4\)</span> y <span class="math inline">\(n = 7\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>p</th>
+<th>m</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>28</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>El proceso funciona de la siguiente manera:</p>
+<ol type="1">
+<li>Se inician las variables <code>m</code> con el valor 4, <code>n</code> con el valor 7 y <code>p</code> con el valor 0.</li>
+<li>Se entra en un bucle <code>while</code> con la condición <code>m &gt; 0</code>, lo que significa que el bucle se ejecutará mientras <code>m</code> sea mayor que 0.</li>
+<li>En cada iteración del bucle, el valor de <code>m</code> se reduce en 1 (usando <code>m = m - 1</code>) y el valor de <code>n</code> se suma al valor actual de <code>p</code> (usando <code>p = p + n</code>).</li>
+<li>El bucle continúa ejecutándose hasta que <code>m</code> sea igual a 0. Cuando <code>m</code> alcanza 0, la condición <code>m &gt; 0</code> se vuelve falsa, y el bucle se detiene.</li>
+<li>Después de que el bucle se detiene, se imprime el resultado, que es el producto acumulado de <code>m</code> y <code>n</code> en la variable <code>p</code>.</li>
+</ol>
+<p>La razón por la que estamos seguros de que el ciclo terminará en algún momento es que la condición del bucle <code>while</code> se verifica en cada iteración, y <code>m</code> se reduce en 1 en cada iteración. Dado que <code>m</code> se inicializa con el valor 4, y en cada iteración se reduce en 1, eventualmente alcanzará el valor 0 después de 4 iteraciones, lo que hará que la condición <code>m &gt; 0</code> sea falsa y el ciclo se detendrá. Por lo tanto, podemos estar seguros de que el ciclo terminará.</p>
+<section id="ejemplo-acumulación-con-suma" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-acumulación-con-suma">Ejemplo: acumulación con suma</h3>
+<p>Escriba un programa que reciba como entrada un número entero. El programa debe mostrar el resultado de la suma de los números al cuadrado desde el <span class="math inline">\(1\)</span> hasta el valor ingresado. <span class="math display">\[
+1^2+2^2+\ldots+(n-1)^2+n^2
+\]</span></p>
+<div id="qpyodide-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="ejemplo-acumulación-con-multiplicación" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-acumulación-con-multiplicación">Ejemplo: acumulación con multiplicación</h3>
+<p>Escriba una programa que calcule el factorial de un número <span class="math inline">\(n\)</span> ingresada como entrada: <span class="math inline">\(10! = 1\cdot 2 \cdot 3 ... \cdot 10\)</span></p>
+<div id="qpyodide-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="ejemplo-conteo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-conteo">Ejemplo: conteo</h3>
+<p>Escriba un programa que solicite un número entero y calcule cuantos números son divisibles por 3 o 5.</p>
+<div id="qpyodide-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</section>
+<section id="ciclo-for-con-rango" class="level2">
+<h2 class="anchored" data-anchor-id="ciclo-for-con-rango">Ciclo for con rango</h2>
+<p>El ciclo <strong>for con rango</strong> ejecuta una secuencia de sentencias una cantidad fija de veces.</p>
+<p>Para llevar la cuenta, utiliza una <strong>variable de control</strong> que toma valores distintos en cada iteración.</p>
+<p>Una de las sintaxis para usar un for con rango es la siguiente:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> <span class="bu">range</span>(fin):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    qué hacer para cada valor de la variable de control</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En la primera iteración, la variable de control toma el valor 0. Al final de cada iteración, el valor de la variable aumenta automáticamente. El ciclo termina justo antes que la variable tome el valor fin.</p>
+<p>Por ejemplo, el siguiente programa muestra los cubos de los números del 0 al 20:</p>
+<div id="qpyodide-insertion-location-15"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Un <strong>rango</strong> es una sucesión de números enteros equiespaciados. Incluyendo la presentada más arriba, hay tres maneras de definir un rango:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(final)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(inicial, final)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">range</span>(inicial, final, incremento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El valor inicial siempre es parte del rango. El valor final nunca es parte del rango. El incremento indica la diferencia entre dos valores consecutivos del rango.</p>
+<p>Si el valor inicial es omitido, se supone que es 0. Si el incremento es omitido, se supone que es 1.</p>
+<p>Con algunos ejemplos quedará más claro:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>sentencia</th>
+<th>resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>range(9)</code></td>
+<td>0, 1, 2, 3, 4, 5, 6, 7, 8</td>
+</tr>
+<tr class="even">
+<td><code>range(3, 13)</code></td>
+<td>3, 4, 5, 6, 7, 8, 9, 10, 11, 12</td>
+</tr>
+<tr class="odd">
+<td><code>range(3, 13, 2)</code></td>
+<td>3, 5, 7, 9, 11</td>
+</tr>
+<tr class="even">
+<td><code>range(11, 4)</code></td>
+<td>ningún valor</td>
+</tr>
+<tr class="odd">
+<td><code>range(11, 4, -1)</code></td>
+<td>11, 10, 9, 8, 7, 6, 5</td>
+</tr>
+</tbody>
+</table>
+<div id="qpyodide-insertion-location-16"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Usando un incremento negativo, es posible hacer ciclos que van hacia atrás:</p>
+<div id="qpyodide-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="salir-o-continuar-un-ciclo" class="level2">
+<h2 class="anchored" data-anchor-id="salir-o-continuar-un-ciclo">Salir o continuar un ciclo</h2>
+<section id="break" class="level3">
+<h3 class="anchored" data-anchor-id="break">Break</h3>
+<p>Además de las condiciones de término propias de los ciclos <code>while</code> y <code>for</code>, siempre es posible salir de un ciclo en medio de una iteración usando la sentencia <code>break</code>. Lo lógico es que sea usada dentro de un <code>if</code>, para evitar que el ciclo termine prematuramente en la primera iteración:</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/break.png" align="center" width="300"></p>
+<p>Veamos el siguiente ejemplo:</p>
+<div id="qpyodide-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Este código es un bucle <code>for</code> en Python que itera a través de los números del 1 al 20. El objetivo del bucle es imprimir los números en cada iteración hasta que se encuentre un número divisible por 7. Aquí está lo que hace paso a paso:</p>
+<ol type="1">
+<li><p>Inicia un bucle <code>for</code> que utiliza la variable <code>n</code> para recorrer los números del 1 al 20 (inclusive) con la función <code>range(1, 21)</code>.</p></li>
+<li><p>En cada iteración del bucle, se verifica si el número <code>n</code> es divisible por 7 utilizando la expresión <code>n % 7 == 0</code>. Esto se hace con el operador de módulo (<code>%</code>) para comprobar si el residuo de la división de <code>n</code> por 7 es igual a 0. Si esta condición es verdadera, significa que <code>n</code> es divisible por 7.</p></li>
+<li><p>Si se encuentra un número que es divisible por 7, se utiliza la instrucción <code>break</code> para salir inmediatamente del bucle <code>for</code>, lo que significa que el bucle se interrumpe en esa iteración.</p></li>
+<li><p>Si el bucle no se rompe con <code>break</code>, se imprime el número <code>n</code> en esa iteración.</p></li>
+<li><p>Después de que se complete el bucle <code>for</code>, se imprime “–Fin–” una vez para marcar el final del programa.</p></li>
+</ol>
+</section>
+<section id="continue" class="level3">
+<h3 class="anchored" data-anchor-id="continue">Continue</h3>
+<p>La sentencia <code>continue</code> se usa para saltar a la iteración siguiente sin llegar al final de la que está en curso.</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/continue.png" align="center" width="300"></p>
+<p>Veamos el siguiente ejemplo:</p>
+<div id="qpyodide-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>El código que proporcionaste es un bucle <code>for</code> en Python que itera a través de los números del 1 al 20 utilizando la función <code>range(1, 21)</code>. El bucle imprime todos los números excepto aquellos que son divisibles por 7. A continuación, se explica paso a paso lo que hace el código:</p>
+<ol type="1">
+<li><p>El bucle <code>for</code> se inicia y la variable <code>n</code> toma valores del 1 al 20 en cada iteración.</p></li>
+<li><p>En cada iteración del bucle, se verifica si el número <code>n</code> es divisible por 7 utilizando la expresión <code>n % 7 == 0</code>. El operador de módulo (<code>%</code>) se utiliza para calcular el residuo de la división de <code>n</code> por 7. Si el residuo es igual a 0, significa que <code>n</code> es divisible por 7.</p></li>
+<li><p>Si la condición <code>n % 7 == 0</code> es verdadera, se ejecuta la instrucción <code>continue</code>, que salta el resto del código en esa iteración y pasa a la siguiente iteración del bucle. Esto significa que cuando se encuentra un número divisible por 7, no se imprime y el bucle continúa con el siguiente número.</p></li>
+<li><p>Si la condición <code>n % 7 == 0</code> no es verdadera (es decir, si <code>n</code> no es divisible por 7), se ejecuta la instrucción <code>print(n)</code>, que imprime el valor de <code>n</code> en la consola.</p></li>
+<li><p>Después de que se complete el bucle <code>for</code>, se imprime “–Fin–” una vez para marcar el final del programa.</p></li>
+</ol>
+</section>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="if-elif-else" class="level3">
+<h3 class="anchored" data-anchor-id="if-elif-else">if-elif-else</h3>
+<p><strong>Ejercicio 01</strong></p>
+<p>Escriba un programa que determine si el número entero ingresado por el usuario es par o no.</p>
+<pre class="terminal"><code>Ingrese un número: 4
+Su número es par</code></pre>
+<pre class="terminal"><code>Ingrese un número: 3
+Su número es impar</code></pre>
+<div id="qpyodide-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 02</strong></p>
+<p>Escriba un programa que pida dos números enteros y que calcule la división, indicando si la división es exacta o no.</p>
+<pre class="terminal"><code>Dividendo: 14
+Divisor: 5
+
+La división no es exacta.
+Cociente: 2
+Resto: 4</code></pre>
+<div id="qpyodide-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 03</strong></p>
+<p>Escriba un programa que pida al usuario dos palabras, y que indique cuál de ellas es la más larga y por cuántas letras lo es.</p>
+<pre class="terminal"><code>Palabra 1: edificio
+Palabra 2: tren
+La palabra edificio tiene 4 letras mas que tren.</code></pre>
+<pre class="terminal"><code>Palabra 1: sol
+Palabra 2: paralelepipedo
+La palabra paralelepipedo tiene 11 letras mas que sol</code></pre>
+<pre class="terminal"><code>Palabra 1: plancha
+Palabra 2: lapices
+Las dos palabras tienen el mismo largo</code></pre>
+<div id="qpyodide-insertion-location-23"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 04</strong></p>
+<p>Un año es <a href="https://es.wikipedia.org/wiki/A%C3%B1o_bisiesto">bisiesto</a> si es divisible por <span class="math inline">\(4\)</span>, excepto si es divisible por <span class="math inline">\(100\)</span> y no por <span class="math inline">\(400\)</span>. Escriba un programa que reciba un año como entrada e indique <code>True</code> si un año es bisiesto o <code>False</code> si no lo es.</p>
+<pre class="terminal"><code>Ingrese un anno: 1988
+1988 es bisiesto</code></pre>
+<pre class="terminal"><code>Ingrese un anno: 2011
+2011 no es bisiesto</code></pre>
+<pre class="terminal"><code>Ingrese un anno: 1700
+1700 no es bisiesto</code></pre>
+<pre class="terminal"><code>Ingrese un anno: 2400
+2400 es bisiesto</code></pre>
+<div id="qpyodide-insertion-location-24"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 05</strong></p>
+<p>Los tres lados <span class="math inline">\(a, b\)</span> y <span class="math inline">\(c\)</span> de un triángulo deben satisfacer la <a href="https://es.wikipedia.org/wiki/Desigualdad_triangular">desigualdad triangular</a>: cada uno de los lados no puede ser más largo que la suma de los otros dos.</p>
+<p>Escriba un programa que reciba como entrada los tres lados de un triángulo, e indique:</p>
+<ul>
+<li>si acaso el triángulo es inválido</li>
+<li>si el triángulo es válido, qué <a href="https://www.universoformulas.com/matematicas/geometria/tipos-triangulos/">tipo de triángulo</a> es.</li>
+</ul>
+<pre class="terminal"><code>Ingrese a: 3.9
+Ingrese b: 6.0
+Ingrese c: 1.2
+No es un triangulo valido.</code></pre>
+<pre class="terminal"><code>Ingrese a: 1.9
+Ingrese b: 2
+Ingrese c: 2
+El triangulo es isoceles.</code></pre>
+<pre class="terminal"><code>Ingrese a: 3.0
+Ingrese b: 5.0
+Ingrese c: 4.0
+El triangulo es escaleno.</code></pre>
+<pre class="terminal"><code>Ingrese a: 2
+Ingrese b: 2
+Ingrese c: 2
+El triangulo es equilatero.</code></pre>
+<div id="qpyodide-insertion-location-25"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 06</strong></p>
+<p>El riesgo de que una persona sufra enfermedades coronarias depende de su edad y su índice de masa corporal:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>edad &lt; 45</th>
+<th>edad ≥ 45</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IMC &lt; 22.0</td>
+<td>bajo</td>
+<td>medio</td>
+</tr>
+<tr class="even">
+<td>IMC ≥ 22.0</td>
+<td>medio</td>
+<td>alto</td>
+</tr>
+</tbody>
+</table>
+<p>El índice de masa corporal es el cuociente entre el peso del individuo en kilos y el cuadrado de su estatura en metros ($IMC = $).</p>
+<p>Escriba un programa que reciba como entrada la estatura, el peso y la edad de una persona, y le entregue su condición de riesgo.</p>
+<p><strong>ejemplos</strong></p>
+<ul>
+<li>Si el usuario ingresa una estatura de 1.75 metros, un peso de 70 kilogramos y una edad de 30 años, el programa mostrará: “La condición de riesgo es: medio”.</li>
+<li>Si el usuario ingresa una estatura de 1.65 metros, un peso de 90 kilogramos y una edad de 50 años, el programa mostrará: “La condición de riesgo es: alto”.</li>
+</ul>
+<div id="qpyodide-insertion-location-26"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 07</strong></p>
+<p>Un número natural es un <a href="https://es.wikipedia.org/wiki/Pal%C3%ADndromo">palíndromo</a> si se lee igual de izquierda a derecha y de derecha a izquierda.</p>
+<p>Por ejemplo, <span class="math inline">\(14941\)</span> es un palíndromo, mientras que <span class="math inline">\(81924\)</span> no lo es.</p>
+<p>Escriba un programa que indique si el número ingresado es o no palíndromo:</p>
+<pre class="terminal"><code>Ingrese un numero: 14941
+14941 es palindromo</code></pre>
+<pre class="terminal"><code>Ingrese un numero: 81924
+81924 no es palindromo
+</code></pre>
+<blockquote class="blockquote">
+<p><strong>Hint</strong>: Para encontrar el inverso de un string en Python, puedes utilizar la técnica de <code>texto[::-1]</code>.</p>
+</blockquote>
+<div id="qpyodide-insertion-location-27"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="while" class="level3">
+<h3 class="anchored" data-anchor-id="while">While</h3>
+<p><strong>Ejercicio 01</strong></p>
+<p>Solicita al usuario un número y muestra un contador regresivo desde ese número hasta 1. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 5
+Contador regresivo desde 5 hasta 1:
+5
+4
+3
+2
+1</code></pre>
+<div id="qpyodide-insertion-location-28"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 02</strong></p>
+<p>Solicita al usuario un número y calcula la suma de todos los números pares desde 2 hasta ese número. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 10
+La suma de números pares desde 2 hasta 10 es 30</code></pre>
+<div id="qpyodide-insertion-location-29"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 03</strong></p>
+<p>Solicita al usuario un número entero y suma todos sus dígitos. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número entero: 12345
+La suma de los dígitos es 15</code></pre>
+<div id="qpyodide-insertion-location-30"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 04</strong></p>
+<p>Pide al usuario un número y cuenta cuántos de sus dígitos son pares. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 123456
+El número tiene 3 dígitos pares.</code></pre>
+<div id="qpyodide-insertion-location-31"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 05</strong></p>
+<p>Solicita al usuario un número y cuenta cuántos números en el rango de 1 a ese número son divisibles por 7. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 20
+Hay 2 números divisibles por 7 en el rango de 1 a 20.</code></pre>
+<div id="qpyodide-insertion-location-32"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 06</strong></p>
+<p>Solicita al usuario un número y cuenta cuántos de sus dígitos son impares. Utiliza la declaración <code>while</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 7654321
+El número tiene 4 dígitos impares.</code></pre>
+<div id="qpyodide-insertion-location-33"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="range" class="level3">
+<h3 class="anchored" data-anchor-id="range">Range</h3>
+<p><strong>Ejercicio 01</strong></p>
+<p>Calcula la suma de todos los números pares desde 1 hasta un número dado (<span class="math inline">\(n\)</span>). Utiliza la declaración <code>range</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 10
+La suma de números pares desde 1 hasta 10 es 30</code></pre>
+<div id="qpyodide-insertion-location-34"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 02</strong></p>
+<p>Muestra un contador regresivo desde un número (<span class="math inline">\(n\)</span>) dado hasta 1. Utiliza la declaración <code>range</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 5
+Contador regresivo desde 5 hasta 1:
+5
+4
+3
+2
+1</code></pre>
+<div id="qpyodide-insertion-location-35"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 03</strong></p>
+<p>Muestra la tabla de multiplicar de un número dado. Utiliza la declaración <code>range</code> para resolver este problema.</p>
+<pre><code>Ingrese un número: 7
+Tabla de multiplicar del 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70</code></pre>
+<div id="qpyodide-insertion-location-36"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 04</strong></p>
+<p>Escribe un programa que solicite al usuario un número entero positivo y luego calcule la suma de los cuadrados de todos los números desde 1 hasta el número ingresado. Utiliza la declaración <code>range</code> para generar los números en el rango y luego suma los cuadrados de esos números.</p>
+<p><strong>Ejemplos</strong></p>
+<ol type="1">
+<li><p>Si el usuario ingresa el número 4, el programa calculará la suma de los cuadrados de los números desde 1 hasta 4 de la siguiente manera:</p>
+<p>Suma = 1^2 + 2^2 + 3^2 + 4^2 = 1 + 4 + 9 + 16 = 30</p>
+<p>El programa mostrará: “La suma de los cuadrados de los números en el rango de 1 a 4 es 30.”</p></li>
+</ol>
+<div id="qpyodide-insertion-location-37"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="break-continue" class="level3">
+<h3 class="anchored" data-anchor-id="break-continue">Break &amp; Continue</h3>
+<p><strong>Ejercicio 01</strong></p>
+<p>Solicita al usuario un número y cuenta cuántos de sus dígitos son pares. Utiliza la declaración <code>continue</code> para omitir los dígitos impares.</p>
+<pre><code>Ingrese un número: 123456
+El número tiene 3 dígitos pares.</code></pre>
+<div id="qpyodide-insertion-location-38"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 02</strong></p>
+<p>Calcula la suma de los números en un rango dado (por ejemplo, de 1 a 10), pero omite los múltiplos de 3 utilizando la declaración <code>continue</code>.</p>
+<pre><code>Ingrese un número: 10
+La suma de los números no divisibles por 3 en el rango de 1 a 10 es 37</code></pre>
+<div id="qpyodide-insertion-location-39"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 03</strong></p>
+<p>Dada una lista de números enteros, solicita al usuario un número objetivo y busca si el número está en la lista. Utiliza un bucle con <code>break</code> para detener la búsqueda una vez que encuentres el número o determines que no está en la lista.</p>
+<div id="qpyodide-insertion-location-40"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 04</strong></p>
+<p>Simula un juego en el que la computadora “piensa” en un número y el jugador intenta adivinarlo. Crea un bucle que permita al jugador hacer intentos para adivinar el número, y utiliza <code>break</code> para salir del bucle si el jugador adivina el número o excede un número máximo de intentos.</p>
+<blockquote class="blockquote">
+<p><strong>Hint</strong>: Considera la siguiente rutina para partir tu código:</p>
+</blockquote>
+<div id="qpyodide-insertion-location-41"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-42"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../contenidos/03_nomenclatura.html" class="pagination-link" aria-label="📚 Nomenclatura">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">📚 Nomenclatura</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contenidos/05_estructura_datos.html" class="pagination-link" aria-label="📊 Estructura de datos">
+        <span class="nav-page-text"><span class="chapter-title">📊 Estructura de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script type="module">
+/**
+ * Factory function to create different types of cells based on options.
+ * @param {Object} cellData - JSON object containing code, id, and options.
+ * @returns {BaseCell} Instance of the appropriate cell class.
+ */
+globalThis.qpyodideCreateCell = function(cellData) {
+    switch (cellData.options.context) {
+        case 'interactive':
+            return new InteractiveCell(cellData);
+        case 'output':
+            return new OutputCell(cellData);
+        case 'setup':
+            return new SetupCell(cellData);
+        default:
+            return new InteractiveCell(cellData);
+            // throw new Error('Invalid cell type specified in options.');
+    }
+}  
+
+/**
+ * CellContainer class for managing a collection of cells.
+ * @class
+ */
+class CellContainer {
+    /**
+     * Constructor for CellContainer.
+     * Initializes an empty array to store cells.
+     * @constructor
+     */
+    constructor() {
+        this.cells = [];
+    }
+
+    /**
+     * Add a cell to the container.
+     * @param {BaseCell} cell - Instance of a cell (BaseCell or its subclasses).
+     */
+    addCell(cell) {
+        this.cells.push(cell);
+    }
+
+    /**
+     * Execute all cells in the container.
+     */
+    async executeAllCells() {
+        for (const cell of this.cells) {
+            await cell.executeCode();
+        }
+    }
+
+    /**
+     * Execute all cells in the container.
+     */
+    async autoRunExecuteAllCells() {
+        for (const cell of this.cells) {
+            await cell.autoRunExecuteCode();
+        }
+    }
+}
+  
+
+/**
+ * BaseCell class for handling code execution using Pyodide.
+ * @class
+ */
+class BaseCell {
+    /**
+     * Constructor for BaseCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        this.code = cellData.code;
+        this.id = cellData.id;
+        this.options = cellData.options;
+        this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+        this.executionLock = false;
+    }
+
+    cellOptions() {
+        // Subclass this? 
+        console.log(this.options);
+        return this.options;
+    }
+
+    /**
+     * Execute the Python code using Pyodide.
+     * @returns {*} Result of the code execution.
+     */
+    async executeCode() {
+        // Execute code using Pyodide
+        const result = getPyodide().runPython(this.code);
+        return result;
+    }
+};
+
+/**
+ * InteractiveCell class for creating editable code editor with Monaco Editor.
+ * @class
+ * @extends BaseCell
+ */
+class InteractiveCell extends BaseCell {
+
+    /**
+     * Constructor for InteractiveCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        super(cellData);
+        this.editor = null;
+        this.setupElement();
+        this.setupMonacoEditor();
+    }
+
+    /**
+     * Set up the interactive cell elements
+     */
+    setupElement() {
+
+        // Create main div element
+        var mainDiv = document.createElement('div');
+        mainDiv.id = `qpyodide-interactive-area-${this.id}`;
+        mainDiv.className = `qpyodide-interactive-area`;
+        if (this.options.classes) {
+            mainDiv.className += " " + this.options.classes
+        }
+
+        // Add a unique cell identifier that users can customize
+        if (this.options.label) {
+            mainDiv.setAttribute('data-id', this.options.label);
+        }
+
+        // Create toolbar div
+        var toolbarDiv = document.createElement('div');
+        toolbarDiv.className = 'qpyodide-editor-toolbar';
+        toolbarDiv.id = `qpyodide-editor-toolbar-${this.id}`;
+
+        // Create a div to hold the left buttons
+        var leftButtonsDiv = document.createElement('div');
+        leftButtonsDiv.className = 'qpyodide-editor-toolbar-left-buttons';
+
+        // Create a div to hold the right buttons
+        var rightButtonsDiv = document.createElement('div');
+        rightButtonsDiv.className = 'qpyodide-editor-toolbar-right-buttons';
+
+        // Create Run Code button
+        var runCodeButton = document.createElement('button');
+        runCodeButton.className = 'btn btn-default qpyodide-button qpyodide-button-run';
+        runCodeButton.disabled = true;
+        runCodeButton.type = 'button';
+        runCodeButton.id = `qpyodide-button-run-${this.id}`;
+        runCodeButton.textContent = '🟡 Loading Pyodide...';
+        runCodeButton.title = `Run code (Shift + Enter)`;
+
+        // Append buttons to the leftButtonsDiv
+        leftButtonsDiv.appendChild(runCodeButton);
+
+        // Create Reset button
+        var resetButton = document.createElement('button');
+        resetButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-reset';
+        resetButton.type = 'button';
+        resetButton.id = `qpyodide-button-reset-${this.id}`;
+        resetButton.title = 'Start over';
+        resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+        // Create Copy button
+        var copyButton = document.createElement('button');
+        copyButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-copy';
+        copyButton.type = 'button';
+        copyButton.id = `qpyodide-button-copy-${this.id}`;
+        copyButton.title = 'Copy code';
+        copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+        // Append buttons to the rightButtonsDiv
+        rightButtonsDiv.appendChild(resetButton);
+        rightButtonsDiv.appendChild(copyButton);
+
+        // Create console area div
+        var consoleAreaDiv = document.createElement('div');
+        consoleAreaDiv.id = `qpyodide-console-area-${this.id}`;
+        consoleAreaDiv.className = 'qpyodide-console-area';
+
+        // Create editor div
+        var editorDiv = document.createElement('div');
+        editorDiv.id = `qpyodide-editor-${this.id}`;
+        editorDiv.className = 'qpyodide-editor';
+
+        // Create output code area div
+        var outputCodeAreaDiv = document.createElement('div');
+        outputCodeAreaDiv.id = `qpyodide-output-code-area-${this.id}`;
+        outputCodeAreaDiv.className = 'qpyodide-output-code-area';
+        outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+        // Create pre element inside output code area
+        var preElement = document.createElement('pre');
+        preElement.style.visibility = 'hidden';
+        outputCodeAreaDiv.appendChild(preElement);
+
+        // Create output graph area div
+        var outputGraphAreaDiv = document.createElement('div');
+        outputGraphAreaDiv.id = `qpyodide-output-graph-area-${this.id}`;
+        outputGraphAreaDiv.className = 'qpyodide-output-graph-area';
+
+        // Append buttons to the toolbar
+        toolbarDiv.appendChild(leftButtonsDiv);
+        toolbarDiv.appendChild(rightButtonsDiv);
+
+        // Append all elements to the main div
+        mainDiv.appendChild(toolbarDiv);
+        consoleAreaDiv.appendChild(editorDiv);
+        consoleAreaDiv.appendChild(outputCodeAreaDiv);
+        mainDiv.appendChild(consoleAreaDiv);
+        mainDiv.appendChild(outputGraphAreaDiv);
+
+        // Insert the dynamically generated object at the document location.
+        this.insertionLocation.appendChild(mainDiv);
+    }
+
+    /**
+     * Set up Monaco Editor for code editing.
+     */
+    setupMonacoEditor() {
+
+        // Retrieve the previously created document elements
+        this.runButton = document.getElementById(`qpyodide-button-run-${this.id}`);
+        this.resetButton = document.getElementById(`qpyodide-button-reset-${this.id}`);
+        this.copyButton = document.getElementById(`qpyodide-button-copy-${this.id}`);
+        this.editorDiv = document.getElementById(`qpyodide-editor-${this.id}`);
+        this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
+        this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
+        
+        // Store reference to the object
+        var thiz = this;
+
+        // Load the Monaco Editor and create an instance
+        require(['vs/editor/editor.main'], function () {
+            thiz.editor = monaco.editor.create(
+                thiz.editorDiv, {
+                    value: thiz.code,
+                    language: 'python',
+                    theme: 'vs-light',
+                    automaticLayout: true,           // Works wonderfully with RevealJS
+                    scrollBeyondLastLine: false,
+                    minimap: {
+                        enabled: false
+                    },
+                    fontSize: '17.5pt',              // Bootstrap is 1 rem
+                    renderLineHighlight: "none",     // Disable current line highlighting
+                    hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+                    readOnly: thiz.options['read-only'] ?? false
+                }
+            );
+        
+            // Store the official counter ID to be used in keyboard shortcuts
+            thiz.editor.__qpyodideCounter = thiz.id;
+        
+            // Store the official div container ID
+            thiz.editor.__qpyodideEditorId = `qpyodide-editor-${thiz.id}`;
+        
+            // Store the initial code value and options
+            thiz.editor.__qpyodideinitialCode = thiz.code;
+            thiz.editor.__qpyodideOptions = thiz.options;
+        
+            // Set at the model level the preferred end of line (EOL) character to LF.
+            // This prevent `\r\n` from being given to the Pyodide engine if the user is on Windows.
+            // See details in: https://github.com/coatless/quarto-Pyodide/issues/94
+            // Associated error text: 
+            // Error: <text>:1:7 unexpected input
+        
+            // Retrieve the underlying model
+            const model = thiz.editor.getModel();
+            // Set EOL for the model
+            model.setEOL(monaco.editor.EndOfLineSequence.LF);
+        
+            // Dynamically modify the height of the editor window if new lines are added.
+            let ignoreEvent = false;
+            const updateHeight = () => {
+            const contentHeight = thiz.editor.getContentHeight();
+            // We're avoiding a width change
+            //editorDiv.style.width = `${width}px`;
+            thiz.editorDiv.style.height = `${contentHeight}px`;
+                try {
+                    ignoreEvent = true;
+            
+                    // The key to resizing is this call
+                    thiz.editor.layout();
+                } finally {
+                    ignoreEvent = false;
+                }
+            };
+        
+            // Helper function to check if selected text is empty
+            function isEmptyCodeText(selectedCodeText) {
+                return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+            }
+        
+            // Registry of keyboard shortcuts that should be re-added to each editor window
+            // when focus changes.
+            const addPyodideKeyboardShortCutCommands = () => {
+            // Add a keydown event listener for Shift+Enter to run all code in cell
+            thiz.editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+                // Retrieve all text inside the editor
+                thiz.runCode(thiz.editor.getValue());
+            });
+        
+            // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+            thiz.editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+                    // Get the selected text from the editor
+                    const selectedText = thiz.editor.getModel().getValueInRange(thiz.editor.getSelection());
+                    // Check if no code is selected
+                    if (isEmptyCodeText(selectedText)) {
+                        // Obtain the current cursor position
+                        let currentPosition = thiz.editor.getPosition();
+                        // Retrieve the current line content
+                        let currentLine = thiz.editor.getModel().getLineContent(currentPosition.lineNumber);
+                
+                        // Propose a new position to move the cursor to
+                        let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+                
+                        // Check if the new position is beyond the last line of the editor
+                        if (newPosition.lineNumber > thiz.editor.getModel().getLineCount()) {
+                            // Add a new line at the end of the editor
+                            thiz.editor.executeEdits("addNewLine", [{
+                            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+                            text: "\n", 
+                            forceMoveMarkers: true,
+                            }]);
+                        }
+                        
+                        // Run the entire line of code.
+                        thiz.runCode(currentLine);
+                
+                        // Move cursor to new position
+                        thiz.editor.setPosition(newPosition);
+                    } else {
+                        // Code to run when Ctrl+Enter is pressed with selected code
+                        thiz.runCode(selectedText);
+                    }
+                });
+            }
+        
+            // Register an on focus event handler for when a code cell is selected to update
+            // what keyboard shortcut commands should work.
+            // This is a workaround to fix a regression that happened with multiple
+            // editor windows since Monaco 0.32.0 
+            // https://github.com/microsoft/monaco-editor/issues/2947
+            thiz.editor.onDidFocusEditorText(addPyodideKeyboardShortCutCommands);
+        
+            // Register an on change event for when new code is added to the editor window
+            thiz.editor.onDidContentSizeChange(updateHeight);
+        
+            // Manually re-update height to account for the content we inserted into the call
+            updateHeight();
+                
+        });
+
+        
+        // Add a click event listener to the run button
+        thiz.runButton.onclick = function () {
+            thiz.runCode(
+                thiz.editor.getValue()
+            );
+        };
+        
+        // Add a click event listener to the reset button
+        thiz.copyButton.onclick = function () {
+            // Retrieve current code data
+            const data = thiz.editor.getValue();
+            
+            // Write code data onto the clipboard.
+            navigator.clipboard.writeText(data || "");
+        };
+        
+        // Add a click event listener to the copy button
+        thiz.resetButton.onclick = function () {
+            thiz.editor.setValue(thiz.editor.__qpyodideinitialCode);
+        };
+    }
+
+    disableInteractiveCells() {
+        // Enable locking of execution for the cell
+        this.executionLock = true;
+
+        // Disallowing execution of other code cells
+        document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+            btn.disabled = true;
+        });
+    }
+
+    enableInteractiveCells() {
+        // Remove locking of execution for the cell
+        this.executionLock = false;
+
+        // All execution of other code cells
+        document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+            btn.disabled = false;
+        });
+    }
+
+    /**
+     * Execute the Python code inside the editor.
+     */
+    async runCode(code) {
+        
+        // Check if we have an execution lock
+        if (this.executeLock) return; 
+        
+        this.disableInteractiveCells();
+
+        // Force wait procedure
+        await mainPyodide;
+
+        // Clear the output stock
+        qpyodideResetOutputArray();
+
+        // Generate a new canvas element, avoid attaching until the end
+        let graphFigure = document.createElement("figure");
+        document.pyodideMplTarget = graphFigure;
+
+        console.log("Running code!");
+        // Obtain results from the base class
+        try {
+            // Always check to see if the user adds new packages
+            await mainPyodide.loadPackagesFromImports(code);
+
+            // Process result
+            const output = await mainPyodide.runPythonAsync(code);
+
+            // Add output
+            qpyodideAddToOutputArray(output, "stdout");
+        } catch (err) {
+            // Add error message
+            qpyodideAddToOutputArray(err, "stderr");
+            // TODO: There has to be a way to remove the Pyodide portion of the errors... 
+        }
+
+        const result = qpyodideRetrieveOutput();
+
+        // Nullify the output area of content
+        this.outputCodeDiv.innerHTML = "";
+        this.outputGraphDiv.innerHTML = "";        
+
+        // Design an output object for messages
+        const pre = document.createElement("pre");
+        if (/\S/.test(result)) {
+            // Display results as HTML elements to retain output styling
+            const div = document.createElement("div");
+            div.innerHTML = result;
+            pre.appendChild(div);
+        } else {
+            // If nothing is present, hide the element.
+            pre.style.visibility = "hidden";
+        }
+
+        // Add output under interactive div
+        this.outputCodeDiv.appendChild(pre);
+
+        // Place the graphics onto the page
+        if (graphFigure) {
+
+            if (this.options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = this.options['fig-cap'];
+                // Append figcaption to figure
+                graphFigure.appendChild(figcaptionElement);    
+            }
+
+            this.outputGraphDiv.appendChild(graphFigure);
+        }
+
+        // Re-enable execution
+        this.enableInteractiveCells();
+    }
+};
+
+/**
+ * OutputCell class for customizing and displaying output.
+ * @class
+ * @extends BaseCell
+ */
+class OutputCell extends BaseCell {
+    /**
+     * Constructor for OutputCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+      super(cellData);
+    }
+  
+    /**
+     * Display customized output on the page.
+     * @param {*} output - Result to be displayed.
+     */
+    displayOutput(output) {
+        const results = this.executeCode();
+        return results;
+    }
+  }
+
+/**
+ * SetupCell class for suppressed output.
+ * @class
+ * @extends BaseCell
+ */
+class SetupCell extends BaseCell {
+    /**
+     * Constructor for SetupCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        super(cellData);
+    }
+
+    /**
+     * Execute the Python code without displaying the results.
+     */
+    runSetupCode() {
+        // Execute code without displaying output
+        this.executeCode();
+    }
+};
+</script>
+<script type="module">
+// Handle cell initialization initialization
+qpyodideCellDetails.map(
+    (entry) => {
+      // Handle the creation of the element
+      qpyodideCreateCell(entry);
+    }
+  );
+</script>
+
+
+
+
+</body></html>

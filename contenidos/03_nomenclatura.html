@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.557">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>🐍 Python Intro - 📚 Nomenclatura</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../contenidos/04_control_flujo.html" rel="next">
+<link href="../contenidos/intro.html" rel="prev">
+<link href="../images/icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+<style type="text/css">
+.monaco-editor pre {
+  background-color: unset !important;
+}
+
+.qpyodide-editor-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
+  display: flex;
+}
+
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+  justify-content: center;
+  display: flex;
+  background-color: rgba(250, 250, 250, 0.65);
+  border: 1px solid rgba(233, 236, 239, 0.65);
+  border-radius: 0.5rem;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.qpyodide-r-project-logo {
+  color: #2767B0; /* R Project's blue color */
+}
+
+.qpyodide-icon-status-spinner {
+  color: #7894c4;
+}
+
+.qpyodide-icon-run-code {
+  color: #0d9c29
+}
+
+.qpyodide-output-code-stdout {
+  color: #111;
+}
+
+.qpyodide-output-code-stderr {
+  color: #db4133;
+}
+
+.qpyodide-editor {
+  border: 1px solid #EEEEEE;
+}
+
+.qpyodide-editor-toolbar {
+  background-color: #EEEEEE;
+  padding: 0.2rem 0.5rem;
+}
+
+.qpyodide-button {
+  background-color: #EEEEEE;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  border-color: #dee2e6;
+  border: 1px solid rgba(0,0,0,0);
+  padding: 0.375rem 0.75rem;
+  font-size: .9rem;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.qpyodide-button:hover {
+  color: #000;
+  background-color: #d9dce0;
+  border-color: #c8ccd0;
+}
+
+.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+  pointer-events: none;
+  opacity: .65
+}
+
+.qpyodide-button-reset {
+  color: #696969; /*#4682b4;*/
+}
+
+.qpyodide-button-copy {
+  color: #696969;
+}
+
+
+/* Custom styling for RevealJS Presentations*/
+
+/* Reset the style of the interactive area */
+.reveal div.qpyodide-interactive-area {
+  display: block;
+  box-shadow: none;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+} 
+
+/* Provide space to entries */
+.reveal div.qpyodide-output-code-area pre div {
+  margin: 1px 2px 1px 10px;
+}
+
+/* Collapse the inside code tags to avoid extra space between line outputs */
+.reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
+  padding: 0;
+  display: contents;
+}
+
+.reveal pre div code.qpyodide-output-code-stdout {
+  color: #111;
+}
+
+.reveal pre div code.qpyodide-output-code-stderr {
+  color: #db4133;
+}
+
+
+/* Create a border around console and output (does not effect graphs) */
+.reveal div.qpyodide-console-area {
+  border: 1px solid #EEEEEE;
+  box-shadow: 2px 2px 10px #EEEEEE;
+}
+
+/* Cap output height and allow text to scroll */
+/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
+.reveal div.qpyodide-output-code-area pre {
+  max-height: 400px;
+  overflow: scroll;
+}
+</style>
+<script type="module">
+// Document level settings ----
+
+// Determine if we need to install python packages
+globalThis.qpyodideInstallPythonPackagesList = [''];
+
+// Check to see if we have an empty array, if we do set to skip the installation.
+globalThis.qpyodideSetupPythonPackages = !(qpyodideInstallPythonPackagesList.indexOf("") !== -1);
+
+// Display a startup message?
+globalThis.qpyodideShowStartupMessage = true;
+
+// Describe the webR settings that should be used
+globalThis.qpyodideCustomizedPyodideOptions = {
+  "indexURL": "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
+  "env": {
+    "HOME": "/home/pyodide",
+  }, 
+  stdout: (text) => {qpyodideAddToOutputArray(text, "out");},
+  stderr: (text) => {qpyodideAddToOutputArray(text, "error");}
+}
+
+// Store cell data
+globalThis.qpyodideCellDetails = [{"id":1,"code":"# imprimir \"Hola Mundo!\"\nprint(\"Hola Mundo!\");","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":2,"code":"# asignar e imprimir variables (numericas)\na = 5\nprint(\"a =\", 5)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":3,"code":"# asignar e imprimir variables (texto)\na = \"cinco\"\nprint(\"a =\", a)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":4,"code":"# Ejemplo\nx = 5\ny = 4\nsuma = x+y\n\nprint(\"La suma de\", x, \"con\", y, \"es igual a\", suma)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":5,"code":"# ejemplo f-string\nprint(f\"La suma de {x} con {y} es igual a igual a {suma}\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":6,"code":"# entero \na = 5\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":7,"code":"# flotante \nb = 1.5\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":8,"code":"# complejo \nc = 5 + 3j\nprint(type(c))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":9,"code":"a = True\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":10,"code":"b = False\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":11,"code":"# comillas simples\na = 'hola mundo'\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":12,"code":"# comillas complejas\nb = \"hola mundo\"\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":13,"code":"a = None\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":14,"code":"# correcto (numerico  + numerico)\n\nnum_int = 123  # integer type\nnum_flo = 1.23 # float type\n\nnum_new = num_int + num_flo\n\nprint(f\"Valor de num_new: {num_new}\")\nprint(f\"tipo de datos de  num_new: {type(num_new)}\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":15,"code":"# incorrecto (string  + numerico)\nnum_int = 123     # int type\nnum_str = \"456\"   # str type\n\nprint(num_int+num_str)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":16,"code":"num_int = 123  # int type\nnum_str = \"456\" # str type\n\n# cambiar string a numerico\nnum_str = int(num_str) \n\nprint(num_int+num_str)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":17,"code":"# operaciones basicas \n\nx = 14\ny = 4\n\n# suma\nprint(f'x + y = {x+y}') # Output: x + y = 18\n\n# resta\nprint(f'x - y = {x-y}') # Output: x - y = 10\n\n# multiplicacion\nprint(f'x * y = {x*y}') # Output: x * y = 56\n\n# division\nprint(f'x / y = {x/y}') # Output: x / y = 3.5\n\n# cuociente o division entera\nprint(f'x // y = {x//y}') # Output: x // y = 3","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":18,"code":"# operacion potencia\nx = 4\ny=3\nz=0.5\n\nprint(f'potencia entera:           x ** y = {x**y}' ) \nprint(f'potencia fraccionaria:     x ** z = {x**z}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":19,"code":"# modulo\nx = 13\ny = 4\nprint(f'x % y = {x%y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":20,"code":"x = 3.94987545322","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":21,"code":"# cero decimales\nprint(round(x))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":22,"code":"# un decimal\nprint(round(x,1))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":23,"code":"# dos decimales\nprint(round(x,2))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":24,"code":"# operadores de asignacion\n\nx = 5","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":25,"code":"# x += 5 ----> x = x + 5\nx +=5\nprint(x) # Output: 10","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":26,"code":"# x /= 5 ----> x = x / 5\nx /= 5\nprint(x) # Output: 2.0","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":27,"code":"# operadores relacionales (numericos)\n\nx = 14\ny = 4","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":28,"code":"# igual a\nprint(f'x = y  {x==y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":29,"code":"# distinto\nprint(f'x != y {x!=y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":30,"code":"# mayor que\nprint(f'x > y  {x>y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":31,"code":"# mayor o igual que\nprint(f'x >= y {x>=y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":32,"code":"# menor o igual que\nprint(f'x <= y {x<=y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":33,"code":"# operadores relacionales ( string )\ntexto = \"Python\"\notro_texto = \"programa\"","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":34,"code":"# igualdad \nprint(texto == otro_texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":35,"code":"# desigualdad \nprint(texto != otro_texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":36,"code":"# un string esta en un texto\nprint(\"thon\" in texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":37,"code":"# un string NO esta en un texto\nprint(\"thon\" not in texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":38,"code":"# ejemplos 'and'\nvalor = True and False\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":39,"code":"# ejemplos 'or'\nvalor = True or False\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":40,"code":"# ejemplos 'not'\nvalor = not True\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":41,"code":"# suma\ntexto_01 = \"hola \"\ntexto_02 = \"mundo\"\nprint(texto_01+texto_02)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":42,"code":"# multiplicacion\ntexto = \"hola mundo \"\nprint(4*texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":43,"code":"# lower\ntexto = \"HOLA MUNDO\"\nprint(texto.lower())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":44,"code":"# upper\ntexto = \"hola mundo\"\nprint(texto.upper())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":45,"code":"# strip\ntexto = \" hola mundo \"\nprint(texto.strip())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":46,"code":"# replace\ntexto = \" hola mundo \"\ncambiar = \"universo\"\nprint(texto.replace(\"mundo\",\"universo\"))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":47,"code":"# seleccion primer elemento \ntexto = \"Python\"\nprint(texto[0])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":48,"code":"# seleccion ultimo elemento \nprint(texto[-1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":49,"code":"texto = \"Programa en Python\"","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":50,"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":51,"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":52,"code":"# seleccionar los elementos del treceavo en adelante\nprint(texto[12:])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":53,"code":"texto = \"Programa en Python\"\nlargo = len(texto)\n\nprint(f\"El texto tiene {largo} letras\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":54,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":55,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":56,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":57,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":58,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":59,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":60,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":61,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}}];
+
+
+</script>
+<script type="module">
+// Declare startupMessageqpyodide globally
+globalThis.qpyodideStartupMessage = document.createElement("p");
+
+// Function to set the button text
+globalThis.qpyodideSetInteractiveButtonState = function(buttonText, enableCodeButton = true) {
+  document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+    btn.innerHTML = buttonText;
+    btn.disabled = !enableCodeButton;
+  });
+}
+
+// Function to update the status message in non-interactive cells
+globalThis.qpyodideUpdateStatusMessage = function(message) {
+  document.querySelectorAll(".qpyodide-status-text.qpyodide-cell-needs-evaluation").forEach((elem) => {
+    elem.innerText = message;
+  });
+}
+
+// Function to update the status message
+globalThis.qpyodideUpdateStatusHeader = function(message) {
+
+  if (!qpyodideShowStartupMessage) return;
+
+  qpyodideStartupMessage.innerHTML = message;
+}
+
+// Status header update with customized spinner message
+globalThis.qpyodideUpdateStatusHeaderSpinner = function(message) {
+
+  qpyodideUpdateStatusHeader(`
+    <i class="fa-solid fa-spinner fa-spin qpyodide-icon-status-spinner"></i>
+    <span>${message}</span>
+  `);
+}
+
+
+// Function that attaches the document status message
+function qpyodideDisplayStartupMessage(showStartupMessage) {
+  if (!showStartupMessage) {
+    return;
+  }
+
+  // Get references to header elements
+  const headerHTML = document.getElementById("title-block-header");
+  const headerRevealJS = document.getElementById("title-slide");
+
+  // Create the outermost div element for metadata
+  const quartoTitleMeta = document.createElement("div");
+  quartoTitleMeta.classList.add("quarto-title-meta");
+
+  // Create the first inner div element
+  const firstInnerDiv = document.createElement("div");
+  firstInnerDiv.setAttribute("id", "qpyodide-status-message-area");
+
+  // Create the second inner div element for "Pyodide Status" heading and contents
+  const secondInnerDiv = document.createElement("div");
+  secondInnerDiv.setAttribute("id", "qpyodide-status-message-title");
+  secondInnerDiv.classList.add("quarto-title-meta-heading");
+  secondInnerDiv.innerText = "Pyodide Status";
+
+  // Create another inner div for contents
+  const secondInnerDivContents = document.createElement("div");
+  secondInnerDivContents.setAttribute("id", "qpyodide-status-message-body");
+  secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+  // Describe the Pyodide state
+  qpyodideStartupMessage.innerText = "🟡 Loading...";
+  qpyodideStartupMessage.setAttribute("id", "qpyodide-status-message-text");
+  // Add `aria-live` to auto-announce the startup status to screen readers
+  qpyodideStartupMessage.setAttribute("aria-live", "assertive");
+
+  // Append the startup message to the contents
+  secondInnerDivContents.appendChild(qpyodideStartupMessage);
+
+  // Combine the inner divs and contents
+  firstInnerDiv.appendChild(secondInnerDiv);
+  firstInnerDiv.appendChild(secondInnerDivContents);
+  quartoTitleMeta.appendChild(firstInnerDiv);
+
+  // Determine where to insert the quartoTitleMeta element
+  if (headerHTML || headerRevealJS) {
+    // Append to the existing "title-block-header" element or "title-slide" div
+    (headerHTML || headerRevealJS).appendChild(quartoTitleMeta);
+  } else {
+    // If neither headerHTML nor headerRevealJS is found, insert after "Pyodide-monaco-editor-init" script
+    const monacoScript = document.getElementById("qpyodide-monaco-editor-init");
+    const header = document.createElement("header");
+    header.setAttribute("id", "title-block-header");
+    header.appendChild(quartoTitleMeta);
+    monacoScript.after(header);
+  }
+}
+
+qpyodideDisplayStartupMessage(qpyodideShowStartupMessage);
+</script>
+<script type="module">
+// Create a logging setup
+globalThis.qpyodideMessageArray = []
+
+// Add messages to array
+globalThis.qpyodideAddToOutputArray = function(message, type) {
+  qpyodideMessageArray.push({ message, type });
+}
+
+// Function to reset the output array
+globalThis.qpyodideResetOutputArray = function() {
+  qpyodideMessageArray = [];
+}
+
+globalThis.qpyodideRetrieveOutput = function() {
+  return qpyodideMessageArray.map(entry => entry.message).join('\n');
+}
+
+// Start a timer
+const initializePyodideTimerStart = performance.now();
+
+// Encase with a dynamic import statement
+globalThis.qpyodideInstance = await import(
+  qpyodideCustomizedPyodideOptions.indexURL + "pyodide.mjs").then(
+   async({ loadPyodide }) => {
+
+    console.log("Start loading Pyodide");
+    
+    // Populate Pyodide options with defaults or new values based on `pyodide`` meta
+    let mainPyodide = await loadPyodide(
+      qpyodideCustomizedPyodideOptions
+    );
+    
+    // Setup a namespace for global scoping
+    // await loadedPyodide.runPythonAsync("globalScope = {}"); 
+    
+    // Update status to reflect the next stage of the procedure
+    qpyodideUpdateStatusHeaderSpinner("Initializing Python Packages");
+
+    // Load the `micropip` package to allow installation of packages.
+    await mainPyodide.loadPackage("micropip");
+    await mainPyodide.runPythonAsync(`import micropip`);
+
+    // Load the `pyodide_http` package to shim uses of `requests` and `urllib3`.
+    // This allows for `pd.read_csv(url)` to work flawlessly.
+    // Details: https://github.com/coatless-quarto/pyodide/issues/9
+    await mainPyodide.loadPackage("pyodide_http");
+    await mainPyodide.runPythonAsync(`
+    import pyodide_http
+    pyodide_http.patch_all()  # Patch all libraries
+    `);
+
+    // Load the `matplotlib` package with necessary environment hook
+    await mainPyodide.loadPackage("matplotlib");
+
+    // Set the backend for matplotlib to be interactive.
+    await mainPyodide.runPythonAsync(`
+    import matplotlib
+    matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
+    from matplotlib import pyplot as plt
+    `);
+
+    // Unlock interactive buttons
+    qpyodideSetInteractiveButtonState(
+      `<i class="fa-solid fa-play qpyodide-icon-run-code"></i> <span>Run Code</span>`, 
+      true
+    );
+
+    // Set document status to viable
+    qpyodideUpdateStatusHeader(
+      "🟢 Ready!"
+    );
+
+    // Assign Pyodide into the global environment
+    globalThis.mainPyodide = mainPyodide;
+
+    console.log("Completed loading Pyodide");
+    return mainPyodide;
+  }
+);
+
+// Stop timer
+const initializePyodideTimerEnd = performance.now();
+
+// Create a function to retrieve the promise object.
+globalThis._qpyodideGetInstance = function() {
+    return qpyodideInstance;
+}
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">🐍 Python Intro</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../prefacio/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../contenidos/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contenidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">📚 Nomenclatura</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#sintaxis" id="toc-sintaxis" class="nav-link active" data-scroll-target="#sintaxis">Sintaxis</a>
+  <ul class="collapse">
+  <li><a href="#hola-mundo" id="toc-hola-mundo" class="nav-link" data-scroll-target="#hola-mundo">Hola mundo!</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#imprimir-mensajes-y-variables" id="toc-imprimir-mensajes-y-variables" class="nav-link" data-scroll-target="#imprimir-mensajes-y-variables">Imprimir mensajes y variables</a></li>
+  <li><a href="#inputs-por-el-usuario" id="toc-inputs-por-el-usuario" class="nav-link" data-scroll-target="#inputs-por-el-usuario">Inputs por el usuario</a></li>
+  </ul></li>
+  <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos">Tipos de datos</a>
+  <ul class="collapse">
+  <li><a href="#enteros-flotantes-y-números-complejos" id="toc-enteros-flotantes-y-números-complejos" class="nav-link" data-scroll-target="#enteros-flotantes-y-números-complejos">Enteros, flotantes y números complejos</a></li>
+  <li><a href="#valores-lógicos" id="toc-valores-lógicos" class="nav-link" data-scroll-target="#valores-lógicos">Valores lógicos</a></li>
+  <li><a href="#texto" id="toc-texto" class="nav-link" data-scroll-target="#texto">Texto</a></li>
+  <li><a href="#nulo" id="toc-nulo" class="nav-link" data-scroll-target="#nulo">Nulo</a></li>
+  <li><a href="#conversión-de-tipo" id="toc-conversión-de-tipo" class="nav-link" data-scroll-target="#conversión-de-tipo">Conversión de tipo</a></li>
+  </ul></li>
+  <li><a href="#operaciones" id="toc-operaciones" class="nav-link" data-scroll-target="#operaciones">Operaciones</a>
+  <ul class="collapse">
+  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos">Operadores aritméticos</a></li>
+  <li><a href="#otros-operadores-arítmeticos" id="toc-otros-operadores-arítmeticos" class="nav-link" data-scroll-target="#otros-operadores-arítmeticos">Otros operadores arítmeticos</a></li>
+  <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link" data-scroll-target="#operadores-de-asignación">Operadores de asignación</a></li>
+  <li><a href="#operadores-relacionales" id="toc-operadores-relacionales" class="nav-link" data-scroll-target="#operadores-relacionales">Operadores relacionales</a></li>
+  <li><a href="#operaciones-binarias" id="toc-operaciones-binarias" class="nav-link" data-scroll-target="#operaciones-binarias">Operaciones Binarias</a></li>
+  <li><a href="#operadores-de-string" id="toc-operadores-de-string" class="nav-link" data-scroll-target="#operadores-de-string">Operadores de String</a></li>
+  <li><a href="#más-operadores-de-string" id="toc-más-operadores-de-string" class="nav-link" data-scroll-target="#más-operadores-de-string">Más operadores de String</a></li>
+  </ul></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/loader.js"></script>
+<script type="module" id="qpyodide-monaco-editor-init">
+
+  // Configure the Monaco Editor's loader
+  require.config({
+    paths: {
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs'
+    }
+  });
+</script>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">📚 Nomenclatura</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<img src="../images/nomenclatura.svg" width="550">
+</center>
+<p><br></p>
+<section id="sintaxis" class="level2">
+<h2 class="anchored" data-anchor-id="sintaxis">Sintaxis</h2>
+<section id="hola-mundo" class="level3">
+<h3 class="anchored" data-anchor-id="hola-mundo">Hola mundo!</h3>
+<p>Escribamos nuestro primer programa de Python, “¡Hola, mundo!”. Es un programa simple que imprime Hello World! en el dispositivo de salida estándar (pantalla). Para eso se ocupa el comando <code>print()</code>.</p>
+<div id="qpyodide-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="variables" class="level3">
+<h3 class="anchored" data-anchor-id="variables">Variables</h3>
+<p>Una <strong>variable</strong> es una ubicación con nombre utilizada para almacenar datos en la memoria. Una <strong>asignación</strong> es una sentencia que asocia un nombre al resultado de una expresión.</p>
+<div id="qpyodide-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="imprimir-mensajes-y-variables" class="level3">
+<h3 class="anchored" data-anchor-id="imprimir-mensajes-y-variables">Imprimir mensajes y variables</h3>
+<p>La formula para imprimir mensajes y variables es:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mensaje_01"</span>,variable_01,<span class="st">"mensaje_02"</span>,variable_02,...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="qpyodide-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Existen varias formas de imprimir variables y strings, sin embargo, la que más se destaca es la forma <strong>Literal String Interpolation</strong> (o también conocido como <strong>f-string</strong>). La formula es la siguiente:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"mensaje_01 </span><span class="sc">{</span>variable_01<span class="sc">}</span><span class="ss"> mensaje_02 </span><span class="sc">{</span>variable_02<span class="sc">}</span><span class="ss"> ..."</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="qpyodide-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<blockquote class="blockquote">
+<p><strong>Observación</strong>: Se tratara de trabajar siempre con la forma <strong>f-string</strong> para ser consistente.</p>
+</blockquote>
+</section>
+<section id="inputs-por-el-usuario" class="level3">
+<h3 class="anchored" data-anchor-id="inputs-por-el-usuario">Inputs por el usuario</h3>
+<p>En Python, puede usar la función <code>input()</code> para tomar la entrada del usuario. Por ejemplo:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs por el usuario</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>inputString <span class="op">=</span> <span class="bu">input</span>(<span class="st">'Escriba una oracion:'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Su oracion es: </span><span class="sc">{</span>inputString<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="tipos-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-datos">Tipos de datos</h2>
+<section id="enteros-flotantes-y-números-complejos" class="level3">
+<h3 class="anchored" data-anchor-id="enteros-flotantes-y-números-complejos">Enteros, flotantes y números complejos</h3>
+<p>Python admite enteros, números de coma flotante y números complejos. Se definen como <code>int</code>, <code>float</code> y <code>complex</code> en Python.</p>
+<div id="qpyodide-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="valores-lógicos" class="level3">
+<h3 class="anchored" data-anchor-id="valores-lógicos">Valores lógicos</h3>
+<p>Los valores lógicos <code>True</code> y <code>False</code> (verdadero y falso) son de tipo <code>bool</code>, que representa valores lógicos.</p>
+<p>El nombre bool viene del matemático <strong>George Boole</strong>, quien creó un sistema algebraico para la lógica binaria. Por lo mismo, a <code>True</code> y <code>False</code> también se les llama <strong>valores booleanos</strong>. El nombre no es muy intuitivo, pero es el que se usa en informática, así que hay que conocerlo.</p>
+<div id="qpyodide-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="texto" class="level3">
+<h3 class="anchored" data-anchor-id="texto">Texto</h3>
+<p>A los valores que representan texto se les llama <code>strings</code>, y tienen el tipo <code>str</code>.</p>
+<p>Los strings literales pueden ser representados con texto entre comillas simples o comillas dobles:</p>
+<div id="qpyodide-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="nulo" class="level3">
+<h3 class="anchored" data-anchor-id="nulo">Nulo</h3>
+<p>Existe un valor llamado <code>None</code> (en inglés, «ninguno») que es utilizado para representar casos en que ningún valor es válido, o para indicar que una variable todavía no tiene un valor que tenga sentido.</p>
+<p>El valor None tiene su propio tipo, llamado <code>NoneType</code>, que es diferente al de todos los demás valores.</p>
+<div id="qpyodide-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="conversión-de-tipo" class="level3">
+<h3 class="anchored" data-anchor-id="conversión-de-tipo">Conversión de tipo</h3>
+<p>El proceso de convertir el valor de un tipo de datos (entero, cadena, flotante, etc.) en otro se llama conversión de tipo. Python tiene dos tipos de conversión de tipos.</p>
+<p><strong>a) Implícita</strong></p>
+<div id="qpyodide-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-15"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>b) Explícito</strong></p>
+<div id="qpyodide-insertion-location-16"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Observación</strong>: el proceso de transformar <code>string</code> a <code>numeric</code> es correcto cuando lo que está escrito en el <code>string</code> es un número, en caso contrario, nos dará error.</p>
+</section>
+</section>
+<section id="operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="operaciones">Operaciones</h2>
+<section id="operadores-aritméticos" class="level3">
+<h3 class="anchored" data-anchor-id="operadores-aritméticos">Operadores aritméticos</h3>
+<p>Los operadores son símbolos especiales que realizan operaciones en operandos (variables y valores). Hablemos de operadores aritméticos y de asignación en esta parte.</p>
+<div id="qpyodide-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="otros-operadores-arítmeticos" class="level3">
+<h3 class="anchored" data-anchor-id="otros-operadores-arítmeticos">Otros operadores arítmeticos</h3>
+<p><strong>Potencia</strong></p>
+<p>La función <a href="https://es.wikipedia.org/wiki/Potenciaci%C3%B3n">potencia</a> de un número entero corresponde a multiplicar <span class="math inline">\(n\)</span> veces el mismo número. Por ejemplo</p>
+<p><span class="math display">\[4^3 = 4*4*4 = 64\]</span></p>
+<p>Cuando el exponente es fracionario, hablamos de raíces. Por ejemplo:</p>
+<p><span class="math display">\[4^{1/2} = \sqrt{4} = 2\]</span></p>
+<div id="qpyodide-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Módulo</strong></p>
+<p>Cuando dividimos dos enteros, tenemos una ecuación que se ve como lo siguiente: <span class="math display">\[\dfrac{A}{B} = Q \text{ residuo } R,\]</span> donde: * <span class="math inline">\(A\)</span> es el dividendo * <span class="math inline">\(B\)</span> es el divisor * <span class="math inline">\(Q\)</span> es el cociente * <span class="math inline">\(R\)</span> es el residuo</p>
+<p>A veces, solo estamos interesados en cuánto es el residuo cuando dividimos <span class="math inline">\(A\)</span> entre <span class="math inline">\(B\)</span>. Para estos casos hay un operador llamado el operador <a href="https://es.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic">módulo</a> (abreviado como mod).</p>
+<p>Al usar los mismos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(Q\)</span> y <span class="math inline">\(R\)</span> que arriba, tendríamos: <span class="math inline">\(A \text{ mod } B = R\)</span> (notación). Por ejemplo:</p>
+<p><span class="math display">\[\dfrac{13}{4} = 3 \text{ residuo } 1 \textrm{, es equivalente a: } 13 \textrm{ mod } 4 = 1 \]</span></p>
+<div id="qpyodide-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Redondear</strong></p>
+<p>La función incorporada <code>round()</code> toma como argumento un número de coma flotante y retorna un número entero según las reglas del redondeo.</p>
+<div id="qpyodide-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-23"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="operadores-de-asignación" class="level3">
+<h3 class="anchored" data-anchor-id="operadores-de-asignación">Operadores de asignación</h3>
+<p>Los operadores de asignación se utilizan para asignar valores a las variables. Probemos algunos operadores de asignación más comunes.</p>
+<div id="qpyodide-insertion-location-24"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-25"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-26"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="operadores-relacionales" class="level3">
+<h3 class="anchored" data-anchor-id="operadores-relacionales">Operadores relacionales</h3>
+<p>Los operadores relacionales sirven para comparar valores. Sus operandos son cualquier cosa que pueda ser comparada, y sus resultados siempre son valores lógicos.</p>
+<p><strong>Operadores relacionales (numéricos)</strong></p>
+<div id="qpyodide-insertion-location-27"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-28"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-29"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-30"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-31"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-32"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Operadores relacionales ( string )</strong></p>
+<div id="qpyodide-insertion-location-33"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-34"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-35"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-36"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-37"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="operaciones-binarias" class="level3">
+<h3 class="anchored" data-anchor-id="operaciones-binarias">Operaciones Binarias</h3>
+<p>Una <a href="https://es.wikipedia.org/wiki/Tabla_de_verdad">tabla de verdad</a>, o tabla de valores de verdades, es una tabla que muestra el valor de verdad de una proposición compuesta, para cada combinación de verdad que se pueda asignar.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">p</th>
+<th style="text-align: center;">q</th>
+<th style="text-align: center;">p ∧ q</th>
+<th style="text-align: center;">p v q</th>
+<th style="text-align: center;">¬p</th>
+<th style="text-align: center;">¬q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">T</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">T</td>
+</tr>
+</tbody>
+</table>
+<p>En Python, hay tres operaciones lógicas:</p>
+<ul>
+<li>la conjunción lógica <code>and</code> (en español: <strong>y</strong>)</li>
+<li>la disyunción lógica <code>or</code> (en español: <strong>o</strong>)</li>
+<li>la negación lógica <code>not</code> (en español: <strong>no</strong>)</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">p</th>
+<th style="text-align: center;">q</th>
+<th style="text-align: center;">p and q</th>
+<th style="text-align: center;">p or q</th>
+<th style="text-align: center;">not p</th>
+<th style="text-align: center;">not q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">False</td>
+<td style="text-align: center;">True</td>
+<td style="text-align: center;">True</td>
+</tr>
+</tbody>
+</table>
+<div id="qpyodide-insertion-location-38"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-39"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-40"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="operadores-de-string" class="level3">
+<h3 class="anchored" data-anchor-id="operadores-de-string">Operadores de String</h3>
+<p>Los operadores de string sirven para poder operar variables tipo <code>str</code>.</p>
+<div id="qpyodide-insertion-location-41"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-42"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="más-operadores-de-string" class="level3">
+<h3 class="anchored" data-anchor-id="más-operadores-de-string">Más operadores de String</h3>
+<p>Existe algunas métodos aplicable a los <code>strings</code>:</p>
+<div id="qpyodide-insertion-location-43"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-44"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-45"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-46"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Indexaciones</strong></p>
+<p>Cada uno de los caracteres de un string (incluidos los espacios) tiene asignado un índice. Este indice nos permite seleccionar su carácter asociado haciendo referencia a él entre corchetes (<code>[]</code>) en el nombre de la variable que almacena la cadena.</p>
+<p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/index.png" alt="" width="400" align="center"> <br></p>
+<div id="qpyodide-insertion-location-47"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-48"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Otra operación que podemos realizar a una cadena es seleccionar solamente una parte de ella. Para ello se usa la notación <code>[inicio:fin:paso]</code> también en el nombre de la variable que almacena la cadena, donde:</p>
+<ul>
+<li><strong>Inicio</strong>: es el índice del primer carácter de la porción de la cadena que queremos seleccionar.</li>
+<li><strong>Fin</strong>: es el índice del último carácter no incluido de la porción de la cadena que queremos seleccionar.</li>
+<li><strong>Paso</strong>: indica cada cuantos caracteres seleccionamos entre las posiciones de inicio y fin.</li>
+</ul>
+<div id="qpyodide-insertion-location-49"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-50"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-51"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qpyodide-insertion-location-52"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Observación</strong>: Para imprimir el largo de un texto, puede usar el comando <code>len</code>.</p>
+<div id="qpyodide-insertion-location-53"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p><strong>Ejercicio 01</strong></p>
+<p>Escriba un programa que pida al usuario que escriba su nombre, y lo salude llamándolo por su nombre.</p>
+<pre class="terminal"><code>Ingrese su nombre: Perico
+Hola, Perico</code></pre>
+<div id="qpyodide-insertion-location-54"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 02</strong></p>
+<p>Escriba un programa que reciba como entrada el radio de un círculo y entregue como salida su perímetro y su área:</p>
+<pre class="terminal"><code>Ingrese el radio: 5
+Perimetro: 31.4
+Área: 78.5</code></pre>
+<div id="qpyodide-insertion-location-55"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 03</strong></p>
+<p>Escriba un programa que calcule el promedio de 4 notas ingresadas por el usuario:</p>
+<pre class="terminal"><code>Primera nota: 55
+Segunda nota: 71
+Tercera nota: 46
+Cuarta nota: 87
+El promedio es: 64.75</code></pre>
+<div id="qpyodide-insertion-location-56"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 04</strong></p>
+<p>Escriba un programa que convierta de centímetros a pulgadas. Una pulgada es igual a 2.54 centímetros.</p>
+<pre class="terminal"><code>Ingrese longitud: 45
+45 cm = 17.7165 in</code></pre>
+<div id="qpyodide-insertion-location-57"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 05</strong></p>
+<p>Escriba un programa que reciba como entrada las longitudes de los dos catetos <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> de un triángulo rectángulo, y que entregue como salida el largo de la hipotenusa <span class="math inline">\(c\)</span> del triangulo, dado por el teorema de Pitágoras: <span class="math inline">\(c^2=a^2+b^2\)</span>.</p>
+<pre class="terminal"><code>Ingrese cateto a: 7
+Ingrese cateto b: 5
+La hipotenusa es 8.6023252670426267</code></pre>
+<div id="qpyodide-insertion-location-58"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 06</strong></p>
+<p>Escriba un programa que pregunte al usuario la hora actual <span class="math inline">\(t\)</span> del reloj y un número entero de horas <span class="math inline">\(h\)</span>, que indique qué hora marcará el reloj dentro de <span class="math inline">\(h\)</span> horas:</p>
+<pre class="terminal"><code>Hora actual: 3
+Cantidad de horas: 5
+En 5 horas, el reloj marcara las 8</code></pre>
+<pre class="terminal"><code>Hora actual: 21
+Cantidad de horas: 8
+En 5 horas, el reloj marcara las 5</code></pre>
+<div id="qpyodide-insertion-location-59"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 07</strong></p>
+<p>Un alumno desea saber que nota necesita en el tercer certamen para aprobar un ramo.</p>
+<p>El promedio del ramo se calcula con la siguiente formula.</p>
+<p><span class="math display">\[N_C=(C_1+C_2+C_3)/3 \\ N_F=N_C⋅0.7+N_L⋅0.3\]</span></p>
+<p>Donde <span class="math inline">\(N_C\)</span> es el promedio de certámenes, <span class="math inline">\(N_L\)</span> el promedio de laboratorio y <span class="math inline">\(N_F\)</span> la nota final.</p>
+<p>Escriba un programa que pregunte al usuario las notas de los dos primeros certamen y la nota de laboratorio, y muestre la nota que necesita el alumno para aprobar el ramo con nota final 60.</p>
+<pre class="terminal"><code>Ingrese nota certamen 1: 45
+Ingrese nota certamen 2: 55
+Ingrese nota laboratorio: 65
+Necesita nota 74 en el certamen 3</code></pre>
+<div id="qpyodide-insertion-location-60"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Ejercicio 08</strong></p>
+<p>Realice un programa que calcule el área de un triángulo a partir de las longitudes de sus lados.</p>
+<p>Para calcularlo puede utilizar la fórmula de Herón:</p>
+<p><span class="math display">\[
+    A = \sqrt{s\,(s-a)(s-b)(s-c)},
+\]</span> donde <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> son las longitudes de cada lado y <span class="math inline">\(s=\dfrac{a+b+c}{2}\)</span> es el semiperímetro.</p>
+<pre class="terminal"><code>Ingrese longitud de lado 1: 3
+Ingrese longitud de lado 2: 4
+Ingrese longitud de lado 3: 5
+El área del triángulo es 6.0</code></pre>
+<div id="qpyodide-insertion-location-61"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../contenidos/intro.html" class="pagination-link" aria-label="Contenidos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Contenidos</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../contenidos/04_control_flujo.html" class="pagination-link" aria-label="🔄 Control de Flujo">
+        <span class="nav-page-text"><span class="chapter-title">🔄 Control de Flujo</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script type="module">
+/**
+ * Factory function to create different types of cells based on options.
+ * @param {Object} cellData - JSON object containing code, id, and options.
+ * @returns {BaseCell} Instance of the appropriate cell class.
+ */
+globalThis.qpyodideCreateCell = function(cellData) {
+    switch (cellData.options.context) {
+        case 'interactive':
+            return new InteractiveCell(cellData);
+        case 'output':
+            return new OutputCell(cellData);
+        case 'setup':
+            return new SetupCell(cellData);
+        default:
+            return new InteractiveCell(cellData);
+            // throw new Error('Invalid cell type specified in options.');
+    }
+}  
+
+/**
+ * CellContainer class for managing a collection of cells.
+ * @class
+ */
+class CellContainer {
+    /**
+     * Constructor for CellContainer.
+     * Initializes an empty array to store cells.
+     * @constructor
+     */
+    constructor() {
+        this.cells = [];
+    }
+
+    /**
+     * Add a cell to the container.
+     * @param {BaseCell} cell - Instance of a cell (BaseCell or its subclasses).
+     */
+    addCell(cell) {
+        this.cells.push(cell);
+    }
+
+    /**
+     * Execute all cells in the container.
+     */
+    async executeAllCells() {
+        for (const cell of this.cells) {
+            await cell.executeCode();
+        }
+    }
+
+    /**
+     * Execute all cells in the container.
+     */
+    async autoRunExecuteAllCells() {
+        for (const cell of this.cells) {
+            await cell.autoRunExecuteCode();
+        }
+    }
+}
+  
+
+/**
+ * BaseCell class for handling code execution using Pyodide.
+ * @class
+ */
+class BaseCell {
+    /**
+     * Constructor for BaseCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        this.code = cellData.code;
+        this.id = cellData.id;
+        this.options = cellData.options;
+        this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+        this.executionLock = false;
+    }
+
+    cellOptions() {
+        // Subclass this? 
+        console.log(this.options);
+        return this.options;
+    }
+
+    /**
+     * Execute the Python code using Pyodide.
+     * @returns {*} Result of the code execution.
+     */
+    async executeCode() {
+        // Execute code using Pyodide
+        const result = getPyodide().runPython(this.code);
+        return result;
+    }
+};
+
+/**
+ * InteractiveCell class for creating editable code editor with Monaco Editor.
+ * @class
+ * @extends BaseCell
+ */
+class InteractiveCell extends BaseCell {
+
+    /**
+     * Constructor for InteractiveCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        super(cellData);
+        this.editor = null;
+        this.setupElement();
+        this.setupMonacoEditor();
+    }
+
+    /**
+     * Set up the interactive cell elements
+     */
+    setupElement() {
+
+        // Create main div element
+        var mainDiv = document.createElement('div');
+        mainDiv.id = `qpyodide-interactive-area-${this.id}`;
+        mainDiv.className = `qpyodide-interactive-area`;
+        if (this.options.classes) {
+            mainDiv.className += " " + this.options.classes
+        }
+
+        // Add a unique cell identifier that users can customize
+        if (this.options.label) {
+            mainDiv.setAttribute('data-id', this.options.label);
+        }
+
+        // Create toolbar div
+        var toolbarDiv = document.createElement('div');
+        toolbarDiv.className = 'qpyodide-editor-toolbar';
+        toolbarDiv.id = `qpyodide-editor-toolbar-${this.id}`;
+
+        // Create a div to hold the left buttons
+        var leftButtonsDiv = document.createElement('div');
+        leftButtonsDiv.className = 'qpyodide-editor-toolbar-left-buttons';
+
+        // Create a div to hold the right buttons
+        var rightButtonsDiv = document.createElement('div');
+        rightButtonsDiv.className = 'qpyodide-editor-toolbar-right-buttons';
+
+        // Create Run Code button
+        var runCodeButton = document.createElement('button');
+        runCodeButton.className = 'btn btn-default qpyodide-button qpyodide-button-run';
+        runCodeButton.disabled = true;
+        runCodeButton.type = 'button';
+        runCodeButton.id = `qpyodide-button-run-${this.id}`;
+        runCodeButton.textContent = '🟡 Loading Pyodide...';
+        runCodeButton.title = `Run code (Shift + Enter)`;
+
+        // Append buttons to the leftButtonsDiv
+        leftButtonsDiv.appendChild(runCodeButton);
+
+        // Create Reset button
+        var resetButton = document.createElement('button');
+        resetButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-reset';
+        resetButton.type = 'button';
+        resetButton.id = `qpyodide-button-reset-${this.id}`;
+        resetButton.title = 'Start over';
+        resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+        // Create Copy button
+        var copyButton = document.createElement('button');
+        copyButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-copy';
+        copyButton.type = 'button';
+        copyButton.id = `qpyodide-button-copy-${this.id}`;
+        copyButton.title = 'Copy code';
+        copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+        // Append buttons to the rightButtonsDiv
+        rightButtonsDiv.appendChild(resetButton);
+        rightButtonsDiv.appendChild(copyButton);
+
+        // Create console area div
+        var consoleAreaDiv = document.createElement('div');
+        consoleAreaDiv.id = `qpyodide-console-area-${this.id}`;
+        consoleAreaDiv.className = 'qpyodide-console-area';
+
+        // Create editor div
+        var editorDiv = document.createElement('div');
+        editorDiv.id = `qpyodide-editor-${this.id}`;
+        editorDiv.className = 'qpyodide-editor';
+
+        // Create output code area div
+        var outputCodeAreaDiv = document.createElement('div');
+        outputCodeAreaDiv.id = `qpyodide-output-code-area-${this.id}`;
+        outputCodeAreaDiv.className = 'qpyodide-output-code-area';
+        outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+        // Create pre element inside output code area
+        var preElement = document.createElement('pre');
+        preElement.style.visibility = 'hidden';
+        outputCodeAreaDiv.appendChild(preElement);
+
+        // Create output graph area div
+        var outputGraphAreaDiv = document.createElement('div');
+        outputGraphAreaDiv.id = `qpyodide-output-graph-area-${this.id}`;
+        outputGraphAreaDiv.className = 'qpyodide-output-graph-area';
+
+        // Append buttons to the toolbar
+        toolbarDiv.appendChild(leftButtonsDiv);
+        toolbarDiv.appendChild(rightButtonsDiv);
+
+        // Append all elements to the main div
+        mainDiv.appendChild(toolbarDiv);
+        consoleAreaDiv.appendChild(editorDiv);
+        consoleAreaDiv.appendChild(outputCodeAreaDiv);
+        mainDiv.appendChild(consoleAreaDiv);
+        mainDiv.appendChild(outputGraphAreaDiv);
+
+        // Insert the dynamically generated object at the document location.
+        this.insertionLocation.appendChild(mainDiv);
+    }
+
+    /**
+     * Set up Monaco Editor for code editing.
+     */
+    setupMonacoEditor() {
+
+        // Retrieve the previously created document elements
+        this.runButton = document.getElementById(`qpyodide-button-run-${this.id}`);
+        this.resetButton = document.getElementById(`qpyodide-button-reset-${this.id}`);
+        this.copyButton = document.getElementById(`qpyodide-button-copy-${this.id}`);
+        this.editorDiv = document.getElementById(`qpyodide-editor-${this.id}`);
+        this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
+        this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
+        
+        // Store reference to the object
+        var thiz = this;
+
+        // Load the Monaco Editor and create an instance
+        require(['vs/editor/editor.main'], function () {
+            thiz.editor = monaco.editor.create(
+                thiz.editorDiv, {
+                    value: thiz.code,
+                    language: 'python',
+                    theme: 'vs-light',
+                    automaticLayout: true,           // Works wonderfully with RevealJS
+                    scrollBeyondLastLine: false,
+                    minimap: {
+                        enabled: false
+                    },
+                    fontSize: '17.5pt',              // Bootstrap is 1 rem
+                    renderLineHighlight: "none",     // Disable current line highlighting
+                    hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+                    readOnly: thiz.options['read-only'] ?? false
+                }
+            );
+        
+            // Store the official counter ID to be used in keyboard shortcuts
+            thiz.editor.__qpyodideCounter = thiz.id;
+        
+            // Store the official div container ID
+            thiz.editor.__qpyodideEditorId = `qpyodide-editor-${thiz.id}`;
+        
+            // Store the initial code value and options
+            thiz.editor.__qpyodideinitialCode = thiz.code;
+            thiz.editor.__qpyodideOptions = thiz.options;
+        
+            // Set at the model level the preferred end of line (EOL) character to LF.
+            // This prevent `\r\n` from being given to the Pyodide engine if the user is on Windows.
+            // See details in: https://github.com/coatless/quarto-Pyodide/issues/94
+            // Associated error text: 
+            // Error: <text>:1:7 unexpected input
+        
+            // Retrieve the underlying model
+            const model = thiz.editor.getModel();
+            // Set EOL for the model
+            model.setEOL(monaco.editor.EndOfLineSequence.LF);
+        
+            // Dynamically modify the height of the editor window if new lines are added.
+            let ignoreEvent = false;
+            const updateHeight = () => {
+            const contentHeight = thiz.editor.getContentHeight();
+            // We're avoiding a width change
+            //editorDiv.style.width = `${width}px`;
+            thiz.editorDiv.style.height = `${contentHeight}px`;
+                try {
+                    ignoreEvent = true;
+            
+                    // The key to resizing is this call
+                    thiz.editor.layout();
+                } finally {
+                    ignoreEvent = false;
+                }
+            };
+        
+            // Helper function to check if selected text is empty
+            function isEmptyCodeText(selectedCodeText) {
+                return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+            }
+        
+            // Registry of keyboard shortcuts that should be re-added to each editor window
+            // when focus changes.
+            const addPyodideKeyboardShortCutCommands = () => {
+            // Add a keydown event listener for Shift+Enter to run all code in cell
+            thiz.editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+                // Retrieve all text inside the editor
+                thiz.runCode(thiz.editor.getValue());
+            });
+        
+            // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+            thiz.editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+                    // Get the selected text from the editor
+                    const selectedText = thiz.editor.getModel().getValueInRange(thiz.editor.getSelection());
+                    // Check if no code is selected
+                    if (isEmptyCodeText(selectedText)) {
+                        // Obtain the current cursor position
+                        let currentPosition = thiz.editor.getPosition();
+                        // Retrieve the current line content
+                        let currentLine = thiz.editor.getModel().getLineContent(currentPosition.lineNumber);
+                
+                        // Propose a new position to move the cursor to
+                        let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+                
+                        // Check if the new position is beyond the last line of the editor
+                        if (newPosition.lineNumber > thiz.editor.getModel().getLineCount()) {
+                            // Add a new line at the end of the editor
+                            thiz.editor.executeEdits("addNewLine", [{
+                            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+                            text: "\n", 
+                            forceMoveMarkers: true,
+                            }]);
+                        }
+                        
+                        // Run the entire line of code.
+                        thiz.runCode(currentLine);
+                
+                        // Move cursor to new position
+                        thiz.editor.setPosition(newPosition);
+                    } else {
+                        // Code to run when Ctrl+Enter is pressed with selected code
+                        thiz.runCode(selectedText);
+                    }
+                });
+            }
+        
+            // Register an on focus event handler for when a code cell is selected to update
+            // what keyboard shortcut commands should work.
+            // This is a workaround to fix a regression that happened with multiple
+            // editor windows since Monaco 0.32.0 
+            // https://github.com/microsoft/monaco-editor/issues/2947
+            thiz.editor.onDidFocusEditorText(addPyodideKeyboardShortCutCommands);
+        
+            // Register an on change event for when new code is added to the editor window
+            thiz.editor.onDidContentSizeChange(updateHeight);
+        
+            // Manually re-update height to account for the content we inserted into the call
+            updateHeight();
+                
+        });
+
+        
+        // Add a click event listener to the run button
+        thiz.runButton.onclick = function () {
+            thiz.runCode(
+                thiz.editor.getValue()
+            );
+        };
+        
+        // Add a click event listener to the reset button
+        thiz.copyButton.onclick = function () {
+            // Retrieve current code data
+            const data = thiz.editor.getValue();
+            
+            // Write code data onto the clipboard.
+            navigator.clipboard.writeText(data || "");
+        };
+        
+        // Add a click event listener to the copy button
+        thiz.resetButton.onclick = function () {
+            thiz.editor.setValue(thiz.editor.__qpyodideinitialCode);
+        };
+    }
+
+    disableInteractiveCells() {
+        // Enable locking of execution for the cell
+        this.executionLock = true;
+
+        // Disallowing execution of other code cells
+        document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+            btn.disabled = true;
+        });
+    }
+
+    enableInteractiveCells() {
+        // Remove locking of execution for the cell
+        this.executionLock = false;
+
+        // All execution of other code cells
+        document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+            btn.disabled = false;
+        });
+    }
+
+    /**
+     * Execute the Python code inside the editor.
+     */
+    async runCode(code) {
+        
+        // Check if we have an execution lock
+        if (this.executeLock) return; 
+        
+        this.disableInteractiveCells();
+
+        // Force wait procedure
+        await mainPyodide;
+
+        // Clear the output stock
+        qpyodideResetOutputArray();
+
+        // Generate a new canvas element, avoid attaching until the end
+        let graphFigure = document.createElement("figure");
+        document.pyodideMplTarget = graphFigure;
+
+        console.log("Running code!");
+        // Obtain results from the base class
+        try {
+            // Always check to see if the user adds new packages
+            await mainPyodide.loadPackagesFromImports(code);
+
+            // Process result
+            const output = await mainPyodide.runPythonAsync(code);
+
+            // Add output
+            qpyodideAddToOutputArray(output, "stdout");
+        } catch (err) {
+            // Add error message
+            qpyodideAddToOutputArray(err, "stderr");
+            // TODO: There has to be a way to remove the Pyodide portion of the errors... 
+        }
+
+        const result = qpyodideRetrieveOutput();
+
+        // Nullify the output area of content
+        this.outputCodeDiv.innerHTML = "";
+        this.outputGraphDiv.innerHTML = "";        
+
+        // Design an output object for messages
+        const pre = document.createElement("pre");
+        if (/\S/.test(result)) {
+            // Display results as HTML elements to retain output styling
+            const div = document.createElement("div");
+            div.innerHTML = result;
+            pre.appendChild(div);
+        } else {
+            // If nothing is present, hide the element.
+            pre.style.visibility = "hidden";
+        }
+
+        // Add output under interactive div
+        this.outputCodeDiv.appendChild(pre);
+
+        // Place the graphics onto the page
+        if (graphFigure) {
+
+            if (this.options['fig-cap']) {
+                // Create figcaption element
+                const figcaptionElement = document.createElement('figcaption');
+                figcaptionElement.innerText = this.options['fig-cap'];
+                // Append figcaption to figure
+                graphFigure.appendChild(figcaptionElement);    
+            }
+
+            this.outputGraphDiv.appendChild(graphFigure);
+        }
+
+        // Re-enable execution
+        this.enableInteractiveCells();
+    }
+};
+
+/**
+ * OutputCell class for customizing and displaying output.
+ * @class
+ * @extends BaseCell
+ */
+class OutputCell extends BaseCell {
+    /**
+     * Constructor for OutputCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+      super(cellData);
+    }
+  
+    /**
+     * Display customized output on the page.
+     * @param {*} output - Result to be displayed.
+     */
+    displayOutput(output) {
+        const results = this.executeCode();
+        return results;
+    }
+  }
+
+/**
+ * SetupCell class for suppressed output.
+ * @class
+ * @extends BaseCell
+ */
+class SetupCell extends BaseCell {
+    /**
+     * Constructor for SetupCell.
+     * @constructor
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     */
+    constructor(cellData) {
+        super(cellData);
+    }
+
+    /**
+     * Execute the Python code without displaying the results.
+     */
+    runSetupCode() {
+        // Execute code without displaying output
+        this.executeCode();
+    }
+};
+</script>
+<script type="module">
+// Handle cell initialization initialization
+qpyodideCellDetails.map(
+    (entry) => {
+      // Handle the creation of the element
+      qpyodideCreateCell(entry);
+    }
+  );
+</script>
+
+
+
+
+</body></html>
