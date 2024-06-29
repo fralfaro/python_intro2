@@ -1,0 +1,829 @@
+# 📊 Estructura de datos
+
+<center><img src="../images/estructura.png" width = "550"></center><br>
+
+
+Son una utilidad de Python dispuesta para almacenar y guardar cualquier tipo de Dato, tanto así
+que pueden contenerse entre sí. Cada una posee un tipo de paréntesis, o comillas en el caso de
+los strings, siendo fácil diferenciarlos unos de otro.
+
+* **Strings** `‘ ’` : Representan texto , siendo una cadena ordenada de caracteres y un tipo de dato,
+como los números y booleanos, pero con una complejidad mayor al ser también una estructura.
+Pueden estar entre comillas ‘simples’ o “dobles”.
+
+* **Listas** `[ ]` : Son una cadena ordenada de datos, los cuales, al igual que en los strings y tuplas,
+tienen la relación dato-posición.
+
+* **Tuplas** `( )`: Son una cadena ordenada de datos, pero a diferencia de las listas, y al igual que los
+strings, es inmutable, es decir, no se puede modificar.
+
+* **Diccionarios** `{ : }` : Son un conjunto de pares de datos que se caracteriza por utilizar una
+relación llave-dato. Debido a esto no necesitan orden, ya que al tener una llave se puede sacar
+su dato relacionado.
+
+
+Las estructuras de datos de **string** ya fueron estudiados en secciones pasada. En esta sección nos centraremos en las estructuras de **Listas**, **Tuplas** y **Diccionarios**. 
+
+## Listas
+
+Una lista es una colección ordenada de valores. Una lista puede contener cualquier cosa.
+
+En Python, el tipo de datos que representa a las listas se llama `list`.
+
+### Creando listas en python
+
+Existen varias formas de crear listas:
+
+```{pyodide-python}
+# lista vacia (Usando corchetes)
+lista = []
+print(lista)
+```
+
+```{pyodide-python}
+# lista vacia (Usando el constructor)
+lista = list()
+print(lista)
+```
+
+```{pyodide-python}
+# lista de enteros
+lista = [1, 2, 3]
+print(lista)
+```
+
+```{pyodide-python}
+# lista mixta
+lista = [1, "hola", 3.4]
+print(lista)
+```
+
+### Operaciones sobre listas
+
+**Operador len**
+
+`len(lista)` entrega el largo de la lista; es decir, cuántos elementos tiene:
+
+```{pyodide-python}
+colores = ['azul', 'rojo', 'verde', 'amarillo']
+print(len(colores))
+```
+
+**Acceder al índice**
+
+`l[i]` entrega el i-ésimo valor de la lista. El valor $i$ se llama índice del valor. Al igual que para los strings, los índices parten de cero:
+
+```{pyodide-python}
+colores = ['azul', 'rojo', 'verde', 'amarillo']
+print(f'primer elemento de la lista: {colores[0]}')
+print(f'tercer elemento de la lista: {colores[2]}')
+```
+
+```{pyodide-python}
+# elemento fuera de la lista
+print( colores[4])
+```
+
+**Índice negativo**
+
+Si el índice es negativo, los elementos se cuentan desde el final hacia atrás:
+
+```{pyodide-python}
+colores = ['azul', 'rojo', 'verde', 'amarillo']
+print(colores[-1])
+```
+
+**Agregar un elemento**
+
+`l.append(x)` agrega el elemento x al final de la lista:
+
+
+
+```{pyodide-python}
+primos = [2, 3, 5, 7, 11]
+primos.append(13)
+print(primos)
+```
+
+**Concatenar dos listas**
+
+`l1` + `l2` concatena las listas `l1` y `l2`:
+
+
+
+```{pyodide-python}
+l1 = [1,2,3]
+l2 = [4,5,6]
+
+print(l1+l2)
+```
+
+**Repetir lista**
+
+`l * n` repite $n$ veces la lista `l`:
+
+
+
+```{pyodide-python}
+lista = [1,2,3]
+print(2*lista)
+```
+
+**Elemento en una lista**
+
+Para saber si un elemento x está en la lista `l`, se usa `x in l`. La versión negativa de `in` es `not in`:
+
+
+
+```{pyodide-python}
+lista = [1,2,3,4,5,6,7,8,9]
+
+print(12 in lista)
+```
+
+```{pyodide-python}
+print(12 not in lista)
+```
+
+**Operador rebanado**
+
+`l[i:j]` es el operador de rebanado, que entrega una nueva lista que tiene desde el i-ésimo hasta justo antes del j-ésimo elemento de la lista l:
+
+```{pyodide-python}
+l = [1.5, 3.3, 8.4, 3.1, 2.9]
+print(l[2:4])
+```
+
+**Operador índice**
+
+`l.index(x)` entrega cuál es el índice del valor x:
+
+
+
+```{pyodide-python}
+colores = ['azul', 'rojo', 'verde', 'amarillo']
+print(colores.index('verde'))
+```
+
+**Operador remover**
+
+`l.remove(x)` elimina el elemento x de la lista:
+
+
+
+```{pyodide-python}
+l = [7, 0, 3, 9, 8, 2, 4]
+l.remove(2)
+print(l)
+```
+
+**Operador borrar**
+
+`del l[i]` elimina el i-ésimo elemento de la lista:
+
+
+
+```{pyodide-python}
+l = [7, 0, 3, 9, 8, 2, 4]
+del l[2]
+print(l)
+```
+
+**Operador reversa**
+
+`l.reverse()` invierte la lista:
+
+
+
+```{pyodide-python}
+l = [7, 0, 3, 9, 8, 2, 4]
+l.reverse()
+print(l)
+```
+
+**Operador ordenar**
+
+`l.sort()` ordena la lista:
+
+
+
+```{pyodide-python}
+l = [7, 0, 3, 9, 8, 2, 4]
+l.sort()
+print(l)
+```
+
+### Iterar sobre una lista
+
+
+En Python, una lista es un tipo de objeto iterable, lo que significa que puedes recorrer sus elementos utilizando un ciclo `for`. 
+
+A continuación, te mostraremos un ejemplo de cómo hacerlo paso a paso:
+
+```{pyodide-python}
+# Definimos una lista llamada 'valores' con algunos números
+valores = [1, 2, 3, 4, 5]
+
+# Usamos un ciclo 'for' para recorrer cada elemento de la lista
+for i in valores:
+    # En cada iteración, 'i' toma el valor de un elemento de la lista
+    # y calculamos su cuadrado utilizando el operador '**'
+    cuadrado = i ** 2
+
+    # Luego, imprimimos el valor y su cuadrado en la consola
+    print(f"El cuadrado de {i} es {cuadrado}")
+```
+
+1. Creamos una lista llamada `valores` que contiene los números `[1, 2, 3, 4, 5]`. Esta será la lista que recorreremos.
+
+2. Utilizamos un ciclo `for` para iterar a través de cada elemento de la lista. En cada iteración, la variable `i` toma el valor del siguiente elemento de la lista.
+
+3. Dentro del ciclo `for`, calculamos el cuadrado de `i` usando el operador `**` y almacenamos el resultado en la variable `cuadrado`.
+
+4. Finalmente, imprimimos en la consola un mensaje que muestra el número original (`i`) y su cuadrado (`cuadrado`) utilizando una f-string.
+
+## Tuplas
+
+Una tupla es una secuencia de valores agrupados. Una tupla sirve para agrupar, como si fueran un único valor, varios valores que, por su naturaleza, deben ir juntos.
+
+El tipo de datos que representa a las tuplas se llama `tuple`. El tipo tuple es **inmutable: una tupla no puede ser modificada una vez que ha sido creada**.
+
+```{pyodide-python}
+# tupla vacia (Usando corchetes)
+tupla = ()
+print(tupla)
+```
+
+```{pyodide-python}
+# tupla vacia (Usando el constructor)
+tupla = tuple()
+print(tupla)
+```
+
+```{pyodide-python}
+# tupla con elementos
+numeros = ("uno", "dos", "tres", "cuatro")
+print(numeros)
+```
+
+### Desempaquetado de tuplas
+
+Los valores individuales de una tupla pueden ser recuperados asignando la tupla a las variables respectivas. Esto se llama desempaquetar la tupla (en inglés: unpack):
+
+```{pyodide-python}
+persona = ('Javier', 'Perez')
+nombre, apellido = persona
+print(nombre, apellido)
+```
+
+Si se intenta desempaquetar una cantidad incorrecta de valores, ocurre un error de valor:
+
+
+
+```{pyodide-python}
+a, b, c = persona
+```
+
+### Comparación de tuplas
+Dos tuplas son iguales cuando tienen el mismo tamaño y cada uno de sus elementos correspondientes tienen el mismo valor:
+
+```{pyodide-python}
+(1, 2) == (2 / 2, 1 + 1)
+```
+
+```{pyodide-python}
+(6, 1) == (6, 2)
+```
+
+Para determinar si una tupla es menor que otra, se utiliza lo que se denomina **orden lexicográfico**. Si los elementos en la primera posición de ambas tuplas son distintos, ellos determinan el ordenamiento de las tuplas:
+
+```{pyodide-python}
+(1, 4, 7) < (2, 0, 0, 1)
+```
+
+```{pyodide-python}
+(1, 9, 10) < (0, 5)
+```
+
+### Acceder a  valores de una tupla
+
+Al igual que las listas, se pueden acceder a distintos elemntos de las tuplas de la siguiente forma:
+
+```{pyodide-python}
+numeros = ("uno", "dos", "tres", "cuatro")
+
+print(numeros[1]) #Output: dos
+print(numeros[3]) #Output: cuatro
+print(numeros[-1]) # Output: cuatro
+```
+
+### Iteración sobre tuplas
+Las tuplas en Python también son objetos iterables, lo que significa que puedes recorrer sus elementos usando un ciclo `for`.
+
+A continuación, te mostraremos un ejemplo de cómo hacerlo paso a paso:
+
+
+```{pyodide-python}
+# Definimos una tupla con algunos números
+tupla_valores = (1, 2, 3, 4, 5)
+
+# Usamos un ciclo 'for' para recorrer cada elemento de la tupla
+for valor in tupla_valores:
+    # En cada iteración, 'valor' toma el valor de un elemento de la tupla
+    # y calculamos su cuadrado utilizando el operador '**'
+    cuadrado = valor ** 2
+
+    # Luego, imprimimos el valor y su cuadrado en la consola
+    print(f"El cuadrado de {valor} es {cuadrado}")
+```
+
+**Convertir Entre Listas y Tuplas**
+
+En Python, puedes convertir una tupla en una lista utilizando la función `list()` y una lista en una tupla utilizando la función `tuple()`. Esto es útil cuando necesitas cambiar el tipo de contenedor de datos. A continuación, te proporciono ejemplos para ilustrar ambos casos:
+
+**Convertir una Tupla en una Lista:**
+
+```{pyodide-python}
+# Definimos una tupla
+mi_tupla = (1, 2, 3, 4, 5)
+
+# Usamos la función 'list()' para convertir la tupla en una lista
+mi_lista = list(mi_tupla)
+
+# Imprimimos la lista resultante
+print("Tupla original:", mi_tupla)
+print("Lista resultante:", mi_lista)
+```
+
+**Convertir una Lista en una Tupla:**
+
+```{pyodide-python}
+# Definimos una lista
+mi_lista = [1, 2, 3, 4, 5]
+
+# Usamos la función 'tuple()' para convertir la lista en una tupla
+mi_tupla = tuple(mi_lista)
+
+# Imprimimos la tupla resultante
+print("Lista original:", mi_lista)
+print("Tupla resultante:", mi_tupla)
+```
+
+## Conjuntos
+
+Un conjunto es una colección desordenada de valores no repetidos.
+
+Los conjuntos de Python son análogos a los conjuntos matemáticos. El tipo de datos que representa a los conjuntos se llama `set`.
+
+### Cómo crear conjuntos
+
+Las dos maneras principales de crear un conjunto son:
+
+```{pyodide-python}
+# conjunto vacio (Usando corchetes)
+conjunto = {}
+print(conjunto)
+```
+
+```{pyodide-python}
+# conjunto vacio (Usando el constructor)
+conjunto = set()
+print(conjunto)
+```
+
+```{pyodide-python}
+# usar un conjunto literal, entre llave 
+conjunto = {1, 2, 3}
+print(conjunto)
+```
+
+```{pyodide-python}
+# set aplicada sobre un iterable
+conjunto = set([1, 2, 3])
+print(conjunto)
+```
+
+Los elementos de un conjunto deben ser inmutables. Por ejemplo, no es posible crear un conjunto de listas, pero sí un conjunto de tuplas:
+
+```{pyodide-python}
+conjunto = {[2, 4], [6, 1]}
+```
+
+Como un conjunto no es ordenado, no tiene sentido intentar obtener un elemento usando un índice:
+
+
+
+```{pyodide-python}
+conjunto = {'a', 'b', 'c'}
+conjunto[0]
+```
+
+Sin embargo, sí es posible iterar sobre un conjunto usando un ciclo for:
+
+
+
+```{pyodide-python}
+conjunto = {'a', 'b', 'c'}
+for i in conjunto:
+    print(i)
+```
+
+### Operaciones sobre conjuntos
+
+
+**Largo del conjunto**
+`len(s)` entrega el número de elementos del conjunto s:
+
+```{pyodide-python}
+len({'azul', 'verde', 'rojo'})
+```
+
+**Elementos en el conjunto**
+
+`x in s` permite saber si el elemento x está en el conjunto s:
+
+
+
+```{pyodide-python}
+3 in {2, 3, 4}
+```
+
+`x not in s` permite saber si x no está en s:
+
+
+
+```{pyodide-python}
+3 not in {2, 3, 4}
+```
+
+**Agregar elementos al conjunto**
+
+`s.add(x)` agrega el elemento x al conjunto s:
+
+
+
+```{pyodide-python}
+s = {6, 1, 5, 4, 3}
+s.add(-37)
+s
+```
+
+**Remover elementos al conjunto**
+
+`s.remove(x)` elimina el elemento x del conjunto s:
+
+
+
+```{pyodide-python}
+s = {6, 1, 5, 4, 3}
+s.remove(1)
+s
+```
+
+Si el elemento x no está en el conjunto, ocurre un error de llave:
+
+
+
+```{pyodide-python}
+s.remove(10)
+```
+
+**Operaciones sobre conjuntos**
+
+<img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/set.png"  align="center" width="300"  />
+
+
+`&` y `|` son los operadores de intersección y unión repectivamente:
+
+
+
+```{pyodide-python}
+# crear dos conjuntos
+a = {1, 2, 3, 4}
+b = {2, 4, 6, 8}
+```
+
+```{pyodide-python}
+# interseccion
+a & b
+```
+
+```{pyodide-python}
+# union
+a | b
+```
+
+`s - t` entrega la diferencia entre s y t; es decir, los elementos de s que no están en t:
+
+
+
+```{pyodide-python}
+# diferencia
+a - b
+```
+
+`s ^ t` entrega la diferencia simétrica entre s y t; es decir, los elementos que están en s o en t, pero no en ambos:
+
+```{pyodide-python}
+# diferencia simetrica
+a ^ b
+```
+
+El operador `<` aplicado sobre conjuntos significa «es subconjunto de»:
+
+
+
+```{pyodide-python}
+{1, 2} < {1, 2, 3}
+```
+
+```{pyodide-python}
+{1, 4} < {1, 2, 3}
+```
+
+`s <= t` también indica si s es subconjunto de t. La distinción ocurre cuando los conjuntos son iguales:
+
+
+
+```{pyodide-python}
+{1, 2, 3} < {1, 2, 3}
+```
+
+```{pyodide-python}
+{1, 2, 3} <= {1, 2, 3}
+```
+
+## Diccionarios
+
+Un diccionario es un tipo de datos que sirve para asociar pares de objetos.
+
+Un diccionario puede ser visto como una colección de llaves, cada una de las cuales tiene asociada un valor. Las llaves no están ordenadas y no hay llaves repetidas. La única manera de acceder a un valor es a través de su llave.
+
+### Cómo crear diccionarios
+Los diccionarios literales se crean usando llaves ({ y }). La llave y el valor van separados por dos puntos:
+
+
+
+```{pyodide-python}
+# diccionario vacio (Usando corchetes)
+dct = {}
+print(dct)
+```
+
+```{pyodide-python}
+# lista vacia (Usando el constructor)
+dct = dict()
+print(dct)
+```
+
+```{pyodide-python}
+# diccionario de enteros
+dct = {1: 'apple', 2: 'ball'}
+```
+
+```{pyodide-python}
+# diccionario dde llaves mixtas
+dct = {'name': 'John', 1: [2, 4, 3]}
+```
+
+### Cómo usar un diccionario
+
+El valor asociado a la llave $k$ en el diccionario $dct$ se puede obtener mediante $dct[k]$:
+
+
+
+```{pyodide-python}
+dct = {'nombre':'Jack', 'edad': 26, 'salario': 4534.2}
+print(dct['edad']) # Output: 26
+```
+
+Si se asigna un valor a una llave que ya estaba en el diccionario, el valor anterior se sobreescribe. Recuerde que un diccionario no puede tener llaves repetidas:
+
+```{pyodide-python}
+dct = {'nombre':'Jack', 'edad': 26}
+```
+
+```{pyodide-python}
+# cambiar edad
+dct['edad'] = 36 
+print(dct) # Output: {'name': 'Jack', 'age': 36}
+```
+
+También se pueden adherir llaves al diccionario
+
+```{pyodide-python}
+# adherir llave salario
+dct['salario'] = 4342.4
+print(dct) # Output: {'name': 'Jack', 'age': 36, 'salary': 4342.4}
+```
+
+Por otro lado, si se quiere borrar una llave o el mismo diccionario, se ocupa el comando `del`
+
+```{pyodide-python}
+# borrar llave edad
+del dct['edad']
+print(dct) # Output: {'name': 'Jack', 'salary': 4342.4}
+```
+
+```{pyodide-python}
+# borrar diccionario
+del dct
+```
+
+### Iterar un diccionario
+
+Los diccionarios son iterables. Al iterar sobre un diccionario en un ciclo `for`, se obtiene las llaves:
+
+
+
+```{pyodide-python}
+dct = {1: 'apple', 2: 'ball'}
+
+for k in dct:
+    print(k)
+```
+
+Para iterar sobre las llaves, se usa `values()`:
+
+
+
+```{pyodide-python}
+for v in dct.values():
+    print(v)
+```
+
+Para iterar sobre las llaves y los valores simultáneamente, se usa el método `items()`:
+
+
+
+```{pyodide-python}
+for k,v in dct.items():
+    print(f"llave: {k}, valor: {v}")
+```
+
+### Restricciones sobre las llaves
+No se puede usar cualquier objeto como llave de un diccionario. Las llaves deben ser de un tipo de datos inmutable. Por ejemplo, no se puede usar listas:
+
+```{pyodide-python}
+dct = {[1, 2, 3]: 'hola'}
+```
+
+Típicamente, se usa números, tuplas y strings como llaves de los diccionarios.
+
+
+
+## Ejercicios
+
+### Listas
+
+**Ejercicio 01**
+
+
+Considere las siguientes listas:
+
+```{pyodide-python}
+a = [5, 1, 4, 9, 0]
+b = range(3, 10) + range(20, 23)
+c = [[1, 2], [3, 4, 5], [6, 7]]
+d = ['perro', 'gato', 'jirafa', 'elefante']
+e = ['a', a, 2 * a]
+```
+
+Sin usar el computador, indique cuál es el resultado y el tipo de las siguientes expresiones. A continuación, verifique sus respuestas en el computador.
+
+```{pyodide-python}
+a[2]
+b[9]
+c[1][2]
+e[0] == e[1]
+len(c)
+len(c[0])
+len(e)
+c[-1]
+c[-1][+1]
+c[2:] + d[2:]
+a[3:10]
+a[3:10:2]
+d.index('jirafa')
+e[c[0][1]].count(5)
+sorted(a)[2]
+complex(b[0], b[1])
+```
+
+```{pyodide-python}
+# respuesta
+```
+
+### Tuplas
+
+**Ejercicio 01**
+
+
+Considere las siguientes asignaciones:
+
+```{pyodide-python}
+a = (2, 10, 1991)
+b = (25, 12, 1990)
+c = ('Donald', True, b)
+x, y = ((27, 3), 9)
+z, w = x
+v = (x, a)
+```
+
+Sin usar el computador, indique cuál es el resultado y el tipo de las siguientes expresiones. A continuación, verifique sus respuestas en el computador.
+
+```{pyodide-python}
+a < b
+y + w
+x + a
+len(v)
+v[1][1]
+c[0][0]
+z, y
+a + b[1:5]
+(a + b)[1:5]
+str(a[2]) + str(b[2])
+str(a[2] + b[2])
+str((a + b)[2])
+str(a + b)[2]
+```
+
+```{pyodide-python}
+# respuesta
+```
+
+### Conjuntos
+
+**Ejercicio 01**
+
+
+Considere las siguientes asignaciones:
+
+```{pyodide-python}
+a = {5, 2, 3, 9, 4}
+b = {3, 1}
+c = {7, 5, 5, 1, 8, 6}
+d = [6, 2, 4, 5, 5, 3, 1, 3, 7, 8]
+e = {(2, 3), (3, 4), (4, 5)}
+f = [{2, 3}, {3, 4}, {4, 5}]
+```
+
+Sin usar el computador, indique cuál es el resultado y el tipo de las siguientes expresiones. A continuación, verifique sus respuestas en el computador.
+
+
+```{pyodide-python}
+len(c)
+len(set(d))
+a & (b | c)
+(a & b) | c
+c - a
+max(e)
+f[0] < a
+set(range(4)) & a
+(set(range(4)) & a) in f
+len(set('perro'))
+len({'perro'})
+```
+
+```{pyodide-python}
+# respuesta
+```
+
+### Diccionarios
+
+**Ejercicio 01**
+
+
+Considere las siguientes asignaciones:
+
+```{pyodide-python}
+a = {'a': 14, 'b': 23, 'c': 88}
+b = {12: True, 55: False, -2: False}
+c = dict()
+d = {1: [2, 3, 4], 5: [6, 7, 8, 9], 10: [11]}
+e = {2 + 3: 4, 5: 6 + 7, 8: 9, 10: 11 + 12}
+```
+
+Sin usar el computador, indique cuál es el resultado y el tipo de las siguientes expresiones. A continuación, verifique sus respuestas en el computador.
+
+```{pyodide-python}
+a['c']
+a[23]
+b[-2] or b[55]
+23 in a
+'a' in a
+5 in d[5]
+sum(b)
+len(c)
+len(d)
+len(d[1])
+len(b.values())
+len(e)
+sum(a.values())
+max(list(e))
+d[1] + d[5] + d[10]
+```
+
+```{pyodide-python}
+# respuesta
+```

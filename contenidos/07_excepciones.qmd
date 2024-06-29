@@ -1,0 +1,345 @@
+# ⚠️ Excepciones
+
+<center><img src="../images/error.svg" width = "550"></center><br>
+
+
+## Introducción
+
+Existen muchos tipos de errores que pueden estar presentes en un programa. No todos los errores pueden ser detectados por el computador. Veamos el siguiente ejemplo:
+
+```{pyodide-python}
+# error semantico
+n = 4
+doble = 3 * n
+print(f'El doble de n es {doble}')
+```
+
+El computador no se dará cuenta del error, pues todas las instrucciones del programa son correctas. El programa simplemente entregará siempre la respuesta equivocada.
+
+Existen otros errores que sí pueden ser detectados: las **excepciones**. Las excepciones son errores que se producen durante la ejecución de un programa, como por ejemplo un error de sintaxis, un archivo que no se puede abrir o un valor que no se puede dividir por cero. 
+
+* Si no se manejan las excepciones, se imprime un mensaje de error y nuestro programa se detiene repentinamente e inesperadamente. 
+
+* Existen varios tipos de  [excepciones](https://docs.python.org/3/library/exceptions.html), sin embargo, en esta sección se presentan algunas de ellas.
+
+## Tipos de Errores
+
+### Error de sintaxis
+
+Un error de sintaxis ocurre cuando el programa no cumple las reglas del lenguaje. Cuando ocurre este error, significa que el programa está mal escrito. El nombre del error es `SyntaxError`.
+
+```{pyodide-python}
+# SyntaxError
+2 * (3 + 4))
+```
+
+### Error de nombre
+
+Un error de nombre ocurre al usar una variable que no ha sido creada con anterioridad. El nombre de la excepción es `NameError`.
+
+```{pyodide-python}
+# NameError
+x = 20
+x+y
+```
+
+### Error de tipo
+En general, todas las operaciones en un programa pueden ser aplicadas sobre valores de tipos bien específicos. Un error de tipo ocurre al aplicar una operación sobre operandos de tipo incorrecto.
+
+El nombre de la excepción es `TypeError`.
+
+```{pyodide-python}
+# type error
+'seis' * 'ocho'
+```
+
+### Error de valor
+El error de valor ocurre cuando los operandos son del tipo correcto, pero la operación no tiene sentido para ese valor. El nombre de la excepción es `ValueError`.
+
+```{pyodide-python}
+# ValueError
+int('perro')
+```
+
+### Error de división por cero
+El error de division por cero ocurre al intentar dividir por cero. El nombre de la excepción es `ZeroDivisionError`:
+
+```{pyodide-python}
+# ZeroDivisionError
+1/0
+```
+
+### Error de desborde
+
+El error de desborde ocurre cuando el resultado de una operación es tan grande que el computador no puede representarlo internamente.
+
+El nombre de la excepción es `OverflowError`.
+
+```{pyodide-python}
+# OverflowError
+20.0 ** 20.0 ** 20.0
+```
+
+## Raise
+
+En Python, el comando `raise` se emplea para generar excepciones de forma deliberada en un programa. En otras palabras, permite al programador desencadenar una excepción en un momento específico del programa en lugar de esperar a que ocurra de manera automática.
+
+La sintaxis del comando `raise` es la siguiente:
+```python
+raise ExceptionType("Mensaje de error")
+```
+
+En esta sintaxis, `ExceptionType` se refiere al tipo de excepción que se desea desencadenar, y `"Mensaje de error"` es un mensaje opcional que proporciona información adicional sobre la excepción.
+
+Por ejemplo, supongamos que deseas generar una excepción de tipo `ValueError` cuando te encuentres con un valor numérico negativo. Puedes lograrlo de la siguiente manera:
+
+```{pyodide-python}
+def funcion(num):
+    if num < 0:
+        raise ValueError("El valor no puede ser negativo")
+    else:
+        return num
+```
+
+En este ejemplo, si el valor de `num` es negativo, se genera una excepción de tipo `ValueError` con el mensaje "El valor no puede ser negativo". De lo contrario, la función devuelve el valor de `num`.
+
+```{pyodide-python}
+funcion(1)
+```
+
+```{pyodide-python}
+funcion(-1)
+```
+
+**Conclusión**
+
+Existen dos maneras para lanzar una excepción:
+
+* Hacer una operación que no puede ser realizada (como dividir por cero). En este caso Python se encarga de lanzar automáticamente la excepción.
+* Lanzar nosotros una excepción manualmente, usando `raise`.
+
+> **Nota**: El comando `raise` es útil cuando se desea interrumpir el flujo normal de un programa y provocar una excepción en un punto específico. Sin embargo, se debe utilizar con precaución, ya que puede dificultar la depuración del programa si se utiliza en exceso o de manera incorrecta.
+
+## Menajando excepciones: Try/Except
+
+En Python, las excepciones se pueden manejar usando la declaración `try`. Cuando se detectan excepciones, depende de usted qué operador realizar.
+
+```{pyodide-python}
+try:
+    x = 1 / 0
+except:
+    print("No se puede dividir entre cero")
+```
+
+En este ejemplo, se intenta dividir el número `1` entre `0`. Como no se puede realizar la división, se produce una excepción de tipo `ZeroDivisionError`.
+
+Por otro lado, también se puede especificar en el `except` el tipo de error.
+
+```{pyodide-python}
+try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print("No se puede dividir entre cero")
+```
+
+**Uso de else**
+
+Al ya explicado `try` y `except` le podemos añadir un bloque más, el `else`. Dicho bloque se ejecutará si no ha ocurrido ninguna excepción. Fíjate en la diferencia entre los siguientes códigos.
+
+```{pyodide-python}
+try:
+    # Forzamos una excepción al dividir entre 0
+    x = 2/0
+except:
+    print("Entra en except, ha ocurrido una excepción")
+else:
+    print("Entra en else, no ha ocurrido ninguna excepción")
+
+```
+
+Sin embargo en el siguiente código la división se puede realizar sin problema, por lo que el bloque `except` no se ejecuta pero el `else` si es ejecutado.
+
+```{pyodide-python}
+try:
+    # La división puede realizarse sin problema
+    x = 2/2
+except:
+    print("Entra en except, ha ocurrido una excepción")
+else:
+    print("Entra en else, no ha ocurrido ninguna excepción")
+```
+
+## Aserciones en python
+
+Las aserciones  son expresiones booleanas que comprueban si las condiciones devuelven verdaderas o no. Si es cierto, el programa no hace nada y pasa a la siguiente línea de código. Sin embargo, si es falso, el programa se detiene y arroja un error.
+
+Las aserciones son importantes al momento de realizar **tests unitarios** o asegurar que un resultado siempre sea el mismo.
+
+<img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/assert.jpg" alt="" width="400" align="center" />
+
+###  assert en funciones
+
+Puede resultar útil usar `assert(`) cuando queremos realizar alguna comprobación, como podría ser dentro de una función. En el siguiente ejemplo tenemos una función `suma()` que sólo suma las variables si son números enteros.
+
+```{pyodide-python}
+# Funcion suma de variables enteras
+def suma(a, b):
+    assert(type(a) == int), "el primer valor ingresado no es entero"
+    assert(type(b) == int), "el segundo valor ingresado no es entero"
+    return a+b
+```
+
+```{pyodide-python}
+# Ok, los argumentos son int
+suma(3, 5)
+```
+
+```{pyodide-python}
+# Error, ya que las variables no son int
+suma(3.0, 5)
+```
+
+```{pyodide-python}
+# Error, ya que las variables no son int
+suma(3, 5.0)
+```
+
+###  assert en testing
+
+La función `assert()` puede ser también muy útil para escribir tests unitarios o units tests. Veamos un ejemplo.
+
+```{pyodide-python}
+# definir funcion
+def suma(x,y):
+    return x+y
+```
+
+```{pyodide-python}
+# ejemplo correcto
+assert suma(1,1)==2, "ejemplo invalido"
+```
+
+```{pyodide-python}
+# ejemplo incorrecto
+assert suma(1,1)==3, "ejemplo invalido"
+```
+
+## Warnings
+
+En Python, un [warnings](https://docs.python.org/3/library/warnings.html) es un mensaje que se muestra en la consola o en el registro de errores durante la ejecución del código para alertar al programador sobre un posible problema o una situación inusual que podría resultar en un error o un comportamiento no deseado en el programa.
+
+A diferencia de los errores (que interrumpen la ejecución del programa), los warnings son mensajes informativos que no impiden la ejecución del código, pero deben ser revisados y atendidos por el programador para garantizar la calidad del software.
+
+Por ejemplo, Python puede mostrar una advertencia si estás utilizando una función que se ha quedado obsoleta o que será eliminada en futuras versiones de Python, o si estás realizando una operación que puede tener efectos secundarios no deseados.
+
+Es importante prestar atención a las advertencias y abordarlas en consecuencia para asegurarse de que el código funcione de manera correcta y eficiente.
+
+Veamos un ejemplo:
+
+
+```{pyodide-python}
+import warnings
+  
+print('Python')
+  
+# mostrar un mensaje warning 
+warnings.warn('Atencion, esto es un warning!')
+  
+print('Python!')
+```
+
+En este ejemplo, la función `warn()` se utiliza para mostrar el mensajede advertencia: "Atencion, esto es un warning!".
+
+### Tipos de Warnings
+
+
+
+**DeprecationWarning**
+
+Es un tipo de advertencia que se utiliza para indicar que una característica o función del lenguaje o biblioteca que se está utilizando está obsoleta y se eliminará en futuras versiones. Esta advertencia se emite para permitir que los desarrolladores sepan que deben dejar de utilizar la función o característica en cuestión para evitar errores y fallos en futuras versiones de Python.
+
+El objetivo principal es ayudar a los desarrolladores a actualizar su código para usar las nuevas funciones y características que reemplazan las obsoletas. Si no se actualiza el código, es posible que no funcione correctamente en futuras versiones de Python.
+
+Veamos un ejemplo:
+
+```{pyodide-python}
+import warnings
+
+def multiplicar_por_dos(numero):
+    warnings.warn("Esta función está obsoleta, use multiplicar_por_n en su lugar", DeprecationWarning)
+    return numero * 2
+
+def multiplicar_por_n(numero, n):
+    return numero * n
+
+resultado = multiplicar_por_dos(5)
+print("El resultado es:", resultado)
+
+resultado = multiplicar_por_n(5, 3)
+print("El resultado es:", resultado)
+```
+
+En este ejemplo, la función `multiplicar_por_dos` se ha quedado obsoleta y se emitirá una advertencia de tipo `DeprecationWarning` cuando se llame. La advertencia indicará que la función está obsoleta y que los desarrolladores deberían usar la función `multiplicar_por_n` en su lugar.
+
+**FutureWarning**
+
+Es un tipo de advertencia que se utiliza para indicar que una característica o comportamiento del lenguaje o biblioteca puede cambiar en futuras versiones de Python. A diferencia de `DeprecationWarning`, `FutureWarning` no indica que una característica está obsoleta y se eliminará en futuras versiones, sino que simplemente indica que la forma en que se comporta actualmente podría cambiar en el futuro.
+
+Veamos un ejemplo:
+
+```{pyodide-python}
+import warnings
+
+def sumar(a, b):
+    warnings.warn("La función sumar puede cambiar en futuras versiones", FutureWarning)
+    return a + b
+
+resultado = sumar(2, 3)
+print("El resultado es:", resultado)
+```
+
+En este ejemplo, la función `sumar` puede cambiar en futuras versiones, y se emite una advertencia de tipo `FutureWarning` al llamarla. La advertencia indica que la función podría cambiar en el futuro, lo que significa que el resultado podría ser diferente en una versión posterior de Python.
+
+**RuntimeWarning**
+
+Es un tipo de advertencia que se utiliza para indicar que se ha producido un comportamiento inesperado durante la ejecución del programa. A diferencia de las excepciones, que son errores que interrumpen la ejecución del programa, las advertencias `RuntimeWarning` no interrumpen la ejecución, sino que simplemente indican que se ha producido un comportamiento inesperado.
+
+Veamos un ejemplo:
+
+```{pyodide-python}
+import numpy as np
+result = 1/(1+np.exp(1140))
+print(result)
+```
+
+En este ejemplo, `NumPy` realiza el cálculo (el resultado es `0,0`) pero aún imprime `RuntimeWarning`. Esta advertencia se imprime porque el valor `np.exp(1140)` representa $e^{1140}$, que es un número muy grande.
+
+**UserWarning**
+
+Es un tipo de advertencia que se utiliza para indicar que se ha detectado una situación que puede no ser un error grave, pero que podría ser importante para el usuario final del programa.
+
+A diferencia de otras advertencias, como `DeprecationWarning` o `RuntimeWarning`, que se refieren a problemas técnicos en el código, `UserWarning` se utiliza para indicar al usuario que se ha producido una situación que puede requerir su atención o acción.
+
+Veamos un ejemplo:
+
+```{pyodide-python}
+import warnings
+
+def promedio_notas(notas):
+    if not notas:
+        warnings.warn("La lista de notas está vacía", UserWarning)
+        return None
+    else:
+        return sum(notas) / len(notas)
+
+notas_estudiante = [7, 8, 6]
+promedio = promedio_notas(notas_estudiante)
+print("El promedio de notas es:", promedio)
+
+notas_estudiante_vacias = []
+promedio = promedio_notas(notas_estudiante_vacias)
+print("El promedio de notas es:", promedio)
+
+```
+
+En este ejemplo, la función `promedio_notas` calcula el promedio de un conjunto de notas. Si la lista de notas está vacía, en lugar de devolver un error, se emite una advertencia utilizando el módulo warnings de Python con el mensaje "La lista de notas está vacía" y el tipo de advertencia `UserWarning`. Luego, la función devuelve `None`.

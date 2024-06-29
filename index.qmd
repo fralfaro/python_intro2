@@ -1,0 +1,13 @@
+# 🏠 Home
+
+## 🎉 ¡Bienvenidos al Curso!
+
+Estamos emocionados de comenzar este viaje de aprendizaje juntos. En este curso, no solo aprenderás los fundamentos de Python, sino que también desarrollarás habilidades prácticas para resolver problemas y crear programas robustos y eficientes.
+
+🎯 **Objetivos del Curso**:
+
+* Dominar los conceptos básicos de programación usando Python.
+* Familiarizarse con las estructuras de datos y cómo manipularlas eficazmente.
+* Aprender a escribir código claro y eficiente utilizando buenas prácticas.
+* Explorar la programación funcional y cómo puede mejorar la calidad del código.
+* Establecer una base sólida para seguir aprendiendo y creciendo en el mundo de la programación.

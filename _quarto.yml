@@ -1,0 +1,43 @@
+project:
+  type: book
+  output-dir: docs
+  
+book:
+  title: "🐍 Python Intro"
+  author: "Francisco Alfaro Medina"
+  date: "07/01/2024"
+  favicon: "images/icon.png"
+  chapters:
+    - index.qmd
+    - part: prefacio/intro.qmd
+      chapters:
+        - prefacio/01_intro_progra.qmd
+        - prefacio/02_intro_python.qmd
+    - part: contenidos/intro.qmd
+      chapters:
+        - contenidos/03_nomenclatura.qmd
+        - contenidos/04_control_flujo.qmd
+        - contenidos/05_estructura_datos.qmd
+        - contenidos/06_funciones.qmd
+        - contenidos/07_excepciones.qmd
+        - contenidos/08_buenas_practicas.qmd
+        - contenidos/09_solucion.qmd
+
+
+
+index:
+  qmd:
+lang: es
+
+format:
+  html:
+    theme: flatly
+    number-sections: false
+  epub:
+    cover-image: images/cover.png
+
+
+filters: 
+  - pyodide
+
+sin-enumeracion: true  # Esta línea es opcional para indicar que no se desea enumeración

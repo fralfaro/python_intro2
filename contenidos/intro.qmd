@@ -1,0 +1,9 @@
+# Contenidos
+
+* **Nomenclatura:** Aprende las reglas para nombrar variables, funciones y más en Python.
+* **Control de Flujo:** Dirige el flujo de programas con decisiones y bucles.
+* **Estructura de Datos:** Organiza y manipula datos con listas, tuplas, conjuntos y diccionarios.
+* **Funciones y Módulos:** Encapsula lógica y organiza código con funciones y módulos.
+* **Programación Funcional:** Explora un código más elegante con programación funcional.
+* **Excepciones:** Maneja errores para robustecer tus programas.
+* **Buenas Prácticas:** Escribe código limpio y sigue las mejores prácticas de desarrollo.
