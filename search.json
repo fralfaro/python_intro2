@@ -143,7 +143,67 @@
     "href": "contenidos/intro.html",
     "title": "Contenidos",
     "section": "",
-    "text": "Nomenclatura: Aprende las reglas para nombrar variables, funciones y más en Python.\nControl de Flujo: Dirige el flujo de programas con decisiones y bucles.\nEstructura de Datos: Organiza y manipula datos con listas, tuplas, conjuntos y diccionarios.\nFunciones y Módulos: Encapsula lógica y organiza código con funciones y módulos.\nProgramación Funcional: Explora un código más elegante con programación funcional.\nExcepciones: Maneja errores para robustecer tus programas.\nBuenas Prácticas: Escribe código limpio y sigue las mejores prácticas de desarrollo.",
+    "text": "📚 Nomenclatura\nAprende las reglas para nombrar variables, funciones y más en Python. La nomenclatura adecuada hace que tu código sea más legible y mantenible.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#control-de-flujo",
+    "href": "contenidos/intro.html#control-de-flujo",
+    "title": "Contenidos",
+    "section": "🔄 Control de Flujo",
+    "text": "🔄 Control de Flujo\nDirige el flujo de programas usando estructuras de decisión como if, else, y bucles como for y while. Controla cómo se ejecutan las instrucciones en tus programas.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#estructura-de-datos",
+    "href": "contenidos/intro.html#estructura-de-datos",
+    "title": "Contenidos",
+    "section": "📊 Estructura de Datos",
+    "text": "📊 Estructura de Datos\nOrganiza y manipula datos utilizando listas, tuplas, conjuntos y diccionarios. Conoce las propiedades y métodos de cada estructura de datos para un manejo eficiente.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#funciones-y-módulos",
+    "href": "contenidos/intro.html#funciones-y-módulos",
+    "title": "Contenidos",
+    "section": "🛠️ Funciones y Módulos",
+    "text": "🛠️ Funciones y Módulos\nEncapsula lógica en funciones y organiza tu código en módulos y paquetes. Aprende a crear código reutilizable y fácil de mantener.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#excepciones",
+    "href": "contenidos/intro.html#excepciones",
+    "title": "Contenidos",
+    "section": "⚠️ Excepciones",
+    "text": "⚠️ Excepciones\nManeja errores y excepciones para hacer que tus programas sean más robustos y confiables. Aprende a usar bloques try, except, finally.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#buenas-prácticas",
+    "href": "contenidos/intro.html#buenas-prácticas",
+    "title": "Contenidos",
+    "section": "✅ Buenas Prácticas",
+    "text": "✅ Buenas Prácticas\nDesarrolla hábitos de programación que mejoren la calidad de tus scripts. Aprende sobre convenciones de estilo, documentación y más.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#solución-de-ejercicios",
+    "href": "contenidos/intro.html#solución-de-ejercicios",
+    "title": "Contenidos",
+    "section": "💡 Solución de Ejercicios",
+    "text": "💡 Solución de Ejercicios\nPractica y afianza tus conocimientos resolviendo ejercicios y desafíos. Implementa soluciones eficaces y aprende a depurar tu código.",
     "crumbs": [
       "Contenidos"
     ]
