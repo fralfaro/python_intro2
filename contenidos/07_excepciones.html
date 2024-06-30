@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🐍 Python Intro - ⚠️ Excepciones</title>
+<title>🐍 Python Intro - 8&nbsp; ⚠️ Excepciones</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,10 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,10 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
 <style type="text/css">
+/* Estilos predeterminados para el modo claro */
 .monaco-editor pre {
   background-color: unset !important;
 }
@@ -116,13 +120,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  background-color: #EEEEEE;
 }
 
 .qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
   display: flex;
 }
 
-.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+.qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
   justify-content: center;
   display: flex;
   background-color: rgba(250, 250, 250, 0.65);
@@ -141,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 
 .qpyodide-icon-run-code {
-  color: #0d9c29
+  color: #0d9c29;
 }
 
 .qpyodide-output-code-stdout {
@@ -154,11 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 .qpyodide-editor {
   border: 1px solid #EEEEEE;
-}
-
-.qpyodide-editor-toolbar {
-  background-color: #EEEEEE;
-  padding: 0.2rem 0.5rem;
 }
 
 .qpyodide-button {
@@ -174,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0.375rem 0.75rem;
   font-size: .9rem;
   border-radius: 0.25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .qpyodide-button:hover {
@@ -183,23 +184,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-color: #c8ccd0;
 }
 
-.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+.qpyodide-button:disabled, .qpyodide-button.disabled, fieldset:disabled .qpyodide-button {
   pointer-events: none;
-  opacity: .65
+  opacity: .65;
 }
 
-.qpyodide-button-reset {
-  color: #696969; /*#4682b4;*/
-}
-
-.qpyodide-button-copy {
+.qpyodide-button-reset, .qpyodide-button-copy {
   color: #696969;
 }
 
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .monaco-editor pre, .qpyodide-editor, .qpyodide-button {
+    background-color: #333;
+    color: #DDD;
+  }
 
-/* Custom styling for RevealJS Presentations*/
+  .qpyodide-icon-run-code {
+    color: #4CAF50;
+  }
 
-/* Reset the style of the interactive area */
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+    background-color: rgba(50, 50, 50, 0.65);
+    border-color: rgba(60, 60, 60, 0.65);
+  }
+
+  .qpyodide-button:hover {
+    background-color: #666;
+    border-color: #777;
+  }
+
+  .qpyodide-output-code-stdout {
+    color: #DDD;
+  }
+
+  .qpyodide-output-code-stderr {
+    color: #F44336;
+  }
+}
+
+/* Custom styling for RevealJS Presentations */
 .reveal div.qpyodide-interactive-area {
   display: block;
   box-shadow: none;
@@ -209,38 +234,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0;
 } 
 
-/* Provide space to entries */
 .reveal div.qpyodide-output-code-area pre div {
   margin: 1px 2px 1px 10px;
 }
 
-/* Collapse the inside code tags to avoid extra space between line outputs */
 .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
   padding: 0;
   display: contents;
 }
 
-.reveal pre div code.qpyodide-output-code-stdout {
-  color: #111;
-}
-
-.reveal pre div code.qpyodide-output-code-stderr {
-  color: #db4133;
-}
-
-
-/* Create a border around console and output (does not effect graphs) */
 .reveal div.qpyodide-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
 
-/* Cap output height and allow text to scroll */
-/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
 .reveal div.qpyodide-output-code-area pre {
   max-height: 400px;
   overflow: scroll;
 }
+
+/* Estilos predeterminados para modo claro */
+.qpyodide-output-code-area {
+  background-color: black; /* Fondo negro para el modo claro */
+  color: white; /* Texto blanco para mejor legibilidad en fondo oscuro */
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .qpyodide-output-code-area {
+    background-color: white; /* Fondo blanco para el modo oscuro */
+    color: black; /* Texto negro para mejor legibilidad en fondo claro */
+  }
+}
+
 </style>
 <script type="module">
 // Document level settings ----
@@ -265,7 +291,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"code":"# error semantico\nn = 4\ndoble = 3 * n\nprint(f'El doble de n es {doble}')","id":1,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# SyntaxError\n2 * (3 + 4))","id":2,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# NameError\nx = 20\nx+y","id":3,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# type error\n'seis' * 'ocho'","id":4,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# ValueError\nint('perro')","id":5,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# ZeroDivisionError\n1/0","id":6,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# OverflowError\n20.0 ** 20.0 ** 20.0","id":7,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"def funcion(num):\n    if num < 0:\n        raise ValueError(\"El valor no puede ser negativo\")\n    else:\n        return num","id":8,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"funcion(1)","id":9,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"funcion(-1)","id":10,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"try:\n    x = 1 / 0\nexcept:\n    print(\"No se puede dividir entre cero\")","id":11,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print(\"No se puede dividir entre cero\")","id":12,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"try:\n    # Forzamos una excepción al dividir entre 0\n    x = 2/0\nexcept:\n    print(\"Entra en except, ha ocurrido una excepción\")\nelse:\n    print(\"Entra en else, no ha ocurrido ninguna excepción\")","id":13,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"try:\n    # La división puede realizarse sin problema\n    x = 2/2\nexcept:\n    print(\"Entra en except, ha ocurrido una excepción\")\nelse:\n    print(\"Entra en else, no ha ocurrido ninguna excepción\")","id":14,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# Funcion suma de variables enteras\ndef suma(a, b):\n    assert(type(a) == int), \"el primer valor ingresado no es entero\"\n    assert(type(b) == int), \"el segundo valor ingresado no es entero\"\n    return a+b","id":15,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# Ok, los argumentos son int\nsuma(3, 5)","id":16,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# Error, ya que las variables no son int\nsuma(3.0, 5)","id":17,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# Error, ya que las variables no son int\nsuma(3, 5.0)","id":18,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# definir funcion\ndef suma(x,y):\n    return x+y","id":19,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# ejemplo correcto\nassert suma(1,1)==2, \"ejemplo invalido\"","id":20,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"# ejemplo incorrecto\nassert suma(1,1)==3, \"ejemplo invalido\"","id":21,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"import warnings\n  \nprint('Python')\n  \n# mostrar un mensaje warning \nwarnings.warn('Atencion, esto es un warning!')\n  \nprint('Python!')","id":22,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"import warnings\n\ndef multiplicar_por_dos(numero):\n    warnings.warn(\"Esta función está obsoleta, use multiplicar_por_n en su lugar\", DeprecationWarning)\n    return numero * 2\n\ndef multiplicar_por_n(numero, n):\n    return numero * n\n\nresultado = multiplicar_por_dos(5)\nprint(\"El resultado es:\", resultado)\n\nresultado = multiplicar_por_n(5, 3)\nprint(\"El resultado es:\", resultado)","id":23,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"import warnings\n\ndef sumar(a, b):\n    warnings.warn(\"La función sumar puede cambiar en futuras versiones\", FutureWarning)\n    return a + b\n\nresultado = sumar(2, 3)\nprint(\"El resultado es:\", resultado)","id":24,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"import numpy as np\nresult = 1/(1+np.exp(1140))\nprint(result)","id":25,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}},{"code":"import warnings\n\ndef promedio_notas(notas):\n    if not notas:\n        warnings.warn(\"La lista de notas está vacía\", UserWarning)\n        return None\n    else:\n        return sum(notas) / len(notas)\n\nnotas_estudiante = [7, 8, 6]\npromedio = promedio_notas(notas_estudiante)\nprint(\"El promedio de notas es:\", promedio)\n\nnotas_estudiante_vacias = []\npromedio = promedio_notas(notas_estudiante_vacias)\nprint(\"El promedio de notas es:\", promedio)","id":26,"options":{"out-width":"700px","context":"interactive","autorun":"","fig-cap":"","label":"","classes":"","comment":"","results":"markup","read-only":"false","out-height":"","fig-width":7,"output":"true","warning":"true","message":"true","dpi":72,"fig-height":5}}];
+globalThis.qpyodideCellDetails = [{"code":"# error semantico\nn = 4\ndoble = 3 * n\nprint(f'El doble de n es {doble}')","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":1},{"code":"# SyntaxError\n2 * (3 + 4))","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":2},{"code":"# NameError\nx = 20\nx+y","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":3},{"code":"# type error\n'seis' * 'ocho'","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":4},{"code":"# ValueError\nint('perro')","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":5},{"code":"# ZeroDivisionError\n1/0","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":6},{"code":"# OverflowError\n20.0 ** 20.0 ** 20.0","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":7},{"code":"def funcion(num):\n    if num < 0:\n        raise ValueError(\"El valor no puede ser negativo\")\n    else:\n        return num","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":8},{"code":"funcion(1)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":9},{"code":"funcion(-1)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":10},{"code":"try:\n    x = 1 / 0\nexcept:\n    print(\"No se puede dividir entre cero\")","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":11},{"code":"try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print(\"No se puede dividir entre cero\")","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":12},{"code":"try:\n    # Forzamos una excepción al dividir entre 0\n    x = 2/0\nexcept:\n    print(\"Entra en except, ha ocurrido una excepción\")\nelse:\n    print(\"Entra en else, no ha ocurrido ninguna excepción\")","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":13},{"code":"try:\n    # La división puede realizarse sin problema\n    x = 2/2\nexcept:\n    print(\"Entra en except, ha ocurrido una excepción\")\nelse:\n    print(\"Entra en else, no ha ocurrido ninguna excepción\")","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":14},{"code":"# Funcion suma de variables enteras\ndef suma(a, b):\n    assert(type(a) == int), \"el primer valor ingresado no es entero\"\n    assert(type(b) == int), \"el segundo valor ingresado no es entero\"\n    return a+b","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":15},{"code":"# Ok, los argumentos son int\nsuma(3, 5)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":16},{"code":"# Error, ya que las variables no son int\nsuma(3.0, 5)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":17},{"code":"# Error, ya que las variables no son int\nsuma(3, 5.0)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":18},{"code":"# definir funcion\ndef suma(x,y):\n    return x+y","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":19},{"code":"# ejemplo correcto\nassert suma(1,1)==2, \"ejemplo invalido\"","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":20},{"code":"# ejemplo incorrecto\nassert suma(1,1)==3, \"ejemplo invalido\"","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":21},{"code":"import warnings\n  \nprint('Python')\n  \n# mostrar un mensaje warning \nwarnings.warn('Atencion, esto es un warning!')\n  \nprint('Python!')","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":22},{"code":"import warnings\n\ndef multiplicar_por_dos(numero):\n    warnings.warn(\"Esta función está obsoleta, use multiplicar_por_n en su lugar\", DeprecationWarning)\n    return numero * 2\n\ndef multiplicar_por_n(numero, n):\n    return numero * n\n\nresultado = multiplicar_por_dos(5)\nprint(\"El resultado es:\", resultado)\n\nresultado = multiplicar_por_n(5, 3)\nprint(\"El resultado es:\", resultado)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":23},{"code":"import warnings\n\ndef sumar(a, b):\n    warnings.warn(\"La función sumar puede cambiar en futuras versiones\", FutureWarning)\n    return a + b\n\nresultado = sumar(2, 3)\nprint(\"El resultado es:\", resultado)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":24},{"code":"import numpy as np\nresult = 1/(1+np.exp(1140))\nprint(result)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":25},{"code":"import warnings\n\ndef promedio_notas(notas):\n    if not notas:\n        warnings.warn(\"La lista de notas está vacía\", UserWarning)\n        return None\n    else:\n        return sum(notas) / len(notas)\n\nnotas_estudiante = [7, 8, 6]\npromedio = promedio_notas(notas_estudiante)\nprint(\"El promedio de notas es:\", promedio)\n\nnotas_estudiante_vacias = []\npromedio = promedio_notas(notas_estudiante_vacias)\nprint(\"El promedio de notas es:\", promedio)","options":{"classes":"","warning":"true","fig-width":7,"output":"true","label":"","out-width":"700px","results":"markup","autorun":"","out-height":"","read-only":"false","context":"interactive","fig-height":5,"message":"true","comment":"","dpi":72,"fig-cap":""},"id":26}];
 
 
 </script>
@@ -497,7 +523,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/07_excepciones.html"><span class="chapter-title">⚠️ Excepciones</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/07_excepciones.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -513,6 +539,10 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">🐍 Python Intro</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/fralfaro/python_intro2" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -524,7 +554,8 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🏠 Home</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -538,12 +569,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,37 +592,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📚 Nomenclatura</span></a>
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">⚠️ Excepciones</span></a>
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">💡 Solución Ejercicios</span></span></a>
   </div>
 </li>
       </ul>
@@ -604,26 +644,26 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
-  <li><a href="#tipos-de-errores" id="toc-tipos-de-errores" class="nav-link" data-scroll-target="#tipos-de-errores">Tipos de Errores</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">8.1</span> Introducción</a></li>
+  <li><a href="#tipos-de-errores" id="toc-tipos-de-errores" class="nav-link" data-scroll-target="#tipos-de-errores"><span class="header-section-number">8.2</span> Tipos de Errores</a>
   <ul class="collapse">
-  <li><a href="#error-de-sintaxis" id="toc-error-de-sintaxis" class="nav-link" data-scroll-target="#error-de-sintaxis">Error de sintaxis</a></li>
-  <li><a href="#error-de-nombre" id="toc-error-de-nombre" class="nav-link" data-scroll-target="#error-de-nombre">Error de nombre</a></li>
-  <li><a href="#error-de-tipo" id="toc-error-de-tipo" class="nav-link" data-scroll-target="#error-de-tipo">Error de tipo</a></li>
-  <li><a href="#error-de-valor" id="toc-error-de-valor" class="nav-link" data-scroll-target="#error-de-valor">Error de valor</a></li>
-  <li><a href="#error-de-división-por-cero" id="toc-error-de-división-por-cero" class="nav-link" data-scroll-target="#error-de-división-por-cero">Error de división por cero</a></li>
-  <li><a href="#error-de-desborde" id="toc-error-de-desborde" class="nav-link" data-scroll-target="#error-de-desborde">Error de desborde</a></li>
+  <li><a href="#error-de-sintaxis" id="toc-error-de-sintaxis" class="nav-link" data-scroll-target="#error-de-sintaxis"><span class="header-section-number">8.2.1</span> Error de sintaxis</a></li>
+  <li><a href="#error-de-nombre" id="toc-error-de-nombre" class="nav-link" data-scroll-target="#error-de-nombre"><span class="header-section-number">8.2.2</span> Error de nombre</a></li>
+  <li><a href="#error-de-tipo" id="toc-error-de-tipo" class="nav-link" data-scroll-target="#error-de-tipo"><span class="header-section-number">8.2.3</span> Error de tipo</a></li>
+  <li><a href="#error-de-valor" id="toc-error-de-valor" class="nav-link" data-scroll-target="#error-de-valor"><span class="header-section-number">8.2.4</span> Error de valor</a></li>
+  <li><a href="#error-de-división-por-cero" id="toc-error-de-división-por-cero" class="nav-link" data-scroll-target="#error-de-división-por-cero"><span class="header-section-number">8.2.5</span> Error de división por cero</a></li>
+  <li><a href="#error-de-desborde" id="toc-error-de-desborde" class="nav-link" data-scroll-target="#error-de-desborde"><span class="header-section-number">8.2.6</span> Error de desborde</a></li>
   </ul></li>
-  <li><a href="#raise" id="toc-raise" class="nav-link" data-scroll-target="#raise">Raise</a></li>
-  <li><a href="#menajando-excepciones-tryexcept" id="toc-menajando-excepciones-tryexcept" class="nav-link" data-scroll-target="#menajando-excepciones-tryexcept">Menajando excepciones: Try/Except</a></li>
-  <li><a href="#aserciones-en-python" id="toc-aserciones-en-python" class="nav-link" data-scroll-target="#aserciones-en-python">Aserciones en python</a>
+  <li><a href="#raise" id="toc-raise" class="nav-link" data-scroll-target="#raise"><span class="header-section-number">8.3</span> Raise</a></li>
+  <li><a href="#menajando-excepciones-tryexcept" id="toc-menajando-excepciones-tryexcept" class="nav-link" data-scroll-target="#menajando-excepciones-tryexcept"><span class="header-section-number">8.4</span> Menajando excepciones: Try/Except</a></li>
+  <li><a href="#aserciones-en-python" id="toc-aserciones-en-python" class="nav-link" data-scroll-target="#aserciones-en-python"><span class="header-section-number">8.5</span> Aserciones en python</a>
   <ul class="collapse">
-  <li><a href="#assert-en-funciones" id="toc-assert-en-funciones" class="nav-link" data-scroll-target="#assert-en-funciones">assert en funciones</a></li>
-  <li><a href="#assert-en-testing" id="toc-assert-en-testing" class="nav-link" data-scroll-target="#assert-en-testing">assert en testing</a></li>
+  <li><a href="#assert-en-funciones" id="toc-assert-en-funciones" class="nav-link" data-scroll-target="#assert-en-funciones"><span class="header-section-number">8.5.1</span> assert en funciones</a></li>
+  <li><a href="#assert-en-testing" id="toc-assert-en-testing" class="nav-link" data-scroll-target="#assert-en-testing"><span class="header-section-number">8.5.2</span> assert en testing</a></li>
   </ul></li>
-  <li><a href="#warnings" id="toc-warnings" class="nav-link" data-scroll-target="#warnings">Warnings</a>
+  <li><a href="#warnings" id="toc-warnings" class="nav-link" data-scroll-target="#warnings"><span class="header-section-number">8.6</span> Warnings</a>
   <ul class="collapse">
-  <li><a href="#tipos-de-warnings" id="toc-tipos-de-warnings" class="nav-link" data-scroll-target="#tipos-de-warnings">Tipos de Warnings</a></li>
+  <li><a href="#tipos-de-warnings" id="toc-tipos-de-warnings" class="nav-link" data-scroll-target="#tipos-de-warnings"><span class="header-section-number">8.6.1</span> Tipos de Warnings</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -641,9 +681,9 @@ window.Quarto = {
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/07_excepciones.html"><span class="chapter-title">⚠️ Excepciones</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/07_excepciones.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">⚠️ Excepciones</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></h1>
 </div>
 
 
@@ -664,8 +704,8 @@ window.Quarto = {
 <img src="../images/error.svg" width="550">
 </center>
 <p><br></p>
-<section id="introducción" class="level2">
-<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<section id="introducción" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">8.1</span> Introducción</h2>
 <p>Existen muchos tipos de errores que pueden estar presentes en un programa. No todos los errores pueden ser detectados por el computador. Veamos el siguiente ejemplo:</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -676,49 +716,49 @@ window.Quarto = {
 <li><p>Existen varios tipos de <a href="https://docs.python.org/3/library/exceptions.html">excepciones</a>, sin embargo, en esta sección se presentan algunas de ellas.</p></li>
 </ul>
 </section>
-<section id="tipos-de-errores" class="level2">
-<h2 class="anchored" data-anchor-id="tipos-de-errores">Tipos de Errores</h2>
-<section id="error-de-sintaxis" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-sintaxis">Error de sintaxis</h3>
+<section id="tipos-de-errores" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="tipos-de-errores"><span class="header-section-number">8.2</span> Tipos de Errores</h2>
+<section id="error-de-sintaxis" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="error-de-sintaxis"><span class="header-section-number">8.2.1</span> Error de sintaxis</h3>
 <p>Un error de sintaxis ocurre cuando el programa no cumple las reglas del lenguaje. Cuando ocurre este error, significa que el programa está mal escrito. El nombre del error es <code>SyntaxError</code>.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="error-de-nombre" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-nombre">Error de nombre</h3>
+<section id="error-de-nombre" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="error-de-nombre"><span class="header-section-number">8.2.2</span> Error de nombre</h3>
 <p>Un error de nombre ocurre al usar una variable que no ha sido creada con anterioridad. El nombre de la excepción es <code>NameError</code>.</p>
 <div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="error-de-tipo" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-tipo">Error de tipo</h3>
+<section id="error-de-tipo" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="error-de-tipo"><span class="header-section-number">8.2.3</span> Error de tipo</h3>
 <p>En general, todas las operaciones en un programa pueden ser aplicadas sobre valores de tipos bien específicos. Un error de tipo ocurre al aplicar una operación sobre operandos de tipo incorrecto.</p>
 <p>El nombre de la excepción es <code>TypeError</code>.</p>
 <div id="qpyodide-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="error-de-valor" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-valor">Error de valor</h3>
+<section id="error-de-valor" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="error-de-valor"><span class="header-section-number">8.2.4</span> Error de valor</h3>
 <p>El error de valor ocurre cuando los operandos son del tipo correcto, pero la operación no tiene sentido para ese valor. El nombre de la excepción es <code>ValueError</code>.</p>
 <div id="qpyodide-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="error-de-división-por-cero" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-división-por-cero">Error de división por cero</h3>
+<section id="error-de-división-por-cero" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="error-de-división-por-cero"><span class="header-section-number">8.2.5</span> Error de división por cero</h3>
 <p>El error de division por cero ocurre al intentar dividir por cero. El nombre de la excepción es <code>ZeroDivisionError</code>:</p>
 <div id="qpyodide-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="error-de-desborde" class="level3">
-<h3 class="anchored" data-anchor-id="error-de-desborde">Error de desborde</h3>
+<section id="error-de-desborde" class="level3" data-number="8.2.6">
+<h3 data-number="8.2.6" class="anchored" data-anchor-id="error-de-desborde"><span class="header-section-number">8.2.6</span> Error de desborde</h3>
 <p>El error de desborde ocurre cuando el resultado de una operación es tan grande que el computador no puede representarlo internamente.</p>
 <p>El nombre de la excepción es <code>OverflowError</code>.</p>
 <div id="qpyodide-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="raise" class="level2">
-<h2 class="anchored" data-anchor-id="raise">Raise</h2>
+<section id="raise" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="raise"><span class="header-section-number">8.3</span> Raise</h2>
 <p>En Python, el comando <code>raise</code> se emplea para generar excepciones de forma deliberada en un programa. En otras palabras, permite al programador desencadenar una excepción en un momento específico del programa en lugar de esperar a que ocurra de manera automática.</p>
 <p>La sintaxis del comando <code>raise</code> es la siguiente:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> ExceptionType(<span class="st">"Mensaje de error"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -741,8 +781,8 @@ window.Quarto = {
 <p><strong>Nota</strong>: El comando <code>raise</code> es útil cuando se desea interrumpir el flujo normal de un programa y provocar una excepción en un punto específico. Sin embargo, se debe utilizar con precaución, ya que puede dificultar la depuración del programa si se utiliza en exceso o de manera incorrecta.</p>
 </blockquote>
 </section>
-<section id="menajando-excepciones-tryexcept" class="level2">
-<h2 class="anchored" data-anchor-id="menajando-excepciones-tryexcept">Menajando excepciones: Try/Except</h2>
+<section id="menajando-excepciones-tryexcept" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="menajando-excepciones-tryexcept"><span class="header-section-number">8.4</span> Menajando excepciones: Try/Except</h2>
 <p>En Python, las excepciones se pueden manejar usando la declaración <code>try</code>. Cuando se detectan excepciones, depende de usted qué operador realizar.</p>
 <div id="qpyodide-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -758,13 +798,13 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="aserciones-en-python" class="level2">
-<h2 class="anchored" data-anchor-id="aserciones-en-python">Aserciones en python</h2>
+<section id="aserciones-en-python" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="aserciones-en-python"><span class="header-section-number">8.5</span> Aserciones en python</h2>
 <p>Las aserciones son expresiones booleanas que comprueban si las condiciones devuelven verdaderas o no. Si es cierto, el programa no hace nada y pasa a la siguiente línea de código. Sin embargo, si es falso, el programa se detiene y arroja un error.</p>
 <p>Las aserciones son importantes al momento de realizar <strong>tests unitarios</strong> o asegurar que un resultado siempre sea el mismo.</p>
 <p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/assert.jpg" alt="" width="400" align="center"></p>
-<section id="assert-en-funciones" class="level3">
-<h3 class="anchored" data-anchor-id="assert-en-funciones">assert en funciones</h3>
+<section id="assert-en-funciones" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="assert-en-funciones"><span class="header-section-number">8.5.1</span> assert en funciones</h3>
 <p>Puede resultar útil usar <code>assert(</code>) cuando queremos realizar alguna comprobación, como podría ser dentro de una función. En el siguiente ejemplo tenemos una función <code>suma()</code> que sólo suma las variables si son números enteros.</p>
 <div id="qpyodide-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -775,8 +815,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="assert-en-testing" class="level3">
-<h3 class="anchored" data-anchor-id="assert-en-testing">assert en testing</h3>
+<section id="assert-en-testing" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="assert-en-testing"><span class="header-section-number">8.5.2</span> assert en testing</h3>
 <p>La función <code>assert()</code> puede ser también muy útil para escribir tests unitarios o units tests. Veamos un ejemplo.</p>
 <div id="qpyodide-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -786,8 +826,8 @@ window.Quarto = {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="warnings" class="level2">
-<h2 class="anchored" data-anchor-id="warnings">Warnings</h2>
+<section id="warnings" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="warnings"><span class="header-section-number">8.6</span> Warnings</h2>
 <p>En Python, un <a href="https://docs.python.org/3/library/warnings.html">warnings</a> es un mensaje que se muestra en la consola o en el registro de errores durante la ejecución del código para alertar al programador sobre un posible problema o una situación inusual que podría resultar en un error o un comportamiento no deseado en el programa.</p>
 <p>A diferencia de los errores (que interrumpen la ejecución del programa), los warnings son mensajes informativos que no impiden la ejecución del código, pero deben ser revisados y atendidos por el programador para garantizar la calidad del software.</p>
 <p>Por ejemplo, Python puede mostrar una advertencia si estás utilizando una función que se ha quedado obsoleta o que será eliminada en futuras versiones de Python, o si estás realizando una operación que puede tener efectos secundarios no deseados.</p>
@@ -796,8 +836,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>En este ejemplo, la función <code>warn()</code> se utiliza para mostrar el mensajede advertencia: “Atencion, esto es un warning!”.</p>
-<section id="tipos-de-warnings" class="level3">
-<h3 class="anchored" data-anchor-id="tipos-de-warnings">Tipos de Warnings</h3>
+<section id="tipos-de-warnings" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="tipos-de-warnings"><span class="header-section-number">8.6.1</span> Tipos de Warnings</h3>
 <p><strong>DeprecationWarning</strong></p>
 <p>Es un tipo de advertencia que se utiliza para indicar que una característica o función del lenguaje o biblioteca que se está utilizando está obsoleta y se eliminará en futuras versiones. Esta advertencia se emite para permitir que los desarrolladores sepan que deben dejar de utilizar la función o característica en cuestión para evitar errores y fallos en futuras versiones de Python.</p>
 <p>El objetivo principal es ayudar a los desarrolladores a actualizar su código para usar las nuevas funciones y características que reemplazan las obsoletas. Si no se actualiza el código, es posible que no funcione correctamente en futuras versiones de Python.</p>
@@ -850,6 +890,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -925,6 +1109,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1242,12 +1431,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../contenidos/06_funciones.html" class="pagination-link" aria-label="🛠️ Funciones">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">🛠️ Funciones</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../contenidos/08_buenas_practicas.html" class="pagination-link" aria-label="✅ Buenas prácticas">
-        <span class="nav-page-text"><span class="chapter-title">✅ Buenas prácticas</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1792,4 +1981,5 @@ qpyodideCellDetails.map(
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

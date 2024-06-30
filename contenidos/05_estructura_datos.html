@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🐍 Python Intro - 📊 Estructura de datos</title>
+<title>🐍 Python Intro - 6&nbsp; 📊 Estructura de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,10 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,10 +71,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
 <style type="text/css">
+/* Estilos predeterminados para el modo claro */
 .monaco-editor pre {
   background-color: unset !important;
 }
@@ -82,13 +86,15 @@ ul.task-list li input[type="checkbox"] {
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  background-color: #EEEEEE;
 }
 
 .qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
   display: flex;
 }
 
-.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+.qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
   justify-content: center;
   display: flex;
   background-color: rgba(250, 250, 250, 0.65);
@@ -107,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 }
 
 .qpyodide-icon-run-code {
-  color: #0d9c29
+  color: #0d9c29;
 }
 
 .qpyodide-output-code-stdout {
@@ -120,11 +126,6 @@ ul.task-list li input[type="checkbox"] {
 
 .qpyodide-editor {
   border: 1px solid #EEEEEE;
-}
-
-.qpyodide-editor-toolbar {
-  background-color: #EEEEEE;
-  padding: 0.2rem 0.5rem;
 }
 
 .qpyodide-button {
@@ -140,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
   padding: 0.375rem 0.75rem;
   font-size: .9rem;
   border-radius: 0.25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .qpyodide-button:hover {
@@ -149,23 +150,47 @@ ul.task-list li input[type="checkbox"] {
   border-color: #c8ccd0;
 }
 
-.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+.qpyodide-button:disabled, .qpyodide-button.disabled, fieldset:disabled .qpyodide-button {
   pointer-events: none;
-  opacity: .65
+  opacity: .65;
 }
 
-.qpyodide-button-reset {
-  color: #696969; /*#4682b4;*/
-}
-
-.qpyodide-button-copy {
+.qpyodide-button-reset, .qpyodide-button-copy {
   color: #696969;
 }
 
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .monaco-editor pre, .qpyodide-editor, .qpyodide-button {
+    background-color: #333;
+    color: #DDD;
+  }
 
-/* Custom styling for RevealJS Presentations*/
+  .qpyodide-icon-run-code {
+    color: #4CAF50;
+  }
 
-/* Reset the style of the interactive area */
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+    background-color: rgba(50, 50, 50, 0.65);
+    border-color: rgba(60, 60, 60, 0.65);
+  }
+
+  .qpyodide-button:hover {
+    background-color: #666;
+    border-color: #777;
+  }
+
+  .qpyodide-output-code-stdout {
+    color: #DDD;
+  }
+
+  .qpyodide-output-code-stderr {
+    color: #F44336;
+  }
+}
+
+/* Custom styling for RevealJS Presentations */
 .reveal div.qpyodide-interactive-area {
   display: block;
   box-shadow: none;
@@ -175,38 +200,39 @@ ul.task-list li input[type="checkbox"] {
   padding: 0;
 } 
 
-/* Provide space to entries */
 .reveal div.qpyodide-output-code-area pre div {
   margin: 1px 2px 1px 10px;
 }
 
-/* Collapse the inside code tags to avoid extra space between line outputs */
 .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
   padding: 0;
   display: contents;
 }
 
-.reveal pre div code.qpyodide-output-code-stdout {
-  color: #111;
-}
-
-.reveal pre div code.qpyodide-output-code-stderr {
-  color: #db4133;
-}
-
-
-/* Create a border around console and output (does not effect graphs) */
 .reveal div.qpyodide-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
 
-/* Cap output height and allow text to scroll */
-/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
 .reveal div.qpyodide-output-code-area pre {
   max-height: 400px;
   overflow: scroll;
 }
+
+/* Estilos predeterminados para modo claro */
+.qpyodide-output-code-area {
+  background-color: black; /* Fondo negro para el modo claro */
+  color: white; /* Texto blanco para mejor legibilidad en fondo oscuro */
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .qpyodide-output-code-area {
+    background-color: white; /* Fondo blanco para el modo oscuro */
+    color: black; /* Texto negro para mejor legibilidad en fondo claro */
+  }
+}
+
 </style>
 <script type="module">
 // Document level settings ----
@@ -231,7 +257,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":1,"code":"# lista vacia (Usando corchetes)\nlista = []\nprint(lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":2,"code":"# lista vacia (Usando el constructor)\nlista = list()\nprint(lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":3,"code":"# lista de enteros\nlista = [1, 2, 3]\nprint(lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":4,"code":"# lista mixta\nlista = [1, \"hola\", 3.4]\nprint(lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":5,"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(len(colores))"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":6,"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(f'primer elemento de la lista: {colores[0]}')\nprint(f'tercer elemento de la lista: {colores[2]}')"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":7,"code":"# elemento fuera de la lista\nprint( colores[4])"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":8,"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(colores[-1])"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":9,"code":"primos = [2, 3, 5, 7, 11]\nprimos.append(13)\nprint(primos)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":10,"code":"l1 = [1,2,3]\nl2 = [4,5,6]\n\nprint(l1+l2)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":11,"code":"lista = [1,2,3]\nprint(2*lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":12,"code":"lista = [1,2,3,4,5,6,7,8,9]\n\nprint(12 in lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":13,"code":"print(12 not in lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":14,"code":"l = [1.5, 3.3, 8.4, 3.1, 2.9]\nprint(l[2:4])"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":15,"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(colores.index('verde'))"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":16,"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.remove(2)\nprint(l)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":17,"code":"l = [7, 0, 3, 9, 8, 2, 4]\ndel l[2]\nprint(l)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":18,"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.reverse()\nprint(l)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":19,"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.sort()\nprint(l)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":20,"code":"# Definimos una lista llamada 'valores' con algunos números\nvalores = [1, 2, 3, 4, 5]\n\n# Usamos un ciclo 'for' para recorrer cada elemento de la lista\nfor i in valores:\n    # En cada iteración, 'i' toma el valor de un elemento de la lista\n    # y calculamos su cuadrado utilizando el operador '**'\n    cuadrado = i ** 2\n\n    # Luego, imprimimos el valor y su cuadrado en la consola\n    print(f\"El cuadrado de {i} es {cuadrado}\")"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":21,"code":"# tupla vacia (Usando corchetes)\ntupla = ()\nprint(tupla)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":22,"code":"# tupla vacia (Usando el constructor)\ntupla = tuple()\nprint(tupla)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":23,"code":"# tupla con elementos\nnumeros = (\"uno\", \"dos\", \"tres\", \"cuatro\")\nprint(numeros)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":24,"code":"persona = ('Javier', 'Perez')\nnombre, apellido = persona\nprint(nombre, apellido)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":25,"code":"a, b, c = persona"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":26,"code":"(1, 2) == (2 / 2, 1 + 1)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":27,"code":"(6, 1) == (6, 2)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":28,"code":"(1, 4, 7) < (2, 0, 0, 1)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":29,"code":"(1, 9, 10) < (0, 5)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":30,"code":"numeros = (\"uno\", \"dos\", \"tres\", \"cuatro\")\n\nprint(numeros[1]) #Output: dos\nprint(numeros[3]) #Output: cuatro\nprint(numeros[-1]) # Output: cuatro"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":31,"code":"# Definimos una tupla con algunos números\ntupla_valores = (1, 2, 3, 4, 5)\n\n# Usamos un ciclo 'for' para recorrer cada elemento de la tupla\nfor valor in tupla_valores:\n    # En cada iteración, 'valor' toma el valor de un elemento de la tupla\n    # y calculamos su cuadrado utilizando el operador '**'\n    cuadrado = valor ** 2\n\n    # Luego, imprimimos el valor y su cuadrado en la consola\n    print(f\"El cuadrado de {valor} es {cuadrado}\")"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":32,"code":"# Definimos una tupla\nmi_tupla = (1, 2, 3, 4, 5)\n\n# Usamos la función 'list()' para convertir la tupla en una lista\nmi_lista = list(mi_tupla)\n\n# Imprimimos la lista resultante\nprint(\"Tupla original:\", mi_tupla)\nprint(\"Lista resultante:\", mi_lista)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":33,"code":"# Definimos una lista\nmi_lista = [1, 2, 3, 4, 5]\n\n# Usamos la función 'tuple()' para convertir la lista en una tupla\nmi_tupla = tuple(mi_lista)\n\n# Imprimimos la tupla resultante\nprint(\"Lista original:\", mi_lista)\nprint(\"Tupla resultante:\", mi_tupla)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":34,"code":"# conjunto vacio (Usando corchetes)\nconjunto = {}\nprint(conjunto)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":35,"code":"# conjunto vacio (Usando el constructor)\nconjunto = set()\nprint(conjunto)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":36,"code":"# usar un conjunto literal, entre llave \nconjunto = {1, 2, 3}\nprint(conjunto)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":37,"code":"# set aplicada sobre un iterable\nconjunto = set([1, 2, 3])\nprint(conjunto)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":38,"code":"conjunto = {[2, 4], [6, 1]}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":39,"code":"conjunto = {'a', 'b', 'c'}\nconjunto[0]"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":40,"code":"conjunto = {'a', 'b', 'c'}\nfor i in conjunto:\n    print(i)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":41,"code":"len({'azul', 'verde', 'rojo'})"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":42,"code":"3 in {2, 3, 4}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":43,"code":"3 not in {2, 3, 4}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":44,"code":"s = {6, 1, 5, 4, 3}\ns.add(-37)\ns"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":45,"code":"s = {6, 1, 5, 4, 3}\ns.remove(1)\ns"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":46,"code":"s.remove(10)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":47,"code":"# crear dos conjuntos\na = {1, 2, 3, 4}\nb = {2, 4, 6, 8}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":48,"code":"# interseccion\na & b"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":49,"code":"# union\na | b"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":50,"code":"# diferencia\na - b"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":51,"code":"# diferencia simetrica\na ^ b"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":52,"code":"{1, 2} < {1, 2, 3}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":53,"code":"{1, 4} < {1, 2, 3}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":54,"code":"{1, 2, 3} < {1, 2, 3}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":55,"code":"{1, 2, 3} <= {1, 2, 3}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":56,"code":"# diccionario vacio (Usando corchetes)\ndct = {}\nprint(dct)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":57,"code":"# lista vacia (Usando el constructor)\ndct = dict()\nprint(dct)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":58,"code":"# diccionario de enteros\ndct = {1: 'apple', 2: 'ball'}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":59,"code":"# diccionario dde llaves mixtas\ndct = {'name': 'John', 1: [2, 4, 3]}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":60,"code":"dct = {'nombre':'Jack', 'edad': 26, 'salario': 4534.2}\nprint(dct['edad']) # Output: 26"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":61,"code":"dct = {'nombre':'Jack', 'edad': 26}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":62,"code":"# cambiar edad\ndct['edad'] = 36 \nprint(dct) # Output: {'name': 'Jack', 'age': 36}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":63,"code":"# adherir llave salario\ndct['salario'] = 4342.4\nprint(dct) # Output: {'name': 'Jack', 'age': 36, 'salary': 4342.4}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":64,"code":"# borrar llave edad\ndel dct['edad']\nprint(dct) # Output: {'name': 'Jack', 'salary': 4342.4}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":65,"code":"# borrar diccionario\ndel dct"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":66,"code":"dct = {1: 'apple', 2: 'ball'}\n\nfor k in dct:\n    print(k)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":67,"code":"for v in dct.values():\n    print(v)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":68,"code":"for k,v in dct.items():\n    print(f\"llave: {k}, valor: {v}\")"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":69,"code":"dct = {[1, 2, 3]: 'hola'}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":70,"code":"a = [5, 1, 4, 9, 0]\nb = range(3, 10) + range(20, 23)\nc = [[1, 2], [3, 4, 5], [6, 7]]\nd = ['perro', 'gato', 'jirafa', 'elefante']\ne = ['a', a, 2 * a]"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":71,"code":"a[2]\nb[9]\nc[1][2]\ne[0] == e[1]\nlen(c)\nlen(c[0])\nlen(e)\nc[-1]\nc[-1][+1]\nc[2:] + d[2:]\na[3:10]\na[3:10:2]\nd.index('jirafa')\ne[c[0][1]].count(5)\nsorted(a)[2]\ncomplex(b[0], b[1])"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":72,"code":"# respuesta"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":73,"code":"a = (2, 10, 1991)\nb = (25, 12, 1990)\nc = ('Donald', True, b)\nx, y = ((27, 3), 9)\nz, w = x\nv = (x, a)"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":74,"code":"a < b\ny + w\nx + a\nlen(v)\nv[1][1]\nc[0][0]\nz, y\na + b[1:5]\n(a + b)[1:5]\nstr(a[2]) + str(b[2])\nstr(a[2] + b[2])\nstr((a + b)[2])\nstr(a + b)[2]"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":75,"code":"# respuesta"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":76,"code":"a = {5, 2, 3, 9, 4}\nb = {3, 1}\nc = {7, 5, 5, 1, 8, 6}\nd = [6, 2, 4, 5, 5, 3, 1, 3, 7, 8]\ne = {(2, 3), (3, 4), (4, 5)}\nf = [{2, 3}, {3, 4}, {4, 5}]"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":77,"code":"len(c)\nlen(set(d))\na & (b | c)\n(a & b) | c\nc - a\nmax(e)\nf[0] < a\nset(range(4)) & a\n(set(range(4)) & a) in f\nlen(set('perro'))\nlen({'perro'})"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":78,"code":"# respuesta"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":79,"code":"a = {'a': 14, 'b': 23, 'c': 88}\nb = {12: True, 55: False, -2: False}\nc = dict()\nd = {1: [2, 3, 4], 5: [6, 7, 8, 9], 10: [11]}\ne = {2 + 3: 4, 5: 6 + 7, 8: 9, 10: 11 + 12}"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":80,"code":"a['c']\na[23]\nb[-2] or b[55]\n23 in a\n'a' in a\n5 in d[5]\nsum(b)\nlen(c)\nlen(d)\nlen(d[1])\nlen(b.values())\nlen(e)\nsum(a.values())\nmax(list(e))\nd[1] + d[5] + d[10]"},{"options":{"results":"markup","comment":"","classes":"","message":"true","warning":"true","label":"","dpi":72,"context":"interactive","output":"true","fig-width":7,"out-height":"","autorun":"","read-only":"false","out-width":"700px","fig-cap":"","fig-height":5},"id":81,"code":"# respuesta"}];
+globalThis.qpyodideCellDetails = [{"code":"# lista vacia (Usando corchetes)\nlista = []\nprint(lista)","id":1,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# lista vacia (Usando el constructor)\nlista = list()\nprint(lista)","id":2,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# lista de enteros\nlista = [1, 2, 3]\nprint(lista)","id":3,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# lista mixta\nlista = [1, \"hola\", 3.4]\nprint(lista)","id":4,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(len(colores))","id":5,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(f'primer elemento de la lista: {colores[0]}')\nprint(f'tercer elemento de la lista: {colores[2]}')","id":6,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# elemento fuera de la lista\nprint( colores[4])","id":7,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(colores[-1])","id":8,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"primos = [2, 3, 5, 7, 11]\nprimos.append(13)\nprint(primos)","id":9,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l1 = [1,2,3]\nl2 = [4,5,6]\n\nprint(l1+l2)","id":10,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"lista = [1,2,3]\nprint(2*lista)","id":11,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"lista = [1,2,3,4,5,6,7,8,9]\n\nprint(12 in lista)","id":12,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"print(12 not in lista)","id":13,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l = [1.5, 3.3, 8.4, 3.1, 2.9]\nprint(l[2:4])","id":14,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"colores = ['azul', 'rojo', 'verde', 'amarillo']\nprint(colores.index('verde'))","id":15,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.remove(2)\nprint(l)","id":16,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l = [7, 0, 3, 9, 8, 2, 4]\ndel l[2]\nprint(l)","id":17,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.reverse()\nprint(l)","id":18,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"l = [7, 0, 3, 9, 8, 2, 4]\nl.sort()\nprint(l)","id":19,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# Definimos una lista llamada 'valores' con algunos números\nvalores = [1, 2, 3, 4, 5]\n\n# Usamos un ciclo 'for' para recorrer cada elemento de la lista\nfor i in valores:\n    # En cada iteración, 'i' toma el valor de un elemento de la lista\n    # y calculamos su cuadrado utilizando el operador '**'\n    cuadrado = i ** 2\n\n    # Luego, imprimimos el valor y su cuadrado en la consola\n    print(f\"El cuadrado de {i} es {cuadrado}\")","id":20,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# tupla vacia (Usando corchetes)\ntupla = ()\nprint(tupla)","id":21,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# tupla vacia (Usando el constructor)\ntupla = tuple()\nprint(tupla)","id":22,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# tupla con elementos\nnumeros = (\"uno\", \"dos\", \"tres\", \"cuatro\")\nprint(numeros)","id":23,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"persona = ('Javier', 'Perez')\nnombre, apellido = persona\nprint(nombre, apellido)","id":24,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a, b, c = persona","id":25,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"(1, 2) == (2 / 2, 1 + 1)","id":26,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"(6, 1) == (6, 2)","id":27,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"(1, 4, 7) < (2, 0, 0, 1)","id":28,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"(1, 9, 10) < (0, 5)","id":29,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"numeros = (\"uno\", \"dos\", \"tres\", \"cuatro\")\n\nprint(numeros[1]) #Output: dos\nprint(numeros[3]) #Output: cuatro\nprint(numeros[-1]) # Output: cuatro","id":30,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# Definimos una tupla con algunos números\ntupla_valores = (1, 2, 3, 4, 5)\n\n# Usamos un ciclo 'for' para recorrer cada elemento de la tupla\nfor valor in tupla_valores:\n    # En cada iteración, 'valor' toma el valor de un elemento de la tupla\n    # y calculamos su cuadrado utilizando el operador '**'\n    cuadrado = valor ** 2\n\n    # Luego, imprimimos el valor y su cuadrado en la consola\n    print(f\"El cuadrado de {valor} es {cuadrado}\")","id":31,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# Definimos una tupla\nmi_tupla = (1, 2, 3, 4, 5)\n\n# Usamos la función 'list()' para convertir la tupla en una lista\nmi_lista = list(mi_tupla)\n\n# Imprimimos la lista resultante\nprint(\"Tupla original:\", mi_tupla)\nprint(\"Lista resultante:\", mi_lista)","id":32,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# Definimos una lista\nmi_lista = [1, 2, 3, 4, 5]\n\n# Usamos la función 'tuple()' para convertir la lista en una tupla\nmi_tupla = tuple(mi_lista)\n\n# Imprimimos la tupla resultante\nprint(\"Lista original:\", mi_lista)\nprint(\"Tupla resultante:\", mi_tupla)","id":33,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# conjunto vacio (Usando corchetes)\nconjunto = {}\nprint(conjunto)","id":34,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# conjunto vacio (Usando el constructor)\nconjunto = set()\nprint(conjunto)","id":35,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# usar un conjunto literal, entre llave \nconjunto = {1, 2, 3}\nprint(conjunto)","id":36,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# set aplicada sobre un iterable\nconjunto = set([1, 2, 3])\nprint(conjunto)","id":37,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"conjunto = {[2, 4], [6, 1]}","id":38,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"conjunto = {'a', 'b', 'c'}\nconjunto[0]","id":39,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"conjunto = {'a', 'b', 'c'}\nfor i in conjunto:\n    print(i)","id":40,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"len({'azul', 'verde', 'rojo'})","id":41,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"3 in {2, 3, 4}","id":42,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"3 not in {2, 3, 4}","id":43,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"s = {6, 1, 5, 4, 3}\ns.add(-37)\ns","id":44,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"s = {6, 1, 5, 4, 3}\ns.remove(1)\ns","id":45,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"s.remove(10)","id":46,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# crear dos conjuntos\na = {1, 2, 3, 4}\nb = {2, 4, 6, 8}","id":47,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# interseccion\na & b","id":48,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# union\na | b","id":49,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# diferencia\na - b","id":50,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# diferencia simetrica\na ^ b","id":51,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"{1, 2} < {1, 2, 3}","id":52,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"{1, 4} < {1, 2, 3}","id":53,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"{1, 2, 3} < {1, 2, 3}","id":54,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"{1, 2, 3} <= {1, 2, 3}","id":55,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# diccionario vacio (Usando corchetes)\ndct = {}\nprint(dct)","id":56,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# lista vacia (Usando el constructor)\ndct = dict()\nprint(dct)","id":57,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# diccionario de enteros\ndct = {1: 'apple', 2: 'ball'}","id":58,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# diccionario dde llaves mixtas\ndct = {'name': 'John', 1: [2, 4, 3]}","id":59,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"dct = {'nombre':'Jack', 'edad': 26, 'salario': 4534.2}\nprint(dct['edad']) # Output: 26","id":60,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"dct = {'nombre':'Jack', 'edad': 26}","id":61,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# cambiar edad\ndct['edad'] = 36 \nprint(dct) # Output: {'name': 'Jack', 'age': 36}","id":62,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# adherir llave salario\ndct['salario'] = 4342.4\nprint(dct) # Output: {'name': 'Jack', 'age': 36, 'salary': 4342.4}","id":63,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# borrar llave edad\ndel dct['edad']\nprint(dct) # Output: {'name': 'Jack', 'salary': 4342.4}","id":64,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# borrar diccionario\ndel dct","id":65,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"dct = {1: 'apple', 2: 'ball'}\n\nfor k in dct:\n    print(k)","id":66,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"for v in dct.values():\n    print(v)","id":67,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"for k,v in dct.items():\n    print(f\"llave: {k}, valor: {v}\")","id":68,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"dct = {[1, 2, 3]: 'hola'}","id":69,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a = [5, 1, 4, 9, 0]\nb = range(3, 10) + range(20, 23)\nc = [[1, 2], [3, 4, 5], [6, 7]]\nd = ['perro', 'gato', 'jirafa', 'elefante']\ne = ['a', a, 2 * a]","id":70,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a[2]\nb[9]\nc[1][2]\ne[0] == e[1]\nlen(c)\nlen(c[0])\nlen(e)\nc[-1]\nc[-1][+1]\nc[2:] + d[2:]\na[3:10]\na[3:10:2]\nd.index('jirafa')\ne[c[0][1]].count(5)\nsorted(a)[2]\ncomplex(b[0], b[1])","id":71,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# respuesta","id":72,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a = (2, 10, 1991)\nb = (25, 12, 1990)\nc = ('Donald', True, b)\nx, y = ((27, 3), 9)\nz, w = x\nv = (x, a)","id":73,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a < b\ny + w\nx + a\nlen(v)\nv[1][1]\nc[0][0]\nz, y\na + b[1:5]\n(a + b)[1:5]\nstr(a[2]) + str(b[2])\nstr(a[2] + b[2])\nstr((a + b)[2])\nstr(a + b)[2]","id":74,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# respuesta","id":75,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a = {5, 2, 3, 9, 4}\nb = {3, 1}\nc = {7, 5, 5, 1, 8, 6}\nd = [6, 2, 4, 5, 5, 3, 1, 3, 7, 8]\ne = {(2, 3), (3, 4), (4, 5)}\nf = [{2, 3}, {3, 4}, {4, 5}]","id":76,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"len(c)\nlen(set(d))\na & (b | c)\n(a & b) | c\nc - a\nmax(e)\nf[0] < a\nset(range(4)) & a\n(set(range(4)) & a) in f\nlen(set('perro'))\nlen({'perro'})","id":77,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# respuesta","id":78,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a = {'a': 14, 'b': 23, 'c': 88}\nb = {12: True, 55: False, -2: False}\nc = dict()\nd = {1: [2, 3, 4], 5: [6, 7, 8, 9], 10: [11]}\ne = {2 + 3: 4, 5: 6 + 7, 8: 9, 10: 11 + 12}","id":79,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"a['c']\na[23]\nb[-2] or b[55]\n23 in a\n'a' in a\n5 in d[5]\nsum(b)\nlen(c)\nlen(d)\nlen(d[1])\nlen(b.values())\nlen(e)\nsum(a.values())\nmax(list(e))\nd[1] + d[5] + d[10]","id":80,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}},{"code":"# respuesta","id":81,"options":{"fig-height":5,"out-width":"700px","output":"true","out-height":"","message":"true","read-only":"false","warning":"true","results":"markup","context":"interactive","label":"","classes":"","dpi":72,"comment":"","fig-width":7,"fig-cap":"","autorun":""}}];
 
 
 </script>
@@ -463,7 +489,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/05_estructura_datos.html"><span class="chapter-title">📊 Estructura de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/05_estructura_datos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -479,6 +505,10 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">🐍 Python Intro</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/fralfaro/python_intro2" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -490,7 +520,8 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🏠 Home</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -504,12 +535,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -525,37 +558,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📚 Nomenclatura</span></a>
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">📊 Estructura de datos</span></a>
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">💡 Solución Ejercicios</span></span></a>
   </div>
 </li>
       </ul>
@@ -570,37 +610,37 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#listas" id="toc-listas" class="nav-link active" data-scroll-target="#listas">Listas</a>
+  <li><a href="#listas" id="toc-listas" class="nav-link active" data-scroll-target="#listas"><span class="header-section-number">6.1</span> Listas</a>
   <ul class="collapse">
-  <li><a href="#creando-listas-en-python" id="toc-creando-listas-en-python" class="nav-link" data-scroll-target="#creando-listas-en-python">Creando listas en python</a></li>
-  <li><a href="#operaciones-sobre-listas" id="toc-operaciones-sobre-listas" class="nav-link" data-scroll-target="#operaciones-sobre-listas">Operaciones sobre listas</a></li>
-  <li><a href="#iterar-sobre-una-lista" id="toc-iterar-sobre-una-lista" class="nav-link" data-scroll-target="#iterar-sobre-una-lista">Iterar sobre una lista</a></li>
+  <li><a href="#creando-listas-en-python" id="toc-creando-listas-en-python" class="nav-link" data-scroll-target="#creando-listas-en-python"><span class="header-section-number">6.1.1</span> Creando listas en python</a></li>
+  <li><a href="#operaciones-sobre-listas" id="toc-operaciones-sobre-listas" class="nav-link" data-scroll-target="#operaciones-sobre-listas"><span class="header-section-number">6.1.2</span> Operaciones sobre listas</a></li>
+  <li><a href="#iterar-sobre-una-lista" id="toc-iterar-sobre-una-lista" class="nav-link" data-scroll-target="#iterar-sobre-una-lista"><span class="header-section-number">6.1.3</span> Iterar sobre una lista</a></li>
   </ul></li>
-  <li><a href="#tuplas" id="toc-tuplas" class="nav-link" data-scroll-target="#tuplas">Tuplas</a>
+  <li><a href="#tuplas" id="toc-tuplas" class="nav-link" data-scroll-target="#tuplas"><span class="header-section-number">6.2</span> Tuplas</a>
   <ul class="collapse">
-  <li><a href="#desempaquetado-de-tuplas" id="toc-desempaquetado-de-tuplas" class="nav-link" data-scroll-target="#desempaquetado-de-tuplas">Desempaquetado de tuplas</a></li>
-  <li><a href="#comparación-de-tuplas" id="toc-comparación-de-tuplas" class="nav-link" data-scroll-target="#comparación-de-tuplas">Comparación de tuplas</a></li>
-  <li><a href="#acceder-a-valores-de-una-tupla" id="toc-acceder-a-valores-de-una-tupla" class="nav-link" data-scroll-target="#acceder-a-valores-de-una-tupla">Acceder a valores de una tupla</a></li>
-  <li><a href="#iteración-sobre-tuplas" id="toc-iteración-sobre-tuplas" class="nav-link" data-scroll-target="#iteración-sobre-tuplas">Iteración sobre tuplas</a></li>
+  <li><a href="#desempaquetado-de-tuplas" id="toc-desempaquetado-de-tuplas" class="nav-link" data-scroll-target="#desempaquetado-de-tuplas"><span class="header-section-number">6.2.1</span> Desempaquetado de tuplas</a></li>
+  <li><a href="#comparación-de-tuplas" id="toc-comparación-de-tuplas" class="nav-link" data-scroll-target="#comparación-de-tuplas"><span class="header-section-number">6.2.2</span> Comparación de tuplas</a></li>
+  <li><a href="#acceder-a-valores-de-una-tupla" id="toc-acceder-a-valores-de-una-tupla" class="nav-link" data-scroll-target="#acceder-a-valores-de-una-tupla"><span class="header-section-number">6.2.3</span> Acceder a valores de una tupla</a></li>
+  <li><a href="#iteración-sobre-tuplas" id="toc-iteración-sobre-tuplas" class="nav-link" data-scroll-target="#iteración-sobre-tuplas"><span class="header-section-number">6.2.4</span> Iteración sobre tuplas</a></li>
   </ul></li>
-  <li><a href="#conjuntos" id="toc-conjuntos" class="nav-link" data-scroll-target="#conjuntos">Conjuntos</a>
+  <li><a href="#conjuntos" id="toc-conjuntos" class="nav-link" data-scroll-target="#conjuntos"><span class="header-section-number">6.3</span> Conjuntos</a>
   <ul class="collapse">
-  <li><a href="#cómo-crear-conjuntos" id="toc-cómo-crear-conjuntos" class="nav-link" data-scroll-target="#cómo-crear-conjuntos">Cómo crear conjuntos</a></li>
-  <li><a href="#operaciones-sobre-conjuntos" id="toc-operaciones-sobre-conjuntos" class="nav-link" data-scroll-target="#operaciones-sobre-conjuntos">Operaciones sobre conjuntos</a></li>
+  <li><a href="#cómo-crear-conjuntos" id="toc-cómo-crear-conjuntos" class="nav-link" data-scroll-target="#cómo-crear-conjuntos"><span class="header-section-number">6.3.1</span> Cómo crear conjuntos</a></li>
+  <li><a href="#operaciones-sobre-conjuntos" id="toc-operaciones-sobre-conjuntos" class="nav-link" data-scroll-target="#operaciones-sobre-conjuntos"><span class="header-section-number">6.3.2</span> Operaciones sobre conjuntos</a></li>
   </ul></li>
-  <li><a href="#diccionarios" id="toc-diccionarios" class="nav-link" data-scroll-target="#diccionarios">Diccionarios</a>
+  <li><a href="#diccionarios" id="toc-diccionarios" class="nav-link" data-scroll-target="#diccionarios"><span class="header-section-number">6.4</span> Diccionarios</a>
   <ul class="collapse">
-  <li><a href="#cómo-crear-diccionarios" id="toc-cómo-crear-diccionarios" class="nav-link" data-scroll-target="#cómo-crear-diccionarios">Cómo crear diccionarios</a></li>
-  <li><a href="#cómo-usar-un-diccionario" id="toc-cómo-usar-un-diccionario" class="nav-link" data-scroll-target="#cómo-usar-un-diccionario">Cómo usar un diccionario</a></li>
-  <li><a href="#iterar-un-diccionario" id="toc-iterar-un-diccionario" class="nav-link" data-scroll-target="#iterar-un-diccionario">Iterar un diccionario</a></li>
-  <li><a href="#restricciones-sobre-las-llaves" id="toc-restricciones-sobre-las-llaves" class="nav-link" data-scroll-target="#restricciones-sobre-las-llaves">Restricciones sobre las llaves</a></li>
+  <li><a href="#cómo-crear-diccionarios" id="toc-cómo-crear-diccionarios" class="nav-link" data-scroll-target="#cómo-crear-diccionarios"><span class="header-section-number">6.4.1</span> Cómo crear diccionarios</a></li>
+  <li><a href="#cómo-usar-un-diccionario" id="toc-cómo-usar-un-diccionario" class="nav-link" data-scroll-target="#cómo-usar-un-diccionario"><span class="header-section-number">6.4.2</span> Cómo usar un diccionario</a></li>
+  <li><a href="#iterar-un-diccionario" id="toc-iterar-un-diccionario" class="nav-link" data-scroll-target="#iterar-un-diccionario"><span class="header-section-number">6.4.3</span> Iterar un diccionario</a></li>
+  <li><a href="#restricciones-sobre-las-llaves" id="toc-restricciones-sobre-las-llaves" class="nav-link" data-scroll-target="#restricciones-sobre-las-llaves"><span class="header-section-number">6.4.4</span> Restricciones sobre las llaves</a></li>
   </ul></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">6.5</span> Ejercicios</a>
   <ul class="collapse">
-  <li><a href="#listas-1" id="toc-listas-1" class="nav-link" data-scroll-target="#listas-1">Listas</a></li>
-  <li><a href="#tuplas-1" id="toc-tuplas-1" class="nav-link" data-scroll-target="#tuplas-1">Tuplas</a></li>
-  <li><a href="#conjuntos-1" id="toc-conjuntos-1" class="nav-link" data-scroll-target="#conjuntos-1">Conjuntos</a></li>
-  <li><a href="#diccionarios-1" id="toc-diccionarios-1" class="nav-link" data-scroll-target="#diccionarios-1">Diccionarios</a></li>
+  <li><a href="#listas-1" id="toc-listas-1" class="nav-link" data-scroll-target="#listas-1"><span class="header-section-number">6.5.1</span> Listas</a></li>
+  <li><a href="#tuplas-1" id="toc-tuplas-1" class="nav-link" data-scroll-target="#tuplas-1"><span class="header-section-number">6.5.2</span> Tuplas</a></li>
+  <li><a href="#conjuntos-1" id="toc-conjuntos-1" class="nav-link" data-scroll-target="#conjuntos-1"><span class="header-section-number">6.5.3</span> Conjuntos</a></li>
+  <li><a href="#diccionarios-1" id="toc-diccionarios-1" class="nav-link" data-scroll-target="#diccionarios-1"><span class="header-section-number">6.5.4</span> Diccionarios</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -618,9 +658,9 @@ window.Quarto = {
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/05_estructura_datos.html"><span class="chapter-title">📊 Estructura de datos</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/05_estructura_datos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">📊 Estructura de datos</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></h1>
 </div>
 
 
@@ -649,12 +689,12 @@ window.Quarto = {
 <li><p><strong>Diccionarios</strong> <code>{ : }</code> : Son un conjunto de pares de datos que se caracteriza por utilizar una relación llave-dato. Debido a esto no necesitan orden, ya que al tener una llave se puede sacar su dato relacionado.</p></li>
 </ul>
 <p>Las estructuras de datos de <strong>string</strong> ya fueron estudiados en secciones pasada. En esta sección nos centraremos en las estructuras de <strong>Listas</strong>, <strong>Tuplas</strong> y <strong>Diccionarios</strong>.</p>
-<section id="listas" class="level2">
-<h2 class="anchored" data-anchor-id="listas">Listas</h2>
+<section id="listas" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="listas"><span class="header-section-number">6.1</span> Listas</h2>
 <p>Una lista es una colección ordenada de valores. Una lista puede contener cualquier cosa.</p>
 <p>En Python, el tipo de datos que representa a las listas se llama <code>list</code>.</p>
-<section id="creando-listas-en-python" class="level3">
-<h3 class="anchored" data-anchor-id="creando-listas-en-python">Creando listas en python</h3>
+<section id="creando-listas-en-python" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="creando-listas-en-python"><span class="header-section-number">6.1.1</span> Creando listas en python</h3>
 <p>Existen varias formas de crear listas:</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -665,8 +705,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operaciones-sobre-listas" class="level3">
-<h3 class="anchored" data-anchor-id="operaciones-sobre-listas">Operaciones sobre listas</h3>
+<section id="operaciones-sobre-listas" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="operaciones-sobre-listas"><span class="header-section-number">6.1.2</span> Operaciones sobre listas</h3>
 <p><strong>Operador len</strong></p>
 <p><code>len(lista)</code> entrega el largo de la lista; es decir, cuántos elementos tiene:</p>
 <div id="qpyodide-insertion-location-5"></div>
@@ -724,8 +764,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="iterar-sobre-una-lista" class="level3">
-<h3 class="anchored" data-anchor-id="iterar-sobre-una-lista">Iterar sobre una lista</h3>
+<section id="iterar-sobre-una-lista" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="iterar-sobre-una-lista"><span class="header-section-number">6.1.3</span> Iterar sobre una lista</h3>
 <p>En Python, una lista es un tipo de objeto iterable, lo que significa que puedes recorrer sus elementos utilizando un ciclo <code>for</code>.</p>
 <p>A continuación, te mostraremos un ejemplo de cómo hacerlo paso a paso:</p>
 <div id="qpyodide-insertion-location-20"></div>
@@ -738,8 +778,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="tuplas" class="level2">
-<h2 class="anchored" data-anchor-id="tuplas">Tuplas</h2>
+<section id="tuplas" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="tuplas"><span class="header-section-number">6.2</span> Tuplas</h2>
 <p>Una tupla es una secuencia de valores agrupados. Una tupla sirve para agrupar, como si fueran un único valor, varios valores que, por su naturaleza, deben ir juntos.</p>
 <p>El tipo de datos que representa a las tuplas se llama <code>tuple</code>. El tipo tuple es <strong>inmutable: una tupla no puede ser modificada una vez que ha sido creada</strong>.</p>
 <div id="qpyodide-insertion-location-21"></div>
@@ -748,8 +788,8 @@ window.Quarto = {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qpyodide-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="desempaquetado-de-tuplas" class="level3">
-<h3 class="anchored" data-anchor-id="desempaquetado-de-tuplas">Desempaquetado de tuplas</h3>
+<section id="desempaquetado-de-tuplas" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="desempaquetado-de-tuplas"><span class="header-section-number">6.2.1</span> Desempaquetado de tuplas</h3>
 <p>Los valores individuales de una tupla pueden ser recuperados asignando la tupla a las variables respectivas. Esto se llama desempaquetar la tupla (en inglés: unpack):</p>
 <div id="qpyodide-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -757,8 +797,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="comparación-de-tuplas" class="level3">
-<h3 class="anchored" data-anchor-id="comparación-de-tuplas">Comparación de tuplas</h3>
+<section id="comparación-de-tuplas" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="comparación-de-tuplas"><span class="header-section-number">6.2.2</span> Comparación de tuplas</h3>
 <p>Dos tuplas son iguales cuando tienen el mismo tamaño y cada uno de sus elementos correspondientes tienen el mismo valor:</p>
 <div id="qpyodide-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -770,14 +810,14 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="acceder-a-valores-de-una-tupla" class="level3">
-<h3 class="anchored" data-anchor-id="acceder-a-valores-de-una-tupla">Acceder a valores de una tupla</h3>
+<section id="acceder-a-valores-de-una-tupla" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="acceder-a-valores-de-una-tupla"><span class="header-section-number">6.2.3</span> Acceder a valores de una tupla</h3>
 <p>Al igual que las listas, se pueden acceder a distintos elemntos de las tuplas de la siguiente forma:</p>
 <div id="qpyodide-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="iteración-sobre-tuplas" class="level3">
-<h3 class="anchored" data-anchor-id="iteración-sobre-tuplas">Iteración sobre tuplas</h3>
+<section id="iteración-sobre-tuplas" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="iteración-sobre-tuplas"><span class="header-section-number">6.2.4</span> Iteración sobre tuplas</h3>
 <p>Las tuplas en Python también son objetos iterables, lo que significa que puedes recorrer sus elementos usando un ciclo <code>for</code>.</p>
 <p>A continuación, te mostraremos un ejemplo de cómo hacerlo paso a paso:</p>
 <div id="qpyodide-insertion-location-31"></div>
@@ -792,12 +832,12 @@ window.Quarto = {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="conjuntos" class="level2">
-<h2 class="anchored" data-anchor-id="conjuntos">Conjuntos</h2>
+<section id="conjuntos" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="conjuntos"><span class="header-section-number">6.3</span> Conjuntos</h2>
 <p>Un conjunto es una colección desordenada de valores no repetidos.</p>
 <p>Los conjuntos de Python son análogos a los conjuntos matemáticos. El tipo de datos que representa a los conjuntos se llama <code>set</code>.</p>
-<section id="cómo-crear-conjuntos" class="level3">
-<h3 class="anchored" data-anchor-id="cómo-crear-conjuntos">Cómo crear conjuntos</h3>
+<section id="cómo-crear-conjuntos" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="cómo-crear-conjuntos"><span class="header-section-number">6.3.1</span> Cómo crear conjuntos</h3>
 <p>Las dos maneras principales de crear un conjunto son:</p>
 <div id="qpyodide-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -817,8 +857,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-40"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operaciones-sobre-conjuntos" class="level3">
-<h3 class="anchored" data-anchor-id="operaciones-sobre-conjuntos">Operaciones sobre conjuntos</h3>
+<section id="operaciones-sobre-conjuntos" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="operaciones-sobre-conjuntos"><span class="header-section-number">6.3.2</span> Operaciones sobre conjuntos</h3>
 <p><strong>Largo del conjunto</strong> <code>len(s)</code> entrega el número de elementos del conjunto s:</p>
 <div id="qpyodide-insertion-location-41"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -867,12 +907,12 @@ window.Quarto = {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="diccionarios" class="level2">
-<h2 class="anchored" data-anchor-id="diccionarios">Diccionarios</h2>
+<section id="diccionarios" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="diccionarios"><span class="header-section-number">6.4</span> Diccionarios</h2>
 <p>Un diccionario es un tipo de datos que sirve para asociar pares de objetos.</p>
 <p>Un diccionario puede ser visto como una colección de llaves, cada una de las cuales tiene asociada un valor. Las llaves no están ordenadas y no hay llaves repetidas. La única manera de acceder a un valor es a través de su llave.</p>
-<section id="cómo-crear-diccionarios" class="level3">
-<h3 class="anchored" data-anchor-id="cómo-crear-diccionarios">Cómo crear diccionarios</h3>
+<section id="cómo-crear-diccionarios" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="cómo-crear-diccionarios"><span class="header-section-number">6.4.1</span> Cómo crear diccionarios</h3>
 <p>Los diccionarios literales se crean usando llaves ({ y }). La llave y el valor van separados por dos puntos:</p>
 <div id="qpyodide-insertion-location-56"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -883,8 +923,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-59"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="cómo-usar-un-diccionario" class="level3">
-<h3 class="anchored" data-anchor-id="cómo-usar-un-diccionario">Cómo usar un diccionario</h3>
+<section id="cómo-usar-un-diccionario" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="cómo-usar-un-diccionario"><span class="header-section-number">6.4.2</span> Cómo usar un diccionario</h3>
 <p>El valor asociado a la llave <span class="math inline">\(k\)</span> en el diccionario <span class="math inline">\(dct\)</span> se puede obtener mediante <span class="math inline">\(dct[k]\)</span>:</p>
 <div id="qpyodide-insertion-location-60"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -902,8 +942,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-65"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="iterar-un-diccionario" class="level3">
-<h3 class="anchored" data-anchor-id="iterar-un-diccionario">Iterar un diccionario</h3>
+<section id="iterar-un-diccionario" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="iterar-un-diccionario"><span class="header-section-number">6.4.3</span> Iterar un diccionario</h3>
 <p>Los diccionarios son iterables. Al iterar sobre un diccionario en un ciclo <code>for</code>, se obtiene las llaves:</p>
 <div id="qpyodide-insertion-location-66"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -914,18 +954,18 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-68"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="restricciones-sobre-las-llaves" class="level3">
-<h3 class="anchored" data-anchor-id="restricciones-sobre-las-llaves">Restricciones sobre las llaves</h3>
+<section id="restricciones-sobre-las-llaves" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="restricciones-sobre-las-llaves"><span class="header-section-number">6.4.4</span> Restricciones sobre las llaves</h3>
 <p>No se puede usar cualquier objeto como llave de un diccionario. Las llaves deben ser de un tipo de datos inmutable. Por ejemplo, no se puede usar listas:</p>
 <div id="qpyodide-insertion-location-69"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Típicamente, se usa números, tuplas y strings como llaves de los diccionarios.</p>
 </section>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
-<section id="listas-1" class="level3">
-<h3 class="anchored" data-anchor-id="listas-1">Listas</h3>
+<section id="ejercicios" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">6.5</span> Ejercicios</h2>
+<section id="listas-1" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="listas-1"><span class="header-section-number">6.5.1</span> Listas</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Considere las siguientes listas:</p>
 <div id="qpyodide-insertion-location-70"></div>
@@ -936,8 +976,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-72"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="tuplas-1" class="level3">
-<h3 class="anchored" data-anchor-id="tuplas-1">Tuplas</h3>
+<section id="tuplas-1" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="tuplas-1"><span class="header-section-number">6.5.2</span> Tuplas</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Considere las siguientes asignaciones:</p>
 <div id="qpyodide-insertion-location-73"></div>
@@ -948,8 +988,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-75"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="conjuntos-1" class="level3">
-<h3 class="anchored" data-anchor-id="conjuntos-1">Conjuntos</h3>
+<section id="conjuntos-1" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="conjuntos-1"><span class="header-section-number">6.5.3</span> Conjuntos</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Considere las siguientes asignaciones:</p>
 <div id="qpyodide-insertion-location-76"></div>
@@ -960,8 +1000,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-78"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="diccionarios-1" class="level3">
-<h3 class="anchored" data-anchor-id="diccionarios-1">Diccionarios</h3>
+<section id="diccionarios-1" class="level3" data-number="6.5.4">
+<h3 data-number="6.5.4" class="anchored" data-anchor-id="diccionarios-1"><span class="header-section-number">6.5.4</span> Diccionarios</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Considere las siguientes asignaciones:</p>
 <div id="qpyodide-insertion-location-79"></div>
@@ -997,6 +1037,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1072,6 +1256,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1389,12 +1578,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../contenidos/04_control_flujo.html" class="pagination-link" aria-label="🔄 Control de Flujo">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">🔄 Control de Flujo</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../contenidos/06_funciones.html" class="pagination-link" aria-label="🛠️ Funciones">
-        <span class="nav-page-text"><span class="chapter-title">🛠️ Funciones</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1939,4 +2128,5 @@ qpyodideCellDetails.map(
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

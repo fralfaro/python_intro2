@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🐍 Python Intro - 📚 Nomenclatura</title>
+<title>🐍 Python Intro - 4&nbsp; 📚 Nomenclatura</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,10 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,10 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
 <style type="text/css">
+/* Estilos predeterminados para el modo claro */
 .monaco-editor pre {
   background-color: unset !important;
 }
@@ -116,13 +120,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  background-color: #EEEEEE;
 }
 
 .qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
   display: flex;
 }
 
-.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+.qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
   justify-content: center;
   display: flex;
   background-color: rgba(250, 250, 250, 0.65);
@@ -141,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 
 .qpyodide-icon-run-code {
-  color: #0d9c29
+  color: #0d9c29;
 }
 
 .qpyodide-output-code-stdout {
@@ -154,11 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 .qpyodide-editor {
   border: 1px solid #EEEEEE;
-}
-
-.qpyodide-editor-toolbar {
-  background-color: #EEEEEE;
-  padding: 0.2rem 0.5rem;
 }
 
 .qpyodide-button {
@@ -174,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0.375rem 0.75rem;
   font-size: .9rem;
   border-radius: 0.25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .qpyodide-button:hover {
@@ -183,23 +184,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-color: #c8ccd0;
 }
 
-.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+.qpyodide-button:disabled, .qpyodide-button.disabled, fieldset:disabled .qpyodide-button {
   pointer-events: none;
-  opacity: .65
+  opacity: .65;
 }
 
-.qpyodide-button-reset {
-  color: #696969; /*#4682b4;*/
-}
-
-.qpyodide-button-copy {
+.qpyodide-button-reset, .qpyodide-button-copy {
   color: #696969;
 }
 
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .monaco-editor pre, .qpyodide-editor, .qpyodide-button {
+    background-color: #333;
+    color: #DDD;
+  }
 
-/* Custom styling for RevealJS Presentations*/
+  .qpyodide-icon-run-code {
+    color: #4CAF50;
+  }
 
-/* Reset the style of the interactive area */
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+    background-color: rgba(50, 50, 50, 0.65);
+    border-color: rgba(60, 60, 60, 0.65);
+  }
+
+  .qpyodide-button:hover {
+    background-color: #666;
+    border-color: #777;
+  }
+
+  .qpyodide-output-code-stdout {
+    color: #DDD;
+  }
+
+  .qpyodide-output-code-stderr {
+    color: #F44336;
+  }
+}
+
+/* Custom styling for RevealJS Presentations */
 .reveal div.qpyodide-interactive-area {
   display: block;
   box-shadow: none;
@@ -209,38 +234,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0;
 } 
 
-/* Provide space to entries */
 .reveal div.qpyodide-output-code-area pre div {
   margin: 1px 2px 1px 10px;
 }
 
-/* Collapse the inside code tags to avoid extra space between line outputs */
 .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
   padding: 0;
   display: contents;
 }
 
-.reveal pre div code.qpyodide-output-code-stdout {
-  color: #111;
-}
-
-.reveal pre div code.qpyodide-output-code-stderr {
-  color: #db4133;
-}
-
-
-/* Create a border around console and output (does not effect graphs) */
 .reveal div.qpyodide-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
 
-/* Cap output height and allow text to scroll */
-/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
 .reveal div.qpyodide-output-code-area pre {
   max-height: 400px;
   overflow: scroll;
 }
+
+/* Estilos predeterminados para modo claro */
+.qpyodide-output-code-area {
+  background-color: black; /* Fondo negro para el modo claro */
+  color: white; /* Texto blanco para mejor legibilidad en fondo oscuro */
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .qpyodide-output-code-area {
+    background-color: white; /* Fondo blanco para el modo oscuro */
+    color: black; /* Texto negro para mejor legibilidad en fondo claro */
+  }
+}
+
 </style>
 <script type="module">
 // Document level settings ----
@@ -265,7 +291,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"code":"# imprimir \"Hola Mundo!\"\nprint(\"Hola Mundo!\");","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":2,"code":"# asignar e imprimir variables (numericas)\na = 5\nprint(\"a =\", 5)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":3,"code":"# asignar e imprimir variables (texto)\na = \"cinco\"\nprint(\"a =\", a)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":4,"code":"# Ejemplo\nx = 5\ny = 4\nsuma = x+y\n\nprint(\"La suma de\", x, \"con\", y, \"es igual a\", suma)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":5,"code":"# ejemplo f-string\nprint(f\"La suma de {x} con {y} es igual a igual a {suma}\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":6,"code":"# entero \na = 5\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":7,"code":"# flotante \nb = 1.5\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":8,"code":"# complejo \nc = 5 + 3j\nprint(type(c))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":9,"code":"a = True\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":10,"code":"b = False\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":11,"code":"# comillas simples\na = 'hola mundo'\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":12,"code":"# comillas complejas\nb = \"hola mundo\"\nprint(type(b))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":13,"code":"a = None\nprint(type(a))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":14,"code":"# correcto (numerico  + numerico)\n\nnum_int = 123  # integer type\nnum_flo = 1.23 # float type\n\nnum_new = num_int + num_flo\n\nprint(f\"Valor de num_new: {num_new}\")\nprint(f\"tipo de datos de  num_new: {type(num_new)}\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":15,"code":"# incorrecto (string  + numerico)\nnum_int = 123     # int type\nnum_str = \"456\"   # str type\n\nprint(num_int+num_str)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":16,"code":"num_int = 123  # int type\nnum_str = \"456\" # str type\n\n# cambiar string a numerico\nnum_str = int(num_str) \n\nprint(num_int+num_str)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":17,"code":"# operaciones basicas \n\nx = 14\ny = 4\n\n# suma\nprint(f'x + y = {x+y}') # Output: x + y = 18\n\n# resta\nprint(f'x - y = {x-y}') # Output: x - y = 10\n\n# multiplicacion\nprint(f'x * y = {x*y}') # Output: x * y = 56\n\n# division\nprint(f'x / y = {x/y}') # Output: x / y = 3.5\n\n# cuociente o division entera\nprint(f'x // y = {x//y}') # Output: x // y = 3","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":18,"code":"# operacion potencia\nx = 4\ny=3\nz=0.5\n\nprint(f'potencia entera:           x ** y = {x**y}' ) \nprint(f'potencia fraccionaria:     x ** z = {x**z}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":19,"code":"# modulo\nx = 13\ny = 4\nprint(f'x % y = {x%y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":20,"code":"x = 3.94987545322","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":21,"code":"# cero decimales\nprint(round(x))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":22,"code":"# un decimal\nprint(round(x,1))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":23,"code":"# dos decimales\nprint(round(x,2))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":24,"code":"# operadores de asignacion\n\nx = 5","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":25,"code":"# x += 5 ----> x = x + 5\nx +=5\nprint(x) # Output: 10","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":26,"code":"# x /= 5 ----> x = x / 5\nx /= 5\nprint(x) # Output: 2.0","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":27,"code":"# operadores relacionales (numericos)\n\nx = 14\ny = 4","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":28,"code":"# igual a\nprint(f'x = y  {x==y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":29,"code":"# distinto\nprint(f'x != y {x!=y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":30,"code":"# mayor que\nprint(f'x > y  {x>y}')","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":31,"code":"# mayor o igual que\nprint(f'x >= y {x>=y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":32,"code":"# menor o igual que\nprint(f'x <= y {x<=y}') ","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":33,"code":"# operadores relacionales ( string )\ntexto = \"Python\"\notro_texto = \"programa\"","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":34,"code":"# igualdad \nprint(texto == otro_texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":35,"code":"# desigualdad \nprint(texto != otro_texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":36,"code":"# un string esta en un texto\nprint(\"thon\" in texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":37,"code":"# un string NO esta en un texto\nprint(\"thon\" not in texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":38,"code":"# ejemplos 'and'\nvalor = True and False\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":39,"code":"# ejemplos 'or'\nvalor = True or False\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":40,"code":"# ejemplos 'not'\nvalor = not True\nprint(valor)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":41,"code":"# suma\ntexto_01 = \"hola \"\ntexto_02 = \"mundo\"\nprint(texto_01+texto_02)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":42,"code":"# multiplicacion\ntexto = \"hola mundo \"\nprint(4*texto)","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":43,"code":"# lower\ntexto = \"HOLA MUNDO\"\nprint(texto.lower())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":44,"code":"# upper\ntexto = \"hola mundo\"\nprint(texto.upper())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":45,"code":"# strip\ntexto = \" hola mundo \"\nprint(texto.strip())","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":46,"code":"# replace\ntexto = \" hola mundo \"\ncambiar = \"universo\"\nprint(texto.replace(\"mundo\",\"universo\"))","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":47,"code":"# seleccion primer elemento \ntexto = \"Python\"\nprint(texto[0])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":48,"code":"# seleccion ultimo elemento \nprint(texto[-1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":49,"code":"texto = \"Programa en Python\"","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":50,"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":51,"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":52,"code":"# seleccionar los elementos del treceavo en adelante\nprint(texto[12:])","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":53,"code":"texto = \"Programa en Python\"\nlargo = len(texto)\n\nprint(f\"El texto tiene {largo} letras\")","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":54,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":55,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":56,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":57,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":58,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":59,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":60,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}},{"id":61,"code":"# respuesta","options":{"label":"","comment":"","fig-width":7,"out-width":"700px","warning":"true","autorun":"","context":"interactive","results":"markup","output":"true","dpi":72,"fig-cap":"","fig-height":5,"message":"true","read-only":"false","out-height":"","classes":""}}];
+globalThis.qpyodideCellDetails = [{"code":"# imprimir \"Hola Mundo!\"\nprint(\"Hola Mundo!\");","id":1,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# asignar e imprimir variables (numericas)\na = 5\nprint(\"a =\", a)","id":2,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# asignar e imprimir variables (texto)\na = \"cinco\"\nprint(\"a =\", a)","id":3,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# Ejemplo\nx = 5\ny = 4\nsuma = x+y\n\nprint(\"La suma de\", x, \"con\", y, \"es igual a\", suma)","id":4,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# ejemplo f-string\nprint(f\"La suma de {x} con {y} es igual a igual a {suma}\")","id":5,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# entero \na = 5\nprint(type(a))","id":6,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# flotante \nb = 1.5\nprint(type(b))","id":7,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# complejo \nc = 5 + 3j\nprint(type(c))","id":8,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"a = True\nprint(type(a))","id":9,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"b = False\nprint(type(b))","id":10,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# comillas simples\na = 'hola mundo'\nprint(type(a))","id":11,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# comillas complejas\nb = \"hola mundo\"\nprint(type(b))","id":12,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"a = None\nprint(type(a))","id":13,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# correcto (numerico  + numerico)\n\nnum_int = 123  # integer type\nnum_flo = 1.23 # float type\n\nnum_new = num_int + num_flo\n\nprint(f\"Valor de num_new: {num_new}\")\nprint(f\"tipo de datos de  num_new: {type(num_new)}\")","id":14,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# incorrecto (string  + numerico)\nnum_int = 123     # int type\nnum_str = \"456\"   # str type\n\nprint(num_int+num_str)","id":15,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"num_int = 123  # int type\nnum_str = \"456\" # str type\n\n# cambiar string a numerico\nnum_str = int(num_str) \n\nprint(num_int+num_str)","id":16,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# operaciones basicas \n\nx = 14\ny = 4\n\n# suma\nprint(f'x + y = {x+y}') # Output: x + y = 18\n\n# resta\nprint(f'x - y = {x-y}') # Output: x - y = 10\n\n# multiplicacion\nprint(f'x * y = {x*y}') # Output: x * y = 56\n\n# division\nprint(f'x / y = {x/y}') # Output: x / y = 3.5\n\n# cuociente o division entera\nprint(f'x // y = {x//y}') # Output: x // y = 3","id":17,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# operacion potencia\nx = 4\ny=3\nz=0.5\n\nprint(f'potencia entera:           x ** y = {x**y}' ) \nprint(f'potencia fraccionaria:     x ** z = {x**z}') ","id":18,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# modulo\nx = 13\ny = 4\nprint(f'x % y = {x%y}')","id":19,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"x = 3.94987545322","id":20,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# cero decimales\nprint(round(x))","id":21,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# un decimal\nprint(round(x,1))","id":22,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# dos decimales\nprint(round(x,2))","id":23,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# operadores de asignacion\n\nx = 5","id":24,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# x += 5 ----> x = x + 5\nx +=5\nprint(x) # Output: 10","id":25,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# x /= 5 ----> x = x / 5\nx /= 5\nprint(x) # Output: 2.0","id":26,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# operadores relacionales (numericos)\n\nx = 14\ny = 4","id":27,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# igual a\nprint(f'x = y  {x==y}') ","id":28,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# distinto\nprint(f'x != y {x!=y}')","id":29,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# mayor que\nprint(f'x > y  {x>y}')","id":30,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# mayor o igual que\nprint(f'x >= y {x>=y}') ","id":31,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# menor o igual que\nprint(f'x <= y {x<=y}') ","id":32,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# operadores relacionales ( string )\ntexto = \"Python\"\notro_texto = \"programa\"","id":33,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# igualdad \nprint(texto == otro_texto)","id":34,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# desigualdad \nprint(texto != otro_texto)","id":35,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# un string esta en un texto\nprint(\"thon\" in texto)","id":36,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# un string NO esta en un texto\nprint(\"thon\" not in texto)","id":37,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# ejemplos 'and'\nvalor = True and False\nprint(valor)","id":38,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# ejemplos 'or'\nvalor = True or False\nprint(valor)","id":39,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# ejemplos 'not'\nvalor = not True\nprint(valor)","id":40,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# suma\ntexto_01 = \"hola \"\ntexto_02 = \"mundo\"\nprint(texto_01+texto_02)","id":41,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# multiplicacion\ntexto = \"hola mundo \"\nprint(4*texto)","id":42,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# lower\ntexto = \"HOLA MUNDO\"\nprint(texto.lower())","id":43,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# upper\ntexto = \"hola mundo\"\nprint(texto.upper())","id":44,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# strip\ntexto = \" hola mundo \"\nprint(texto.strip())","id":45,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# replace\ntexto = \" hola mundo \"\ncambiar = \"universo\"\nprint(texto.replace(\"mundo\",\"universo\"))","id":46,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# seleccion primer elemento \ntexto = \"Python\"\nprint(texto[0])","id":47,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# seleccion ultimo elemento \nprint(texto[-1])","id":48,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"texto = \"Programa en Python\"","id":49,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","id":50,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# seleccionar los elementos del primero al noveno en pasos de uno\nprint(texto[0:8:1])","id":51,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# seleccionar los elementos del treceavo en adelante\nprint(texto[12:])","id":52,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"texto = \"Programa en Python\"\nlargo = len(texto)\n\nprint(f\"El texto tiene {largo} letras\")","id":53,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":54,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":55,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":56,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":57,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":58,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":59,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":60,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}},{"code":"# respuesta","id":61,"options":{"label":"","comment":"","fig-height":5,"out-height":"","message":"true","out-width":"700px","output":"true","read-only":"false","fig-cap":"","results":"markup","fig-width":7,"dpi":72,"classes":"","warning":"true","context":"interactive","autorun":""}}];
 
 
 </script>
@@ -497,7 +523,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -513,6 +539,10 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">🐍 Python Intro</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/fralfaro/python_intro2" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -524,7 +554,8 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🏠 Home</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -538,12 +569,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,37 +592,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">📚 Nomenclatura</span></a>
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">💡 Solución Ejercicios</span></span></a>
   </div>
 </li>
       </ul>
@@ -604,32 +644,32 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#sintaxis" id="toc-sintaxis" class="nav-link active" data-scroll-target="#sintaxis">Sintaxis</a>
+  <li><a href="#sintaxis" id="toc-sintaxis" class="nav-link active" data-scroll-target="#sintaxis"><span class="header-section-number">4.1</span> Sintaxis</a>
   <ul class="collapse">
-  <li><a href="#hola-mundo" id="toc-hola-mundo" class="nav-link" data-scroll-target="#hola-mundo">Hola mundo!</a></li>
-  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
-  <li><a href="#imprimir-mensajes-y-variables" id="toc-imprimir-mensajes-y-variables" class="nav-link" data-scroll-target="#imprimir-mensajes-y-variables">Imprimir mensajes y variables</a></li>
-  <li><a href="#inputs-por-el-usuario" id="toc-inputs-por-el-usuario" class="nav-link" data-scroll-target="#inputs-por-el-usuario">Inputs por el usuario</a></li>
+  <li><a href="#hola-mundo" id="toc-hola-mundo" class="nav-link" data-scroll-target="#hola-mundo"><span class="header-section-number">4.1.1</span> Hola mundo!</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">4.1.2</span> Variables</a></li>
+  <li><a href="#imprimir-mensajes-y-variables" id="toc-imprimir-mensajes-y-variables" class="nav-link" data-scroll-target="#imprimir-mensajes-y-variables"><span class="header-section-number">4.1.3</span> Imprimir mensajes y variables</a></li>
+  <li><a href="#inputs-por-el-usuario" id="toc-inputs-por-el-usuario" class="nav-link" data-scroll-target="#inputs-por-el-usuario"><span class="header-section-number">4.1.4</span> Inputs por el usuario</a></li>
   </ul></li>
-  <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos">Tipos de datos</a>
+  <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos"><span class="header-section-number">4.2</span> Tipos de datos</a>
   <ul class="collapse">
-  <li><a href="#enteros-flotantes-y-números-complejos" id="toc-enteros-flotantes-y-números-complejos" class="nav-link" data-scroll-target="#enteros-flotantes-y-números-complejos">Enteros, flotantes y números complejos</a></li>
-  <li><a href="#valores-lógicos" id="toc-valores-lógicos" class="nav-link" data-scroll-target="#valores-lógicos">Valores lógicos</a></li>
-  <li><a href="#texto" id="toc-texto" class="nav-link" data-scroll-target="#texto">Texto</a></li>
-  <li><a href="#nulo" id="toc-nulo" class="nav-link" data-scroll-target="#nulo">Nulo</a></li>
-  <li><a href="#conversión-de-tipo" id="toc-conversión-de-tipo" class="nav-link" data-scroll-target="#conversión-de-tipo">Conversión de tipo</a></li>
+  <li><a href="#enteros-flotantes-y-números-complejos" id="toc-enteros-flotantes-y-números-complejos" class="nav-link" data-scroll-target="#enteros-flotantes-y-números-complejos"><span class="header-section-number">4.2.1</span> Enteros, flotantes y números complejos</a></li>
+  <li><a href="#valores-lógicos" id="toc-valores-lógicos" class="nav-link" data-scroll-target="#valores-lógicos"><span class="header-section-number">4.2.2</span> Valores lógicos</a></li>
+  <li><a href="#texto" id="toc-texto" class="nav-link" data-scroll-target="#texto"><span class="header-section-number">4.2.3</span> Texto</a></li>
+  <li><a href="#nulo" id="toc-nulo" class="nav-link" data-scroll-target="#nulo"><span class="header-section-number">4.2.4</span> Nulo</a></li>
+  <li><a href="#conversión-de-tipo" id="toc-conversión-de-tipo" class="nav-link" data-scroll-target="#conversión-de-tipo"><span class="header-section-number">4.2.5</span> Conversión de tipo</a></li>
   </ul></li>
-  <li><a href="#operaciones" id="toc-operaciones" class="nav-link" data-scroll-target="#operaciones">Operaciones</a>
+  <li><a href="#operaciones" id="toc-operaciones" class="nav-link" data-scroll-target="#operaciones"><span class="header-section-number">4.3</span> Operaciones</a>
   <ul class="collapse">
-  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos">Operadores aritméticos</a></li>
-  <li><a href="#otros-operadores-arítmeticos" id="toc-otros-operadores-arítmeticos" class="nav-link" data-scroll-target="#otros-operadores-arítmeticos">Otros operadores arítmeticos</a></li>
-  <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link" data-scroll-target="#operadores-de-asignación">Operadores de asignación</a></li>
-  <li><a href="#operadores-relacionales" id="toc-operadores-relacionales" class="nav-link" data-scroll-target="#operadores-relacionales">Operadores relacionales</a></li>
-  <li><a href="#operaciones-binarias" id="toc-operaciones-binarias" class="nav-link" data-scroll-target="#operaciones-binarias">Operaciones Binarias</a></li>
-  <li><a href="#operadores-de-string" id="toc-operadores-de-string" class="nav-link" data-scroll-target="#operadores-de-string">Operadores de String</a></li>
-  <li><a href="#más-operadores-de-string" id="toc-más-operadores-de-string" class="nav-link" data-scroll-target="#más-operadores-de-string">Más operadores de String</a></li>
+  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos"><span class="header-section-number">4.3.1</span> Operadores aritméticos</a></li>
+  <li><a href="#otros-operadores-arítmeticos" id="toc-otros-operadores-arítmeticos" class="nav-link" data-scroll-target="#otros-operadores-arítmeticos"><span class="header-section-number">4.3.2</span> Otros operadores arítmeticos</a></li>
+  <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link" data-scroll-target="#operadores-de-asignación"><span class="header-section-number">4.3.3</span> Operadores de asignación</a></li>
+  <li><a href="#operadores-relacionales" id="toc-operadores-relacionales" class="nav-link" data-scroll-target="#operadores-relacionales"><span class="header-section-number">4.3.4</span> Operadores relacionales</a></li>
+  <li><a href="#operaciones-binarias" id="toc-operaciones-binarias" class="nav-link" data-scroll-target="#operaciones-binarias"><span class="header-section-number">4.3.5</span> Operaciones Binarias</a></li>
+  <li><a href="#operadores-de-string" id="toc-operadores-de-string" class="nav-link" data-scroll-target="#operadores-de-string"><span class="header-section-number">4.3.6</span> Operadores de String</a></li>
+  <li><a href="#más-operadores-de-string" id="toc-más-operadores-de-string" class="nav-link" data-scroll-target="#más-operadores-de-string"><span class="header-section-number">4.3.7</span> Más operadores de String</a></li>
   </ul></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">4.4</span> Ejercicios</a></li>
   </ul>
 </nav>
     </div>
@@ -646,9 +686,9 @@ window.Quarto = {
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/03_nomenclatura.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">📚 Nomenclatura</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></h1>
 </div>
 
 
@@ -666,27 +706,27 @@ window.Quarto = {
 
 
 <center>
-<img src="../images/nomenclatura.svg" width="550">
+<img src="../images/nomenclatura.png" width="550">
 </center>
 <p><br></p>
-<section id="sintaxis" class="level2">
-<h2 class="anchored" data-anchor-id="sintaxis">Sintaxis</h2>
-<section id="hola-mundo" class="level3">
-<h3 class="anchored" data-anchor-id="hola-mundo">Hola mundo!</h3>
+<section id="sintaxis" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sintaxis"><span class="header-section-number">4.1</span> Sintaxis</h2>
+<section id="hola-mundo" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="hola-mundo"><span class="header-section-number">4.1.1</span> Hola mundo!</h3>
 <p>Escribamos nuestro primer programa de Python, “¡Hola, mundo!”. Es un programa simple que imprime Hello World! en el dispositivo de salida estándar (pantalla). Para eso se ocupa el comando <code>print()</code>.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="variables" class="level3">
-<h3 class="anchored" data-anchor-id="variables">Variables</h3>
+<section id="variables" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="variables"><span class="header-section-number">4.1.2</span> Variables</h3>
 <p>Una <strong>variable</strong> es una ubicación con nombre utilizada para almacenar datos en la memoria. Una <strong>asignación</strong> es una sentencia que asocia un nombre al resultado de una expresión.</p>
 <div id="qpyodide-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="imprimir-mensajes-y-variables" class="level3">
-<h3 class="anchored" data-anchor-id="imprimir-mensajes-y-variables">Imprimir mensajes y variables</h3>
+<section id="imprimir-mensajes-y-variables" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="imprimir-mensajes-y-variables"><span class="header-section-number">4.1.3</span> Imprimir mensajes y variables</h3>
 <p>La formula para imprimir mensajes y variables es:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mensaje_01"</span>,variable_01,<span class="st">"mensaje_02"</span>,variable_02,...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="qpyodide-insertion-location-4"></div>
@@ -699,18 +739,18 @@ window.Quarto = {
 <p><strong>Observación</strong>: Se tratara de trabajar siempre con la forma <strong>f-string</strong> para ser consistente.</p>
 </blockquote>
 </section>
-<section id="inputs-por-el-usuario" class="level3">
-<h3 class="anchored" data-anchor-id="inputs-por-el-usuario">Inputs por el usuario</h3>
+<section id="inputs-por-el-usuario" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="inputs-por-el-usuario"><span class="header-section-number">4.1.4</span> Inputs por el usuario</h3>
 <p>En Python, puede usar la función <code>input()</code> para tomar la entrada del usuario. Por ejemplo:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inputs por el usuario</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>inputString <span class="op">=</span> <span class="bu">input</span>(<span class="st">'Escriba una oracion:'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Su oracion es: </span><span class="sc">{</span>inputString<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="tipos-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="tipos-de-datos">Tipos de datos</h2>
-<section id="enteros-flotantes-y-números-complejos" class="level3">
-<h3 class="anchored" data-anchor-id="enteros-flotantes-y-números-complejos">Enteros, flotantes y números complejos</h3>
+<section id="tipos-de-datos" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="tipos-de-datos"><span class="header-section-number">4.2</span> Tipos de datos</h2>
+<section id="enteros-flotantes-y-números-complejos" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="enteros-flotantes-y-números-complejos"><span class="header-section-number">4.2.1</span> Enteros, flotantes y números complejos</h3>
 <p>Python admite enteros, números de coma flotante y números complejos. Se definen como <code>int</code>, <code>float</code> y <code>complex</code> en Python.</p>
 <div id="qpyodide-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -719,8 +759,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="valores-lógicos" class="level3">
-<h3 class="anchored" data-anchor-id="valores-lógicos">Valores lógicos</h3>
+<section id="valores-lógicos" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="valores-lógicos"><span class="header-section-number">4.2.2</span> Valores lógicos</h3>
 <p>Los valores lógicos <code>True</code> y <code>False</code> (verdadero y falso) son de tipo <code>bool</code>, que representa valores lógicos.</p>
 <p>El nombre bool viene del matemático <strong>George Boole</strong>, quien creó un sistema algebraico para la lógica binaria. Por lo mismo, a <code>True</code> y <code>False</code> también se les llama <strong>valores booleanos</strong>. El nombre no es muy intuitivo, pero es el que se usa en informática, así que hay que conocerlo.</p>
 <div id="qpyodide-insertion-location-9"></div>
@@ -728,8 +768,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="texto" class="level3">
-<h3 class="anchored" data-anchor-id="texto">Texto</h3>
+<section id="texto" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="texto"><span class="header-section-number">4.2.3</span> Texto</h3>
 <p>A los valores que representan texto se les llama <code>strings</code>, y tienen el tipo <code>str</code>.</p>
 <p>Los strings literales pueden ser representados con texto entre comillas simples o comillas dobles:</p>
 <div id="qpyodide-insertion-location-11"></div>
@@ -737,15 +777,15 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="nulo" class="level3">
-<h3 class="anchored" data-anchor-id="nulo">Nulo</h3>
+<section id="nulo" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="nulo"><span class="header-section-number">4.2.4</span> Nulo</h3>
 <p>Existe un valor llamado <code>None</code> (en inglés, «ninguno») que es utilizado para representar casos en que ningún valor es válido, o para indicar que una variable todavía no tiene un valor que tenga sentido.</p>
 <p>El valor None tiene su propio tipo, llamado <code>NoneType</code>, que es diferente al de todos los demás valores.</p>
 <div id="qpyodide-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="conversión-de-tipo" class="level3">
-<h3 class="anchored" data-anchor-id="conversión-de-tipo">Conversión de tipo</h3>
+<section id="conversión-de-tipo" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="conversión-de-tipo"><span class="header-section-number">4.2.5</span> Conversión de tipo</h3>
 <p>El proceso de convertir el valor de un tipo de datos (entero, cadena, flotante, etc.) en otro se llama conversión de tipo. Python tiene dos tipos de conversión de tipos.</p>
 <p><strong>a) Implícita</strong></p>
 <div id="qpyodide-insertion-location-14"></div>
@@ -758,16 +798,16 @@ window.Quarto = {
 <p><strong>Observación</strong>: el proceso de transformar <code>string</code> a <code>numeric</code> es correcto cuando lo que está escrito en el <code>string</code> es un número, en caso contrario, nos dará error.</p>
 </section>
 </section>
-<section id="operaciones" class="level2">
-<h2 class="anchored" data-anchor-id="operaciones">Operaciones</h2>
-<section id="operadores-aritméticos" class="level3">
-<h3 class="anchored" data-anchor-id="operadores-aritméticos">Operadores aritméticos</h3>
+<section id="operaciones" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="operaciones"><span class="header-section-number">4.3</span> Operaciones</h2>
+<section id="operadores-aritméticos" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="operadores-aritméticos"><span class="header-section-number">4.3.1</span> Operadores aritméticos</h3>
 <p>Los operadores son símbolos especiales que realizan operaciones en operandos (variables y valores). Hablemos de operadores aritméticos y de asignación en esta parte.</p>
 <div id="qpyodide-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="otros-operadores-arítmeticos" class="level3">
-<h3 class="anchored" data-anchor-id="otros-operadores-arítmeticos">Otros operadores arítmeticos</h3>
+<section id="otros-operadores-arítmeticos" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="otros-operadores-arítmeticos"><span class="header-section-number">4.3.2</span> Otros operadores arítmeticos</h3>
 <p><strong>Potencia</strong></p>
 <p>La función <a href="https://es.wikipedia.org/wiki/Potenciaci%C3%B3n">potencia</a> de un número entero corresponde a multiplicar <span class="math inline">\(n\)</span> veces el mismo número. Por ejemplo</p>
 <p><span class="math display">\[4^3 = 4*4*4 = 64\]</span></p>
@@ -793,8 +833,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operadores-de-asignación" class="level3">
-<h3 class="anchored" data-anchor-id="operadores-de-asignación">Operadores de asignación</h3>
+<section id="operadores-de-asignación" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="operadores-de-asignación"><span class="header-section-number">4.3.3</span> Operadores de asignación</h3>
 <p>Los operadores de asignación se utilizan para asignar valores a las variables. Probemos algunos operadores de asignación más comunes.</p>
 <div id="qpyodide-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -803,8 +843,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operadores-relacionales" class="level3">
-<h3 class="anchored" data-anchor-id="operadores-relacionales">Operadores relacionales</h3>
+<section id="operadores-relacionales" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="operadores-relacionales"><span class="header-section-number">4.3.4</span> Operadores relacionales</h3>
 <p>Los operadores relacionales sirven para comparar valores. Sus operandos son cualquier cosa que pueda ser comparada, y sus resultados siempre son valores lógicos.</p>
 <p><strong>Operadores relacionales (numéricos)</strong></p>
 <div id="qpyodide-insertion-location-27"></div>
@@ -831,8 +871,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-37"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operaciones-binarias" class="level3">
-<h3 class="anchored" data-anchor-id="operaciones-binarias">Operaciones Binarias</h3>
+<section id="operaciones-binarias" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="operaciones-binarias"><span class="header-section-number">4.3.5</span> Operaciones Binarias</h3>
 <p>Una <a href="https://es.wikipedia.org/wiki/Tabla_de_verdad">tabla de verdad</a>, o tabla de valores de verdades, es una tabla que muestra el valor de verdad de una proposición compuesta, para cada combinación de verdad que se pueda asignar.</p>
 <table class="caption-top table">
 <thead>
@@ -939,16 +979,16 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-40"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="operadores-de-string" class="level3">
-<h3 class="anchored" data-anchor-id="operadores-de-string">Operadores de String</h3>
+<section id="operadores-de-string" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="operadores-de-string"><span class="header-section-number">4.3.6</span> Operadores de String</h3>
 <p>Los operadores de string sirven para poder operar variables tipo <code>str</code>.</p>
 <div id="qpyodide-insertion-location-41"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qpyodide-insertion-location-42"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="más-operadores-de-string" class="level3">
-<h3 class="anchored" data-anchor-id="más-operadores-de-string">Más operadores de String</h3>
+<section id="más-operadores-de-string" class="level3" data-number="4.3.7">
+<h3 data-number="4.3.7" class="anchored" data-anchor-id="más-operadores-de-string"><span class="header-section-number">4.3.7</span> Más operadores de String</h3>
 <p>Existe algunas métodos aplicable a los <code>strings</code>:</p>
 <div id="qpyodide-insertion-location-43"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -984,8 +1024,8 @@ window.Quarto = {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="ejercicios" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">4.4</span> Ejercicios</h2>
 <p><strong>Ejercicio 01</strong></p>
 <p>Escriba un programa que pida al usuario que escriba su nombre, y lo salude llamándolo por su nombre.</p>
 <pre class="terminal"><code>Ingrese su nombre: Perico
@@ -1080,6 +1120,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1155,6 +1339,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1477,7 +1666,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../contenidos/04_control_flujo.html" class="pagination-link" aria-label="🔄 Control de Flujo">
-        <span class="nav-page-text"><span class="chapter-title">🔄 Control de Flujo</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2022,4 +2211,5 @@ qpyodideCellDetails.map(
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🐍 Python Intro - 🐍 Sobre Python</title>
+<title>🐍 Python Intro - 3&nbsp; 🐍 Sobre Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,10 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 </head>
@@ -82,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../prefacio/intro.html">Prefacio</a></li><li class="breadcrumb-item"><a href="../prefacio/02_intro_python.html"><span class="chapter-title">🐍 Sobre Python</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../prefacio/intro.html">Prefacio</a></li><li class="breadcrumb-item"><a href="../prefacio/02_intro_python.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -98,6 +101,10 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">🐍 Python Intro</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/fralfaro/python_intro2" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -109,7 +116,8 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🏠 Home</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -123,12 +131,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🐍 Sobre Python</span></a>
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -144,37 +154,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📚 Nomenclatura</span></a>
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">💡 Solución Ejercicios</span></span></a>
   </div>
 </li>
       </ul>
@@ -189,22 +206,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#popularidad" id="toc-popularidad" class="nav-link active" data-scroll-target="#popularidad">Popularidad</a>
+  <li><a href="#popularidad" id="toc-popularidad" class="nav-link active" data-scroll-target="#popularidad"><span class="header-section-number">3.1</span> Popularidad</a>
   <ul class="collapse">
-  <li><a href="#es-buena-la-popularidad-de-python" id="toc-es-buena-la-popularidad-de-python" class="nav-link" data-scroll-target="#es-buena-la-popularidad-de-python">¿Es buena la popularidad de Python?</a></li>
+  <li><a href="#es-buena-la-popularidad-de-python" id="toc-es-buena-la-popularidad-de-python" class="nav-link" data-scroll-target="#es-buena-la-popularidad-de-python"><span class="header-section-number">3.1.1</span> ¿Es buena la popularidad de Python?</a></li>
   </ul></li>
-  <li><a href="#librerías-y-frameworks" id="toc-librerías-y-frameworks" class="nav-link" data-scroll-target="#librerías-y-frameworks">Librerías y frameworks</a></li>
-  <li><a href="#performance" id="toc-performance" class="nav-link" data-scroll-target="#performance">Performance</a></li>
-  <li><a href="#referencia" id="toc-referencia" class="nav-link" data-scroll-target="#referencia">Referencia</a></li>
+  <li><a href="#librerías-y-frameworks" id="toc-librerías-y-frameworks" class="nav-link" data-scroll-target="#librerías-y-frameworks"><span class="header-section-number">3.2</span> Librerías y frameworks</a></li>
+  <li><a href="#performance" id="toc-performance" class="nav-link" data-scroll-target="#performance"><span class="header-section-number">3.3</span> Performance</a></li>
+  <li><a href="#referencia" id="toc-referencia" class="nav-link" data-scroll-target="#referencia"><span class="header-section-number">3.4</span> Referencia</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../prefacio/intro.html">Prefacio</a></li><li class="breadcrumb-item"><a href="../prefacio/02_intro_python.html"><span class="chapter-title">🐍 Sobre Python</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../prefacio/intro.html">Prefacio</a></li><li class="breadcrumb-item"><a href="../prefacio/02_intro_python.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">🐍 Sobre Python</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></h1>
 </div>
 
 
@@ -228,16 +245,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>lenguaje interpretado</strong>: el código se ejecuta línea por línea, en lugar de ser compilado de antemano. Esto lo hace muy flexible y adecuado para prototipos rápidos y experimentación.</p></li>
 <li><p><strong>código abierto</strong>: el código fuente está disponible públicamente y se puede modificar y distribuir libremente. Hay una gran comunidad de desarrolladores de Python que contribuyen con módulos y herramientas útiles, y que brindan soporte y ayuda a otros usuarios.</p></li>
 </ul>
-<section id="popularidad" class="level2">
-<h2 class="anchored" data-anchor-id="popularidad">Popularidad</h2>
+<section id="popularidad" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="popularidad"><span class="header-section-number">3.1</span> Popularidad</h2>
 <p>Python es uno de los lenguajes de programación más populares y ampliamente utilizados en la actualidad. Según los índices de popularidad de lenguajes de programación, Python ha estado en constante aumento en popularidad en los últimos años.</p>
 <p>El índice <a href="https://www.tiobe.com/tiobe-index/">TIOBE</a>, que mide la popularidad de los lenguajes de programación según la frecuencia con la que se buscan en los motores de búsqueda, ha situado a Python entre los tres lenguajes de programación más populares en los últimos años, después de Java y C.</p>
 <p>Además, según la encuesta anual <a href="https://insights.stackoverflow.com/survey/2023">Stack Overflow Developer Survey 2023</a>, Python se ubicó entre los cinco lenguajes de programación más populares. Este lenguaje también ha ganado una notable popularidad en campos como la ciencia de datos y el aprendizaje automático, consolidándose como una herramienta indispensable para profesionales y entusiastas de estas áreas.</p>
 <center>
 <img src="../images/survey_stackoverflow.png" width="650">
 </center>
-<section id="es-buena-la-popularidad-de-python" class="level3">
-<h3 class="anchored" data-anchor-id="es-buena-la-popularidad-de-python">¿Es buena la popularidad de Python?</h3>
+<section id="es-buena-la-popularidad-de-python" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="es-buena-la-popularidad-de-python"><span class="header-section-number">3.1.1</span> ¿Es buena la popularidad de Python?</h3>
 <p>Sí, la popularidad de Python es una señal de su relevancia en el mundo de la programación y puede tener varias ventajas para los usuarios y la comunidad en general.</p>
 <p>En primer lugar, una mayor popularidad significa que hay una amplia comunidad de desarrolladores y usuarios de Python en todo el mundo, lo que hace que sea más fácil encontrar recursos, soporte y ayuda en línea. Además, una gran comunidad de usuarios también implica que hay una gran cantidad de bibliotecas y módulos disponibles, lo que permite a los usuarios aprovechar el código existente y acelerar el desarrollo.</p>
 <p>En segundo lugar, la popularidad de Python lo convierte en una habilidad valiosa en el mercado laboral, con una amplia gama de oportunidades de carrera en diferentes sectores, incluyendo la ciencia de datos, la inteligencia artificial, el desarrollo web, la automatización y la programación de sistemas.</p>
@@ -245,8 +262,8 @@ ul.task-list li input[type="checkbox"] {
 <p>En general, la popularidad de Python es una buena señal y es una de las razones por las que se ha convertido en un lenguaje de programación tan popular y utilizado en todo el mundo.</p>
 </section>
 </section>
-<section id="librerías-y-frameworks" class="level2">
-<h2 class="anchored" data-anchor-id="librerías-y-frameworks">Librerías y frameworks</h2>
+<section id="librerías-y-frameworks" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="librerías-y-frameworks"><span class="header-section-number">3.2</span> Librerías y frameworks</h2>
 <center>
 <img src="../images/python_landscape.jpg" width="650">
 </center>
@@ -266,8 +283,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Flask</strong>: Es un framework de Python que se utiliza para el desarrollo de aplicaciones web de menor escala y más simples. Ofrece una amplia gama de herramientas y extensiones para la creación de aplicaciones web.</p></li>
 </ul>
 </section>
-<section id="performance" class="level2">
-<h2 class="anchored" data-anchor-id="performance">Performance</h2>
+<section id="performance" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="performance"><span class="header-section-number">3.3</span> Performance</h2>
 <p>Python es un lenguaje de programación interpretado de alto nivel, lo que significa que su rendimiento puede ser más lento que otros lenguajes de programación de menor nivel, como C o C++. Sin embargo, Python ofrece varias técnicas y herramientas para mejorar el rendimiento y la eficiencia de sus programas. Aquí hay algunas de ellas:</p>
 <ul>
 <li><p><strong>Compilación JIT</strong>: Python ofrece la opción de utilizar un compilador Just-In-Time (JIT), como PyPy, que puede mejorar significativamente el rendimiento de los programas al compilar el código en tiempo de ejecución.</p></li>
@@ -278,8 +295,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>En general, Python puede ofrecer un buen rendimiento en comparación con otros lenguajes de programación interpretados, y hay varias técnicas y herramientas disponibles para mejorar aún más su rendimiento y eficiencia. Sin embargo, es importante recordar que el rendimiento dependerá en gran medida del uso que se le dé al lenguaje y de cómo se escriban los programas.</p>
 </section>
-<section id="referencia" class="level2">
-<h2 class="anchored" data-anchor-id="referencia">Referencia</h2>
+<section id="referencia" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="referencia"><span class="header-section-number">3.4</span> Referencia</h2>
 <ol type="1">
 <li><a href="https://docs.python.org/es/3.8/tutorial/index.html">Tutorial de Python 3.8 documentation</a></li>
 </ol>
@@ -308,6 +325,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -383,6 +544,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -700,7 +866,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../prefacio/01_intro_progra.html" class="pagination-link" aria-label="💻 Sobre Programación">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">💻 Sobre Programación</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -714,4 +880,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

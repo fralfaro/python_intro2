@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🐍 Python Intro - 🔄 Control de Flujo</title>
+<title>🐍 Python Intro - 5&nbsp; 🔄 Control de Flujo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,10 +72,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,10 +105,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Buscar"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
 <style type="text/css">
+/* Estilos predeterminados para el modo claro */
 .monaco-editor pre {
   background-color: unset !important;
 }
@@ -116,13 +120,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
+  background-color: #EEEEEE;
 }
 
 .qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
   display: flex;
 }
 
-.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+.qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+.qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
   justify-content: center;
   display: flex;
   background-color: rgba(250, 250, 250, 0.65);
@@ -141,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 
 .qpyodide-icon-run-code {
-  color: #0d9c29
+  color: #0d9c29;
 }
 
 .qpyodide-output-code-stdout {
@@ -154,11 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 .qpyodide-editor {
   border: 1px solid #EEEEEE;
-}
-
-.qpyodide-editor-toolbar {
-  background-color: #EEEEEE;
-  padding: 0.2rem 0.5rem;
 }
 
 .qpyodide-button {
@@ -174,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0.375rem 0.75rem;
   font-size: .9rem;
   border-radius: 0.25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .qpyodide-button:hover {
@@ -183,23 +184,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-color: #c8ccd0;
 }
 
-.qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+.qpyodide-button:disabled, .qpyodide-button.disabled, fieldset:disabled .qpyodide-button {
   pointer-events: none;
-  opacity: .65
+  opacity: .65;
 }
 
-.qpyodide-button-reset {
-  color: #696969; /*#4682b4;*/
-}
-
-.qpyodide-button-copy {
+.qpyodide-button-reset, .qpyodide-button-copy {
   color: #696969;
 }
 
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .monaco-editor pre, .qpyodide-editor, .qpyodide-button {
+    background-color: #333;
+    color: #DDD;
+  }
 
-/* Custom styling for RevealJS Presentations*/
+  .qpyodide-icon-run-code {
+    color: #4CAF50;
+  }
 
-/* Reset the style of the interactive area */
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation,
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+    background-color: rgba(50, 50, 50, 0.65);
+    border-color: rgba(60, 60, 60, 0.65);
+  }
+
+  .qpyodide-button:hover {
+    background-color: #666;
+    border-color: #777;
+  }
+
+  .qpyodide-output-code-stdout {
+    color: #DDD;
+  }
+
+  .qpyodide-output-code-stderr {
+    color: #F44336;
+  }
+}
+
+/* Custom styling for RevealJS Presentations */
 .reveal div.qpyodide-interactive-area {
   display: block;
   box-shadow: none;
@@ -209,38 +234,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding: 0;
 } 
 
-/* Provide space to entries */
 .reveal div.qpyodide-output-code-area pre div {
   margin: 1px 2px 1px 10px;
 }
 
-/* Collapse the inside code tags to avoid extra space between line outputs */
 .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
   padding: 0;
   display: contents;
 }
 
-.reveal pre div code.qpyodide-output-code-stdout {
-  color: #111;
-}
-
-.reveal pre div code.qpyodide-output-code-stderr {
-  color: #db4133;
-}
-
-
-/* Create a border around console and output (does not effect graphs) */
 .reveal div.qpyodide-console-area {
   border: 1px solid #EEEEEE;
   box-shadow: 2px 2px 10px #EEEEEE;
 }
 
-/* Cap output height and allow text to scroll */
-/* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
 .reveal div.qpyodide-output-code-area pre {
   max-height: 400px;
   overflow: scroll;
 }
+
+/* Estilos predeterminados para modo claro */
+.qpyodide-output-code-area {
+  background-color: black; /* Fondo negro para el modo claro */
+  color: white; /* Texto blanco para mejor legibilidad en fondo oscuro */
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .qpyodide-output-code-area {
+    background-color: white; /* Fondo blanco para el modo oscuro */
+    color: black; /* Texto negro para mejor legibilidad en fondo claro */
+  }
+}
+
 </style>
 <script type="module">
 // Document level settings ----
@@ -265,7 +291,7 @@ globalThis.qpyodideCustomizedPyodideOptions = {
 }
 
 // Store cell data
-globalThis.qpyodideCellDetails = [{"id":1,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# definir variables\nn = 5\nm = 10\n\n# inicializar flujo\nif m < n:\n    t = m\n    m = n\n    n = t\n\n# sentencia despues del flujo\nprint(m, n)"},{"id":2,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 60\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 55:\n    print(\"Felicitaciones!!!\")"},{"id":3,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 40\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota < 55:\n    print(\"Lamentablemente Ud. ha reprobado.\")"},{"id":4,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"edad = 20\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")"},{"id":5,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"edad = 10\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")"},{"id":6,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"n = 15\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")"},{"id":7,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"n = 20\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")"},{"id":8,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"nota = 90\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 80:\n    print(\"Usted es un alumno destacado.\")\nelif nota >= 65:\n    print(\"Usted ha aprobado.\")\nelif nota >= 55:\n    print(\"Usted aprobó con algunas dificultades.\")\nelif nota >= 45:\n    print(\"Con un poco mas de empeño hubiese aprobado.\")\nelse:\n    print(\"Nos vemos el próximo semestre.\")"},{"id":9,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"sueldo = 2000\nprint(f\"Ingrese su sueldo: {sueldo}\")\n\nif sueldo < 1000:\n    print(\"caso 1\")\n    tasa = 0.00\nelif sueldo < 2000: # 1000 <= sueldo < 2000?\n    print(\"caso 2\")\n    tasa = 0.05\nelif sueldo < 4000: # 2000 <= sueldo < 4000\n    print(\"caso 3\")\n    tasa = 0.10\nelse:\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")"},{"id":10,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"sueldo = 2000\nif sueldo < 1000: #1000 > sueldo:\n    print(\"caso 1\")\n    tasa = 0.00\nif sueldo >= 1000 and sueldo < 2000: #if 1000 <= sueldo < 2000:\n    print(\"caso 2\")\n    tasa = 0.05\nif 2000 <= sueldo < 4000:\n    print(\"caso 3\")\n    tasa = 0.10\nif 4000 <= sueldo: #sueldo>= 4000\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")"},{"id":11,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"m = 4\nn = 7\np = 0\n\nwhile m > 0:\n    m = m - 1\n    p = p + n\n    \nprint(f\"El producto de 'm' y 'n' es {p}\")"},{"id":12,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nnumero = 10\n\n# Inicializa la variable para la suma\nsuma = 0\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular la suma de los cuadrados\nwhile i <= numero:\n    suma += i ** 2\n    i += 1\n\n# Muestra el resultado\nprint(f\"La suma de los cuadrados desde 1 hasta {numero} es {suma}\")"},{"id":13,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nn = 10\n\n# Inicializa el valor del factorial a 1\nfactorial = 1\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular el factorial\nwhile i <= n:\n    factorial *= i\n    i += 1\n\n# Muestra el resultado\nprint(f\"{n}! = {factorial}\")"},{"id":14,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Solicita al usuario ingresar un número entero\nnumero = 35\n\n# Inicializa un contador de números divisibles por 3 o 5\ncontador = 0\n\n# Inicializa un valor para contar\ni = 1\n\n# Utiliza un ciclo while para contar números divisibles por 3 o 5\nwhile i <= numero:\n    if i % 3 == 0 or i % 5 == 0:\n        contador += 1\n    i += 1\n\n# Muestra la cantidad de números divisibles por 3 o 5\nprint(f\"En el rango de 1 a {numero}, hay {contador} números divisibles por 3 o 5.\")"},{"id":15,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Imprimir los números del 0 al 20 y sus cubos\nfor i in range(21):\n    print(f\"Número: {i}, Cubo: {i**3}\")"},{"id":16,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Imprimir los valores de los objetos range\n\nprint(list(range(9)))            \nprint(list(range(3, 13)))        \nprint(list(range(3, 13, 2)))     \nprint(list(range(11, 4)))        \nprint(list(range(11, 4, -1)))  "},{"id":17,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# Cuenta regresiva para el Año Nuevo\nfor i in range(10, 0, -1):\n    print(i)\n\nprint('¡Feliz Año Nuevo!')"},{"id":18,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        break  # Se rompe el ciclo en esta iteración\n    print(n)\n\nprint(\"--Fin--\")"},{"id":19,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        continue # continua el ciclo ignorando esta iteracion\n    print(n)\n\nprint(\"--Fin--\")"},{"id":20,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":21,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"Dividendo: 100\nDivisor: 10\n\nLa división es exacta.\nCociente: 10\nResto: 0"},{"id":22,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":23,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":24,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":25,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":26,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":27,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":28,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":29,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":30,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":31,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":32,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":33,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":34,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":35,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":36,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":37,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":38,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":39,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":40,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"},{"id":41,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"import random\n\n# Generar un número aleatorio entre 1 y 100\nnumero_secreto = random.randint(1, 100)\n\n# Número máximo de intentos permitidos\nintentos_maximos = 10\n\n# ...."},{"id":42,"options":{"dpi":72,"out-height":"","autorun":"","classes":"","comment":"","fig-height":5,"label":"","fig-width":7,"fig-cap":"","context":"interactive","message":"true","results":"markup","warning":"true","read-only":"false","output":"true","out-width":"700px"},"code":"# respuesta"}];
+globalThis.qpyodideCellDetails = [{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# definir variables\nn = 5\nm = 10\n\n# inicializar flujo\nif m < n:\n    t = m\n    m = n\n    n = t\n\n# sentencia despues del flujo\nprint(m, n)","id":1},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"nota = 60\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 55:\n    print(\"Felicitaciones!!!\")","id":2},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"nota = 40\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota < 55:\n    print(\"Lamentablemente Ud. ha reprobado.\")","id":3},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"edad = 20\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")","id":4},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"edad = 10\nprint(f\"Ingrese su edad: {edad}\")\n\nif edad < 18:\n    print(\"Usted es menor de edad\")\nelse:\n    print(\"Usted es adulto\")","id":5},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"n = 15\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")","id":6},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"n = 20\nprint(f\"Ingrese su numero: {n}\")\n\nif n % 2 == 0:\n    print(\"El numero es par\")\n    print(\"La mitad del numero es\", n / 2)\nelse:\n    print(\"El numero es impar\")\n    print(\"El sucesor del numero es\", n + 1)\nprint(\"Fin\")","id":7},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"nota = 90\nprint(f\"Ingrese su nota: {nota}\")\n\nif nota >= 80:\n    print(\"Usted es un alumno destacado.\")\nelif nota >= 65:\n    print(\"Usted ha aprobado.\")\nelif nota >= 55:\n    print(\"Usted aprobó con algunas dificultades.\")\nelif nota >= 45:\n    print(\"Con un poco mas de empeño hubiese aprobado.\")\nelse:\n    print(\"Nos vemos el próximo semestre.\")","id":8},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"sueldo = 2000\nprint(f\"Ingrese su sueldo: {sueldo}\")\n\nif sueldo < 1000:\n    print(\"caso 1\")\n    tasa = 0.00\nelif sueldo < 2000: # 1000 <= sueldo < 2000?\n    print(\"caso 2\")\n    tasa = 0.05\nelif sueldo < 4000: # 2000 <= sueldo < 4000\n    print(\"caso 3\")\n    tasa = 0.10\nelse:\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")","id":9},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"sueldo = 2000\nif sueldo < 1000: #1000 > sueldo:\n    print(\"caso 1\")\n    tasa = 0.00\nif sueldo >= 1000 and sueldo < 2000: #if 1000 <= sueldo < 2000:\n    print(\"caso 2\")\n    tasa = 0.05\nif 2000 <= sueldo < 4000:\n    print(\"caso 3\")\n    tasa = 0.10\nif 4000 <= sueldo: #sueldo>= 4000\n    print(\"caso falso\")\n    tasa = 0.12\nprint(\"Usted debe pagar\", int(tasa*sueldo), \"de impuesto.\")","id":10},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"m = 4\nn = 7\np = 0\n\nwhile m > 0:\n    m = m - 1\n    p = p + n\n    \nprint(f\"El producto de 'm' y 'n' es {p}\")","id":11},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Solicita al usuario ingresar un número entero\nnumero = 10\n\n# Inicializa la variable para la suma\nsuma = 0\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular la suma de los cuadrados\nwhile i <= numero:\n    suma += i ** 2\n    i += 1\n\n# Muestra el resultado\nprint(f\"La suma de los cuadrados desde 1 hasta {numero} es {suma}\")","id":12},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Solicita al usuario ingresar un número entero\nn = 10\n\n# Inicializa el valor del factorial a 1\nfactorial = 1\n\n# Inicializa un contador\ni = 1\n\n# Utiliza un ciclo while para calcular el factorial\nwhile i <= n:\n    factorial *= i\n    i += 1\n\n# Muestra el resultado\nprint(f\"{n}! = {factorial}\")","id":13},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Solicita al usuario ingresar un número entero\nnumero = 35\n\n# Inicializa un contador de números divisibles por 3 o 5\ncontador = 0\n\n# Inicializa un valor para contar\ni = 1\n\n# Utiliza un ciclo while para contar números divisibles por 3 o 5\nwhile i <= numero:\n    if i % 3 == 0 or i % 5 == 0:\n        contador += 1\n    i += 1\n\n# Muestra la cantidad de números divisibles por 3 o 5\nprint(f\"En el rango de 1 a {numero}, hay {contador} números divisibles por 3 o 5.\")","id":14},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Imprimir los números del 0 al 20 y sus cubos\nfor i in range(21):\n    print(f\"Número: {i}, Cubo: {i**3}\")","id":15},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Imprimir los valores de los objetos range\n\nprint(list(range(9)))            \nprint(list(range(3, 13)))        \nprint(list(range(3, 13, 2)))     \nprint(list(range(11, 4)))        \nprint(list(range(11, 4, -1)))  ","id":16},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# Cuenta regresiva para el Año Nuevo\nfor i in range(10, 0, -1):\n    print(i)\n\nprint('¡Feliz Año Nuevo!')","id":17},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        break  # Se rompe el ciclo en esta iteración\n    print(n)\n\nprint(\"--Fin--\")","id":18},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"for n in range(1, 21):\n    if n % 7 == 0:\n        continue # continua el ciclo ignorando esta iteracion\n    print(n)\n\nprint(\"--Fin--\")","id":19},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":20},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"Dividendo: 100\nDivisor: 10\n\nLa división es exacta.\nCociente: 10\nResto: 0","id":21},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":22},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":23},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":24},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":25},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":26},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":27},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":28},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":29},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":30},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":31},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":32},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":33},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":34},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":35},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":36},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":37},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":38},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":39},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":40},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"import random\n\n# Generar un número aleatorio entre 1 y 100\nnumero_secreto = random.randint(1, 100)\n\n# Número máximo de intentos permitidos\nintentos_maximos = 10\n\n# ....","id":41},{"options":{"read-only":"false","message":"true","classes":"","fig-width":7,"output":"true","autorun":"","out-width":"700px","context":"interactive","warning":"true","label":"","fig-height":5,"out-height":"","fig-cap":"","dpi":72,"results":"markup","comment":""},"code":"# respuesta","id":42}];
 
 
 </script>
@@ -497,7 +523,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -513,6 +539,10 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">🐍 Python Intro</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/fralfaro/python_intro2" title="Ejecutar el código" class="quarto-navigation-tool px-1" aria-label="Ejecutar el código"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -524,7 +554,8 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏠 Home</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">🏠 Home</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -538,12 +569,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💻 Sobre Programación</span></a>
+  <a href="../prefacio/01_intro_progra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">💻 Sobre Programación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🐍 Sobre Python</span></a>
+  <a href="../prefacio/02_intro_python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">🐍 Sobre Python</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,37 +592,44 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📚 Nomenclatura</span></a>
+  <a href="../contenidos/03_nomenclatura.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🔄 Control de Flujo</span></a>
+  <a href="../contenidos/04_control_flujo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📊 Estructura de datos</span></a>
+  <a href="../contenidos/05_estructura_datos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🛠️ Funciones</span></a>
+  <a href="../contenidos/06_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🛠️ Funciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">⚠️ Excepciones</span></a>
+  <a href="../contenidos/07_excepciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">⚠️ Excepciones</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">✅ Buenas prácticas</span></a>
+  <a href="../contenidos/08_buenas_practicas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">✅ Buenas prácticas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">💡 Solución Ejercicios</span></a>
+  <a href="../contenidos/09_solucion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">💡 Solución Ejercicios</span></span></a>
   </div>
 </li>
       </ul>
@@ -604,30 +644,30 @@ window.Quarto = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#condicional-if-elif-else" id="toc-condicional-if-elif-else" class="nav-link active" data-scroll-target="#condicional-if-elif-else">Condicional if-elif-else</a>
+  <li><a href="#condicional-if-elif-else" id="toc-condicional-if-elif-else" class="nav-link active" data-scroll-target="#condicional-if-elif-else"><span class="header-section-number">5.1</span> Condicional if-elif-else</a>
   <ul class="collapse">
-  <li><a href="#condicional-if" id="toc-condicional-if" class="nav-link" data-scroll-target="#condicional-if">Condicional if</a></li>
-  <li><a href="#condicional-if-else" id="toc-condicional-if-else" class="nav-link" data-scroll-target="#condicional-if-else">Condicional if-else</a></li>
-  <li><a href="#condicional-if-elif-else-1" id="toc-condicional-if-elif-else-1" class="nav-link" data-scroll-target="#condicional-if-elif-else-1">Condicional if-elif-else</a></li>
+  <li><a href="#condicional-if" id="toc-condicional-if" class="nav-link" data-scroll-target="#condicional-if"><span class="header-section-number">5.1.1</span> Condicional if</a></li>
+  <li><a href="#condicional-if-else" id="toc-condicional-if-else" class="nav-link" data-scroll-target="#condicional-if-else"><span class="header-section-number">5.1.2</span> Condicional if-else</a></li>
+  <li><a href="#condicional-if-elif-else-1" id="toc-condicional-if-elif-else-1" class="nav-link" data-scroll-target="#condicional-if-elif-else-1"><span class="header-section-number">5.1.3</span> Condicional if-elif-else</a></li>
   </ul></li>
-  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop">While Loop</a>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><span class="header-section-number">5.2</span> While Loop</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-acumulación-con-suma" id="toc-ejemplo-acumulación-con-suma" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-suma">Ejemplo: acumulación con suma</a></li>
-  <li><a href="#ejemplo-acumulación-con-multiplicación" id="toc-ejemplo-acumulación-con-multiplicación" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-multiplicación">Ejemplo: acumulación con multiplicación</a></li>
-  <li><a href="#ejemplo-conteo" id="toc-ejemplo-conteo" class="nav-link" data-scroll-target="#ejemplo-conteo">Ejemplo: conteo</a></li>
+  <li><a href="#ejemplo-acumulación-con-suma" id="toc-ejemplo-acumulación-con-suma" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-suma"><span class="header-section-number">5.2.1</span> Ejemplo: acumulación con suma</a></li>
+  <li><a href="#ejemplo-acumulación-con-multiplicación" id="toc-ejemplo-acumulación-con-multiplicación" class="nav-link" data-scroll-target="#ejemplo-acumulación-con-multiplicación"><span class="header-section-number">5.2.2</span> Ejemplo: acumulación con multiplicación</a></li>
+  <li><a href="#ejemplo-conteo" id="toc-ejemplo-conteo" class="nav-link" data-scroll-target="#ejemplo-conteo"><span class="header-section-number">5.2.3</span> Ejemplo: conteo</a></li>
   </ul></li>
-  <li><a href="#ciclo-for-con-rango" id="toc-ciclo-for-con-rango" class="nav-link" data-scroll-target="#ciclo-for-con-rango">Ciclo for con rango</a></li>
-  <li><a href="#salir-o-continuar-un-ciclo" id="toc-salir-o-continuar-un-ciclo" class="nav-link" data-scroll-target="#salir-o-continuar-un-ciclo">Salir o continuar un ciclo</a>
+  <li><a href="#ciclo-for-con-rango" id="toc-ciclo-for-con-rango" class="nav-link" data-scroll-target="#ciclo-for-con-rango"><span class="header-section-number">5.3</span> Ciclo for con rango</a></li>
+  <li><a href="#salir-o-continuar-un-ciclo" id="toc-salir-o-continuar-un-ciclo" class="nav-link" data-scroll-target="#salir-o-continuar-un-ciclo"><span class="header-section-number">5.4</span> Salir o continuar un ciclo</a>
   <ul class="collapse">
-  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break">Break</a></li>
-  <li><a href="#continue" id="toc-continue" class="nav-link" data-scroll-target="#continue">Continue</a></li>
+  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break"><span class="header-section-number">5.4.1</span> Break</a></li>
+  <li><a href="#continue" id="toc-continue" class="nav-link" data-scroll-target="#continue"><span class="header-section-number">5.4.2</span> Continue</a></li>
   </ul></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">5.5</span> Ejercicios</a>
   <ul class="collapse">
-  <li><a href="#if-elif-else" id="toc-if-elif-else" class="nav-link" data-scroll-target="#if-elif-else">if-elif-else</a></li>
-  <li><a href="#while" id="toc-while" class="nav-link" data-scroll-target="#while">While</a></li>
-  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
-  <li><a href="#break-continue" id="toc-break-continue" class="nav-link" data-scroll-target="#break-continue">Break &amp; Continue</a></li>
+  <li><a href="#if-elif-else" id="toc-if-elif-else" class="nav-link" data-scroll-target="#if-elif-else"><span class="header-section-number">5.5.1</span> if-elif-else</a></li>
+  <li><a href="#while" id="toc-while" class="nav-link" data-scroll-target="#while"><span class="header-section-number">5.5.2</span> While</a></li>
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range"><span class="header-section-number">5.5.3</span> Range</a></li>
+  <li><a href="#break-continue" id="toc-break-continue" class="nav-link" data-scroll-target="#break-continue"><span class="header-section-number">5.5.4</span> Break &amp; Continue</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -645,9 +685,9 @@ window.Quarto = {
   });
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../contenidos/intro.html">Contenidos</a></li><li class="breadcrumb-item"><a href="../contenidos/04_control_flujo.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">🔄 Control de Flujo</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">🔄 Control de Flujo</span></h1>
 </div>
 
 
@@ -665,7 +705,7 @@ window.Quarto = {
 
 
 <center>
-<img src="../images/control.svg" width="550">
+<img src="../images/control.png" width="550">
 </center>
 <p><br></p>
 <p>EL control de flujo o sentencias de control permiten modificar el flujo del programa introduciendo <strong>ciclos</strong> y <strong>condicionales</strong>.</p>
@@ -676,10 +716,10 @@ window.Quarto = {
 <p>Tanto los condicionales como los ciclos contienen a otras sentencias. Para indicar esta relación se utiliza la <strong>indentación</strong>: las sentencias contenidas no se escriben en la misma columna que la sentencia de control, sino un poco más a la derecha.</p>
 <div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="condicional-if-elif-else" class="level2">
-<h2 class="anchored" data-anchor-id="condicional-if-elif-else">Condicional if-elif-else</h2>
-<section id="condicional-if" class="level3">
-<h3 class="anchored" data-anchor-id="condicional-if">Condicional if</h3>
+<section id="condicional-if-elif-else" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="condicional-if-elif-else"><span class="header-section-number">5.1</span> Condicional if-elif-else</h2>
+<section id="condicional-if" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="condicional-if"><span class="header-section-number">5.1.1</span> Condicional if</h3>
 <p>La sentencia <code>if</code> («si») ejecuta las instrucciones sólo si se cumple una condición. Si la condición es falsa, no se hace nada:</p>
 <p>La sintaxis es la siguiente:</p>
 <p><img src="https://progra-utfsm.github.io/material/images/if.png" align="center" width="300"></p>
@@ -691,8 +731,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="condicional-if-else" class="level3">
-<h3 class="anchored" data-anchor-id="condicional-if-else">Condicional if-else</h3>
+<section id="condicional-if-else" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="condicional-if-else"><span class="header-section-number">5.1.2</span> Condicional if-else</h3>
 <p>La sentencia <code>if-else</code> («si-o-si-no») decide qué instrucciones ejecutar dependiendo si una condición es verdadera o falsa:</p>
 <p><img src="https://progra-utfsm.github.io/material/images/if-else.png" align="center" width="300"></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> condición:</span>
@@ -710,8 +750,8 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="condicional-if-elif-else-1" class="level3">
-<h3 class="anchored" data-anchor-id="condicional-if-elif-else-1">Condicional if-elif-else</h3>
+<section id="condicional-if-elif-else-1" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="condicional-if-elif-else-1"><span class="header-section-number">5.1.3</span> Condicional if-elif-else</h3>
 <p>La sentencia <code>if-elif-else</code> depende de dos o más condiciones, que son evaluadas en orden. La primera que es verdadera determina qué instrucciones serán ejecutadas:</p>
 <p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/if_else.png" align="center" width="300"></p>
 <p>La sintaxis es la siguiente:</p>
@@ -776,8 +816,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="while-loop" class="level2">
-<h2 class="anchored" data-anchor-id="while-loop">While Loop</h2>
+<section id="while-loop" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">5.2</span> While Loop</h2>
 <p>El ciclo while («mientras») ejecuta una secuencia de instrucciones mientras una condición sea verdadera:</p>
 <p>Cada una de las veces que el cuerpo del ciclo es ejecutado se llama iteración.</p>
 <p>La condición es evaluada antes de cada iteración. Si la condición es inicialmente falsa, el ciclo no se ejecutará ninguna vez.</p>
@@ -870,29 +910,29 @@ window.Quarto = {
 <li>Después de que el bucle se detiene, se imprime el resultado, que es el producto acumulado de <code>m</code> y <code>n</code> en la variable <code>p</code>.</li>
 </ol>
 <p>La razón por la que estamos seguros de que el ciclo terminará en algún momento es que la condición del bucle <code>while</code> se verifica en cada iteración, y <code>m</code> se reduce en 1 en cada iteración. Dado que <code>m</code> se inicializa con el valor 4, y en cada iteración se reduce en 1, eventualmente alcanzará el valor 0 después de 4 iteraciones, lo que hará que la condición <code>m &gt; 0</code> sea falsa y el ciclo se detendrá. Por lo tanto, podemos estar seguros de que el ciclo terminará.</p>
-<section id="ejemplo-acumulación-con-suma" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-acumulación-con-suma">Ejemplo: acumulación con suma</h3>
+<section id="ejemplo-acumulación-con-suma" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="ejemplo-acumulación-con-suma"><span class="header-section-number">5.2.1</span> Ejemplo: acumulación con suma</h3>
 <p>Escriba un programa que reciba como entrada un número entero. El programa debe mostrar el resultado de la suma de los números al cuadrado desde el <span class="math inline">\(1\)</span> hasta el valor ingresado. <span class="math display">\[
 1^2+2^2+\ldots+(n-1)^2+n^2
 \]</span></p>
 <div id="qpyodide-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="ejemplo-acumulación-con-multiplicación" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-acumulación-con-multiplicación">Ejemplo: acumulación con multiplicación</h3>
+<section id="ejemplo-acumulación-con-multiplicación" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="ejemplo-acumulación-con-multiplicación"><span class="header-section-number">5.2.2</span> Ejemplo: acumulación con multiplicación</h3>
 <p>Escriba una programa que calcule el factorial de un número <span class="math inline">\(n\)</span> ingresada como entrada: <span class="math inline">\(10! = 1\cdot 2 \cdot 3 ... \cdot 10\)</span></p>
 <div id="qpyodide-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="ejemplo-conteo" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-conteo">Ejemplo: conteo</h3>
+<section id="ejemplo-conteo" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="ejemplo-conteo"><span class="header-section-number">5.2.3</span> Ejemplo: conteo</h3>
 <p>Escriba un programa que solicite un número entero y calcule cuantos números son divisibles por 3 o 5.</p>
 <div id="qpyodide-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="ciclo-for-con-rango" class="level2">
-<h2 class="anchored" data-anchor-id="ciclo-for-con-rango">Ciclo for con rango</h2>
+<section id="ciclo-for-con-rango" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="ciclo-for-con-rango"><span class="header-section-number">5.3</span> Ciclo for con rango</h2>
 <p>El ciclo <strong>for con rango</strong> ejecuta una secuencia de sentencias una cantidad fija de veces.</p>
 <p>Para llevar la cuenta, utiliza una <strong>variable de control</strong> que toma valores distintos en cada iteración.</p>
 <p>Una de las sintaxis para usar un for con rango es la siguiente:</p>
@@ -945,10 +985,10 @@ window.Quarto = {
 <div id="qpyodide-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="salir-o-continuar-un-ciclo" class="level2">
-<h2 class="anchored" data-anchor-id="salir-o-continuar-un-ciclo">Salir o continuar un ciclo</h2>
-<section id="break" class="level3">
-<h3 class="anchored" data-anchor-id="break">Break</h3>
+<section id="salir-o-continuar-un-ciclo" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="salir-o-continuar-un-ciclo"><span class="header-section-number">5.4</span> Salir o continuar un ciclo</h2>
+<section id="break" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="break"><span class="header-section-number">5.4.1</span> Break</h3>
 <p>Además de las condiciones de término propias de los ciclos <code>while</code> y <code>for</code>, siempre es posible salir de un ciclo en medio de una iteración usando la sentencia <code>break</code>. Lo lógico es que sea usada dentro de un <code>if</code>, para evitar que el ciclo termine prematuramente en la primera iteración:</p>
 <p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/break.png" align="center" width="300"></p>
 <p>Veamos el siguiente ejemplo:</p>
@@ -963,8 +1003,8 @@ window.Quarto = {
 <li><p>Después de que se complete el bucle <code>for</code>, se imprime “–Fin–” una vez para marcar el final del programa.</p></li>
 </ol>
 </section>
-<section id="continue" class="level3">
-<h3 class="anchored" data-anchor-id="continue">Continue</h3>
+<section id="continue" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="continue"><span class="header-section-number">5.4.2</span> Continue</h3>
 <p>La sentencia <code>continue</code> se usa para saltar a la iteración siguiente sin llegar al final de la que está en curso.</p>
 <p><img src="https://raw.githubusercontent.com/fralfaro/python_intro/main/docs/images/continue.png" align="center" width="300"></p>
 <p>Veamos el siguiente ejemplo:</p>
@@ -980,10 +1020,10 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
-<section id="if-elif-else" class="level3">
-<h3 class="anchored" data-anchor-id="if-elif-else">if-elif-else</h3>
+<section id="ejercicios" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">5.5</span> Ejercicios</h2>
+<section id="if-elif-else" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="if-elif-else"><span class="header-section-number">5.5.1</span> if-elif-else</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Escriba un programa que determine si el número entero ingresado por el usuario es par o no.</p>
 <pre class="terminal"><code>Ingrese un número: 4
@@ -1101,8 +1141,8 @@ El triangulo es equilatero.</code></pre>
 <div id="qpyodide-insertion-location-27"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="while" class="level3">
-<h3 class="anchored" data-anchor-id="while">While</h3>
+<section id="while" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="while"><span class="header-section-number">5.5.2</span> While</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Solicita al usuario un número y muestra un contador regresivo desde ese número hasta 1. Utiliza la declaración <code>while</code> para resolver este problema.</p>
 <pre><code>Ingrese un número: 5
@@ -1145,8 +1185,8 @@ El número tiene 4 dígitos impares.</code></pre>
 <div id="qpyodide-insertion-location-33"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="range" class="level3">
-<h3 class="anchored" data-anchor-id="range">Range</h3>
+<section id="range" class="level3" data-number="5.5.3">
+<h3 data-number="5.5.3" class="anchored" data-anchor-id="range"><span class="header-section-number">5.5.3</span> Range</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Calcula la suma de todos los números pares desde 1 hasta un número dado (<span class="math inline">\(n\)</span>). Utiliza la declaración <code>range</code> para resolver este problema.</p>
 <pre><code>Ingrese un número: 10
@@ -1191,8 +1231,8 @@ Tabla de multiplicar del 7:
 <div id="qpyodide-insertion-location-37"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="break-continue" class="level3">
-<h3 class="anchored" data-anchor-id="break-continue">Break &amp; Continue</h3>
+<section id="break-continue" class="level3" data-number="5.5.4">
+<h3 data-number="5.5.4" class="anchored" data-anchor-id="break-continue"><span class="header-section-number">5.5.4</span> Break &amp; Continue</h3>
 <p><strong>Ejercicio 01</strong></p>
 <p>Solicita al usuario un número y cuenta cuántos de sus dígitos son pares. Utiliza la declaración <code>continue</code> para omitir los dígitos impares.</p>
 <pre><code>Ingrese un número: 123456
@@ -1244,6 +1284,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1319,6 +1503,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1636,12 +1825,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../contenidos/03_nomenclatura.html" class="pagination-link" aria-label="📚 Nomenclatura">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">📚 Nomenclatura</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">📚 Nomenclatura</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../contenidos/05_estructura_datos.html" class="pagination-link" aria-label="📊 Estructura de datos">
-        <span class="nav-page-text"><span class="chapter-title">📊 Estructura de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">📊 Estructura de datos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2186,4 +2375,5 @@ qpyodideCellDetails.map(
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
