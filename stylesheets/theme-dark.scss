@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+// Base document colors
+$body-bg: #181818;
+$body-color: white;
+$link-color: #75AADB;
+
+// Code blocks
+$code-block-bg-alpha: -.8;
+$code-block-text-color: white; // Variable para el color del texto de los bloques de código
+
+.code-block {
+  background-color: rgba($body-bg, $code-block-bg-alpha);
+  color: $code-block-text-color; // Aplica el color blanco al texto del bloque de código
+}
+

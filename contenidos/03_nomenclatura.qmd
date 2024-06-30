@@ -1,6 +1,6 @@
 #  📚 Nomenclatura
 
-<center><img src="../images/nomenclatura.svg" width = "550"></center><br>
+<center><img src="../images/nomenclatura.png" width = "550"></center><br>
 
 
 ## Sintaxis
@@ -21,7 +21,7 @@ Una **variable** es una ubicación con nombre utilizada para almacenar datos en 
 ```{pyodide-python}
 # asignar e imprimir variables (numericas)
 a = 5
-print("a =", 5)
+print("a =", a)
 ```
 
 ```{pyodide-python}

@@ -117,7 +117,7 @@ El pseudocódigo es una descripción estructurada de un algoritmo basada en cier
 
 Una manera de escribir el algoritmo para la ecuación cuadrática en pseudocódigo es la siguiente:
 
-```
+```sh
 leer a
 leer b
 leer c

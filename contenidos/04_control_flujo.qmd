@@ -1,6 +1,6 @@
 # 🔄 Control de Flujo
 
-<center><img src="../images/control.svg" width = "550"></center><br>
+<center><img src="../images/control.png" width = "550"></center><br>
 
 
 EL control de flujo o sentencias de control permiten modificar el flujo del programa introduciendo **ciclos** y **condicionales**.
