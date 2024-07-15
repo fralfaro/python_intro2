@@ -80,19 +80,19 @@ Python admite enteros, números de coma flotante y números complejos. Se define
 ```{pyodide-python}
 # entero 
 a = 5
-print(type(a))
+print(a)
 ```
 
 ```{pyodide-python}
 # flotante 
 b = 1.5
-print(type(b))
+print(b)
 ```
 
 ```{pyodide-python}
 # complejo 
 c = 5 + 3j
-print(type(c))
+print(c)
 ```
 
 ### Valores lógicos
@@ -103,12 +103,12 @@ El nombre bool viene del matemático **George Boole**, quien creó un sistema al
 
 ```{pyodide-python}
 a = True
-print(type(a))
+print(a)
 ```
 
 ```{pyodide-python}
 b = False
-print(type(b))
+print(b)
 ```
 
 ### Texto
@@ -119,13 +119,13 @@ Los strings literales pueden ser representados con texto entre comillas simples 
 ```{pyodide-python}
 # comillas simples
 a = 'hola mundo'
-print(type(a))
+print(a)
 ```
 
 ```{pyodide-python}
 # comillas complejas
 b = "hola mundo"
-print(type(b))
+print(b)
 ```
 
 ### Nulo
@@ -135,7 +135,7 @@ El valor None tiene su propio tipo, llamado `NoneType`, que es diferente al de t
 
 ```{pyodide-python}
 a = None
-print(type(a))
+print(a)
 ```
 
 ### Conversión de tipo
