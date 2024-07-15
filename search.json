@@ -20,26 +20,6 @@
     ]
   },
   {
-    "objectID": "prefacio/intro.html",
-    "href": "prefacio/intro.html",
-    "title": "Prefacio",
-    "section": "",
-    "text": "💻 Sobre Programación\nLa programación es la base sobre la cual se construyen todas las aplicaciones y sistemas que usamos en nuestra vida diaria. Es el proceso de diseñar y construir un conjunto de instrucciones que una computadora puede seguir para realizar una tarea específica. A través de la programación, podemos resolver problemas, automatizar procesos y crear soluciones innovadoras que mejoran nuestra eficiencia y productividad. En este apartado, introduciremos los conceptos básicos de la programación, sus principios fundamentales y las mejores prácticas para escribir código limpio y efectivo.",
-    "crumbs": [
-      "Prefacio"
-    ]
-  },
-  {
-    "objectID": "prefacio/intro.html#sobre-python",
-    "href": "prefacio/intro.html#sobre-python",
-    "title": "Prefacio",
-    "section": "🐍 Sobre Python",
-    "text": "🐍 Sobre Python\nPython es uno de los lenguajes de programación más populares y versátiles en la actualidad. Con una sintaxis sencilla y clara, es ideal tanto para principiantes como para programadores experimentados. Python se utiliza en una amplia variedad de aplicaciones, desde desarrollo web y análisis de datos hasta inteligencia artificial y automatización de tareas. En esta sección, nos adentraremos en las características que hacen de Python una herramienta poderosa y accesible, proporcionando ejemplos prácticos y ejercicios para que puedas empezar a escribir tus propios programas.",
-    "crumbs": [
-      "Prefacio"
-    ]
-  },
-  {
     "objectID": "prefacio/01_intro_progra.html",
     "href": "prefacio/01_intro_progra.html",
     "title": "2  💻 Sobre Programación",
@@ -136,76 +116,6 @@
     "crumbs": [
       "Prefacio",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>🐍 Sobre Python</span>"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html",
-    "href": "contenidos/intro.html",
-    "title": "Contenidos",
-    "section": "",
-    "text": "📚 Nomenclatura\nAprende las reglas para nombrar variables, funciones y más en Python. La nomenclatura adecuada hace que tu código sea más legible y mantenible.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#control-de-flujo",
-    "href": "contenidos/intro.html#control-de-flujo",
-    "title": "Contenidos",
-    "section": "🔄 Control de Flujo",
-    "text": "🔄 Control de Flujo\nDirige el flujo de programas usando estructuras de decisión como if, else, y bucles como for y while. Controla cómo se ejecutan las instrucciones en tus programas.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#estructura-de-datos",
-    "href": "contenidos/intro.html#estructura-de-datos",
-    "title": "Contenidos",
-    "section": "📊 Estructura de Datos",
-    "text": "📊 Estructura de Datos\nOrganiza y manipula datos utilizando listas, tuplas, conjuntos y diccionarios. Conoce las propiedades y métodos de cada estructura de datos para un manejo eficiente.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#funciones-y-módulos",
-    "href": "contenidos/intro.html#funciones-y-módulos",
-    "title": "Contenidos",
-    "section": "🛠️ Funciones y Módulos",
-    "text": "🛠️ Funciones y Módulos\nEncapsula lógica en funciones y organiza tu código en módulos y paquetes. Aprende a crear código reutilizable y fácil de mantener.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#excepciones",
-    "href": "contenidos/intro.html#excepciones",
-    "title": "Contenidos",
-    "section": "⚠️ Excepciones",
-    "text": "⚠️ Excepciones\nManeja errores y excepciones para hacer que tus programas sean más robustos y confiables. Aprende a usar bloques try, except, finally.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#buenas-prácticas",
-    "href": "contenidos/intro.html#buenas-prácticas",
-    "title": "Contenidos",
-    "section": "✅ Buenas Prácticas",
-    "text": "✅ Buenas Prácticas\nDesarrolla hábitos de programación que mejoren la calidad de tus scripts. Aprende sobre convenciones de estilo, documentación y más.",
-    "crumbs": [
-      "Contenidos"
-    ]
-  },
-  {
-    "objectID": "contenidos/intro.html#solución-de-ejercicios",
-    "href": "contenidos/intro.html#solución-de-ejercicios",
-    "title": "Contenidos",
-    "section": "💡 Solución de Ejercicios",
-    "text": "💡 Solución de Ejercicios\nPractica y afianza tus conocimientos resolviendo ejercicios y desafíos. Implementa soluciones eficaces y aprende a depurar tu código.",
-    "crumbs": [
-      "Contenidos"
     ]
   },
   {
@@ -624,6 +534,96 @@
     "crumbs": [
       "Contenidos",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>💡 Solución Ejercicios</span>"
+    ]
+  },
+  {
+    "objectID": "prefacio/intro.html",
+    "href": "prefacio/intro.html",
+    "title": "Prefacio",
+    "section": "",
+    "text": "💻 Sobre Programación\nLa programación es la base sobre la cual se construyen todas las aplicaciones y sistemas que usamos en nuestra vida diaria. Es el proceso de diseñar y construir un conjunto de instrucciones que una computadora puede seguir para realizar una tarea específica. A través de la programación, podemos resolver problemas, automatizar procesos y crear soluciones innovadoras que mejoran nuestra eficiencia y productividad. En este apartado, introduciremos los conceptos básicos de la programación, sus principios fundamentales y las mejores prácticas para escribir código limpio y efectivo.",
+    "crumbs": [
+      "Prefacio"
+    ]
+  },
+  {
+    "objectID": "prefacio/intro.html#sobre-python",
+    "href": "prefacio/intro.html#sobre-python",
+    "title": "Prefacio",
+    "section": "🐍 Sobre Python",
+    "text": "🐍 Sobre Python\nPython es uno de los lenguajes de programación más populares y versátiles en la actualidad. Con una sintaxis sencilla y clara, es ideal tanto para principiantes como para programadores experimentados. Python se utiliza en una amplia variedad de aplicaciones, desde desarrollo web y análisis de datos hasta inteligencia artificial y automatización de tareas. En esta sección, nos adentraremos en las características que hacen de Python una herramienta poderosa y accesible, proporcionando ejemplos prácticos y ejercicios para que puedas empezar a escribir tus propios programas.",
+    "crumbs": [
+      "Prefacio"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html",
+    "href": "contenidos/intro.html",
+    "title": "Contenidos",
+    "section": "",
+    "text": "📚 Nomenclatura\nAprende las reglas para nombrar variables, funciones y más en Python. La nomenclatura adecuada hace que tu código sea más legible y mantenible.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#control-de-flujo",
+    "href": "contenidos/intro.html#control-de-flujo",
+    "title": "Contenidos",
+    "section": "🔄 Control de Flujo",
+    "text": "🔄 Control de Flujo\nDirige el flujo de programas usando estructuras de decisión como if, else, y bucles como for y while. Controla cómo se ejecutan las instrucciones en tus programas.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#estructura-de-datos",
+    "href": "contenidos/intro.html#estructura-de-datos",
+    "title": "Contenidos",
+    "section": "📊 Estructura de Datos",
+    "text": "📊 Estructura de Datos\nOrganiza y manipula datos utilizando listas, tuplas, conjuntos y diccionarios. Conoce las propiedades y métodos de cada estructura de datos para un manejo eficiente.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#funciones-y-módulos",
+    "href": "contenidos/intro.html#funciones-y-módulos",
+    "title": "Contenidos",
+    "section": "🛠️ Funciones y Módulos",
+    "text": "🛠️ Funciones y Módulos\nEncapsula lógica en funciones y organiza tu código en módulos y paquetes. Aprende a crear código reutilizable y fácil de mantener.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#excepciones",
+    "href": "contenidos/intro.html#excepciones",
+    "title": "Contenidos",
+    "section": "⚠️ Excepciones",
+    "text": "⚠️ Excepciones\nManeja errores y excepciones para hacer que tus programas sean más robustos y confiables. Aprende a usar bloques try, except, finally.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#buenas-prácticas",
+    "href": "contenidos/intro.html#buenas-prácticas",
+    "title": "Contenidos",
+    "section": "✅ Buenas Prácticas",
+    "text": "✅ Buenas Prácticas\nDesarrolla hábitos de programación que mejoren la calidad de tus scripts. Aprende sobre convenciones de estilo, documentación y más.",
+    "crumbs": [
+      "Contenidos"
+    ]
+  },
+  {
+    "objectID": "contenidos/intro.html#solución-de-ejercicios",
+    "href": "contenidos/intro.html#solución-de-ejercicios",
+    "title": "Contenidos",
+    "section": "💡 Solución de Ejercicios",
+    "text": "💡 Solución de Ejercicios\nPractica y afianza tus conocimientos resolviendo ejercicios y desafíos. Implementa soluciones eficaces y aprende a depurar tu código.",
+    "crumbs": [
+      "Contenidos"
     ]
   }
 ]
