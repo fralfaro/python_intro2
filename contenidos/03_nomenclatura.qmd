@@ -493,7 +493,7 @@ print(texto[0:8:1])
 
 ```{pyodide-python}
 # seleccionar los elementos del primero al noveno en pasos de uno
-print(texto[0:8:1])
+print(texto[0:8])
 ```
 
 ```{pyodide-python}
